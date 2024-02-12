@@ -1,18 +1,27 @@
 #pragma once
 #include <d3dx9.h>
-#include "renderer.h"
-struct Wall
+#include "render.h"
+#include "object.h"
+class Wall :public Object
 {
-	D3DXVECTOR3		pos;		
-	D3DXCOLOR		color;		
+public:	
+	Wall(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "Wall", world)
+	{
+		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		_scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+		_position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		color = { 1.0f,1.0f,1.0f,1.0f };
+
+		_model->SubsetArray->Material.Material.Diffuse = {1.0,1.0,1.0,1.0};
+		_model->SubsetArray->Material.Material.Ambient = { 1.0,1.0,1.0,1.0 };
+		_model->SubsetArray->Material.Material.Specular = { 1.0,1.0,1.0,1.0 };
+	}
+	~Wall(){}
+	void Update(double deltaTime) override;
+	void Draw() override;
+	bool Discard() const override;
+private:
+	D3DXCOLOR		color;
 	D3DXVECTOR3		size;
-	D3DXVECTOR3		rot;
-	D3DXVECTOR3		scl;
-	D3DXMATRIX		 mtxWorld;
+
 };
-
-
-void InitWall(void);
-void UninitWall(void);
-void UpdateWall(void);
-void DrawWall(void);

@@ -156,9 +156,8 @@ void PixelShaderPolygon(in float4 inPosition : SV_POSITION,
         float4 texColor = g_Texture.Sample(g_SamplerState, inTexCoord);
         if (Material.PolyLine == 0)
         {
-            color *= texColor*Material.Diffuse ;
+            color = texColor*inDiffuse ;
         }
-        
         else if (Material.PolyLine == 1)
         {
             color = Material.Diffuse*inDiffuse ;

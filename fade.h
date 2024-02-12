@@ -7,7 +7,7 @@
 #pragma once
 
 #include "main.h"
-#include "renderer.h"
+#include "render.h"
 #include "scene.h"
 #include "game.h"
 
@@ -34,8 +34,8 @@ void UninitFade(void);
 void UpdateFade(void);
 void DrawFade(void);
 
-void SceneFadeIn(SCENE nextScene);
-void SceneTransition(SCENE nextScene);
+//void SceneFadeIn(SCENE nextScene);
+//void SceneTransition(SCENE nextScene);
 FADE_STATE GetFadeState(void);
 
 void SetFadeColor(float r, float g, float b);

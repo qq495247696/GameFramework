@@ -5,15 +5,17 @@
 //
 //=============================================================================
 #include "main.h"
-#include "renderer.h"
+#include "render.h"
 #include "input.h"
 #include "sound.h"
 #include "camera.h"
 #include "texture.h"
-#include "sprite.h"
 #include "scene.h"
 #include "fade.h"
 #include <time.h>
+#include "Time.h"
+#include "World.h"
+#include "Render.h"
 
 
 //*****************************************************************************
@@ -28,7 +30,7 @@
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow);
 void Uninit(void);
-void Update(void);
+void Update(double);
 void Draw(void);
 
 //*****************************************************************************
@@ -95,21 +97,19 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		NULL);
 
 	// 初期化処理(ウィンドウを作成してから行う)
-	if (FAILED(Init(hInstance, hWnd, TRUE)))
+	/*if (FAILED(Init(hInstance, hWnd, TRUE)))
 	{
 		return -1;
-	}
-
-	// フレームカウント初期化
-	timeBeginPeriod(1);	// 分解能を設定
-	dwExecLastTime = dwFPSLastTime = timeGetTime();	// システム時刻をミリ秒単位で取得
-	dwCurrentTime = dwFrameCount = 0;
-
+	}*/
+	Game game;
+	game.InitSystem(hInstance, hWnd, TRUE);
 	// ウインドウの表示(初期化処理の後に呼ばないと駄目)
 	ShowWindow(hWnd, nCmdShow);
 	UpdateWindow(hWnd);
 
-	// メッセージループ
+	Time::Get();
+
+	double lag = 0.0f;
 	while (1)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -127,45 +127,19 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		}
 		else
 		{
-			dwCurrentTime = timeGetTime();
-
-			if ((dwCurrentTime - dwFPSLastTime) >= 1000)	// 1秒ごとに実行
+			Time::Get()->Update();
+			lag += Time::Get()->DeltaTime();
+			if (lag >= (1.0f / 60.0f))	// 1/60秒ごとに実行
 			{
-#ifdef _DEBUG
-				g_CountFPS = dwFrameCount;
-#endif
-				dwFPSLastTime = dwCurrentTime;				// FPSを測定した時刻を保存
-				dwFrameCount = 0;							// カウントをクリア
-			}
-
-			if ((dwCurrentTime - dwExecLastTime) >= (1000 / 60))	// 1/60秒ごとに実行
-			{
-				dwExecLastTime = dwCurrentTime;	// 処理した時刻を保存
-
-#ifdef _DEBUG	// デバッグ版の時だけFPSを表示する
-				wsprintf(g_DebugStr, WINDOW_NAME);
-				wsprintf(&g_DebugStr[strlen(g_DebugStr)], " MouseZ:%d", GetMouseZ());
-				SetWindowText(hWnd, g_DebugStr);
-#endif
-
-				Update();			// 更新処理
-				Draw();				// 描画処理
-
-				CheckScene();
-
-				dwFrameCount++;
+				game.Update(Time::Get()->FixDeltaTime());
+				lag -= (1.0f / 60.0f);
 			}
 		}
 	}
 
-	timeEndPeriod(1);				// 分解能を戻す
 
-	// ウィンドウクラスの登録を解除
 	UnregisterClass(CLASS_NAME, wcex.hInstance);
-
-	// 終了処理
-	Uninit();
-
+	game.UnitSystem();
 	return (int)msg.wParam;
 }
 
@@ -201,7 +175,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 //=============================================================================
 HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 {
-	InitRenderer(hInstance, hWnd, bWindow);
 
 	// 入力処理の初期化
 	InitInput(hInstance, hWnd);
@@ -213,14 +186,14 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	InitFade();
 
 	// スプライトの初期化
-	InitSprite();
+	//InitSprite();
 
-	// 背面ポリゴンをカリング
-	SetCullingMode(CULL_MODE_BACK);
+	//// 背面ポリゴンをカリング
+	//SetCullingMode(CULL_MODE_BACK);
 
 	//シーンの初期化（タイトルからスタート）
 	SetFadeColor(0.0f, 0.0f, 0.0f);
-	SceneFadeIn(SCENE_TITLE);
+	//(SCENE_TITLE);
 
 	return S_OK;
 }
@@ -231,13 +204,13 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 void Uninit(void)
 {
 	// スプライトの終了処理
-	UninitSprite();
+	//UninitSprite();
 
 	// 頂点管理の終了処理
 	UninitFade();
 
 	//テクスチャの解放
-	UninitTexture();
+	//UninitTexture();
 
 	// サウンドの終了処理
 	StopSoundAll();
@@ -246,18 +219,17 @@ void Uninit(void)
 	//入力の終了処理
 	UninitInput();
 
-	UninitRenderer();
 }
 
 //=============================================================================
 // 更新処理
 //=============================================================================
-void Update(void)
+void Update(double)
 {
 	// 入力の更新処理
 	UpdateInput();
 
-	UpdateScene();
+	//UpdateScene();
 }
 
 //=============================================================================
@@ -265,14 +237,11 @@ void Update(void)
 //=============================================================================
 void Draw(void)
 {
-	// バックバッファクリア
-	Clear();
 
 	// シーンの描画処理
-	DrawScene();
+	//DrawScene();
 
 	// バックバッファ、フロントバッファ入れ替え
-	Present();
 }
 
 #ifdef _DEBUG

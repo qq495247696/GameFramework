@@ -8,56 +8,32 @@
 ==============================================================================*/
 
 #include "texture.h"
-
-/*------------------------------------------------------------------------------
-   定数定義
-------------------------------------------------------------------------------*/
-#define MAX_TEXTURE_NUM 100
-
-/*------------------------------------------------------------------------------
-   構造体宣言
-------------------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------------------
-   プロトタイプ宣言
-------------------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------------------
-   グローバル変数の定義
-------------------------------------------------------------------------------*/
-static ID3D11ShaderResourceView*	g_pTexture[MAX_TEXTURE_NUM] = {};	//テクスチャ配列
-static unsigned int g_TextureIndex = 0;					// テクスチャ配列の末尾を示すインデックス
-static char g_TextureName[MAX_TEXTURE_NUM][256] = {};	// テクスチャ名バッファ
-
-/*------------------------------------------------------------------------------
-	テクスチャの読み込み
-------------------------------------------------------------------------------*/
-int LoadTexture(char* fileName)
+int TextureTool::LoadTexture(char* fileName, DirectXAPI* api)
 {
 	//読み込まれているテクスチャ名を調べて、同名のものが
-	//すでに読み込まれていたらその番号を返す
-	for (unsigned int i = 0; i < g_TextureIndex; i++)
+//すでに読み込まれていたらその番号を返す
+	for (unsigned int i = 0; i < _textureIndex; i++)
 	{
 		//テクスチャ名を比較
-		if (strcmp(g_TextureName[i], fileName) == 0)
+		if (strcmp(_textureName[i], fileName) == 0)
 		{
 			return i;
 		}
 	}
 
 	//読み込み最大数を超えていたら負の値を返す
-	if (g_TextureIndex == MAX_TEXTURE_NUM)
+	if (_textureIndex == 100)
 	{
 		return -1;
 	}
 
-	//ファイルからテクスチャを読み込む
+
 	HRESULT hr = D3DX11CreateShaderResourceViewFromFile(
-		GetDevice(),
+		api->GetDevice().Get(),
 		fileName,
 		NULL,
 		NULL,
-		&g_pTexture[g_TextureIndex],
+		&_pTexture[_textureIndex],
 		NULL);
 
 	if (S_OK != hr)
@@ -67,40 +43,38 @@ int LoadTexture(char* fileName)
 	}
 
 	//読み込んだテクスチャ名を保存する
-	strcpy_s(g_TextureName[g_TextureIndex], 256, fileName);
+	strcpy_s(_textureName[_textureIndex], 256, fileName);
 
-	int retIndex = g_TextureIndex;
-	
+	int retIndex = _textureIndex;
+
 	//インデックスを一つ進める
-	g_TextureIndex++;
+	_textureIndex++;
 
-	return retIndex;
+	/*return retIndex;*/
+	return 0;
 }
 
-void UninitTexture(void)
+void TextureTool::UninitTexture(void)
 {
-	for (unsigned int i = 0; i < g_TextureIndex; i++)
+	for (unsigned int i = 0; i < _textureIndex; i++)
 	{
-		if (g_pTexture[i] != NULL)
+		if (_pTexture[i] != NULL)
 		{
-			g_pTexture[i]->Release();
-			g_pTexture[i] = NULL;
+			_pTexture[i]->Release();
+			_pTexture[i] = NULL;
 		}
 	}
 }
 
-/*------------------------------------------------------------------------------
-	テクスチャのゲッター
-------------------------------------------------------------------------------*/
-ID3D11ShaderResourceView** GetTexture(int index)
+ID3D11ShaderResourceView** TextureTool::GetTexture(int index)
 {
 	//indexの不正値チェック(負の値)
 	if (index < 0)
 		return NULL;
 
 	//indexの不正値チェック(最大数オーバー)
-	if (index >= (int)g_TextureIndex)
+	if (index >= (int)_textureIndex)
 		return NULL;
 
-	return &g_pTexture[index];
+	return &_pTexture[index];
 }

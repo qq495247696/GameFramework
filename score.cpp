@@ -6,7 +6,6 @@
 //=============================================================================
 #include "score.h"
 #include "texture.h"
-#include "sprite.h"
 #include "Home.h"
 #include "scene.h"
 
@@ -41,7 +40,7 @@ double							tt;
 HRESULT InitScore(void)
 {
 	//テクスチャ生成
-	g_TexNo = LoadTexture((char*)"data/TEXTURE/font.png"); 
+	//g_TexNo = LoadTexture((char*)"data/TEXTURE/font.png"); 
 	//初期化
 	g_UW     = 1.0f/16.0f;
 	g_UH     = 1.0f/6.0f;
@@ -78,27 +77,27 @@ void UpdateScore(void)
 //=============================================================================
 void DrawScore(void)
 {
-	tt -= (double)((1000.0f / 60.0f)/1000.0f);
-	//有効化フラグがONなら描画する
-	if (true)
-	{
-		// テクスチャ設定
-		GetDeviceContext()->PSSetShaderResources(0, 1, GetTexture(g_TexNo));
+	//tt -= (double)((1000.0f / 60.0f)/1000.0f);
+	////有効化フラグがONなら描画する
+	//if (true)
+	//{
+	//	// テクスチャ設定
+	//	GetDeviceContext()->PSSetShaderResources(0, 1, GetTexture(g_TexNo));
 
-		// 桁数分処理する
-		int number = g_Score;
+	//	// 桁数分処理する
+	//	int number = g_Score;
 
-		int hp = GetHome()->hp;
-		int first = (int)tt / 10;
-		int secend = (int)tt % 10;
-		DrawSpriteLeftTop(g_TexNo, g_TimePos.x, g_TimePos.y , g_TimeSize.x, g_TimeSize.y, g_UW*first , g_UH, g_UW, g_UH);
-		DrawSpriteLeftTop(g_TexNo, g_TimePos.x + g_TimeSize.x , g_TimePos.y, g_TimeSize.x, g_TimeSize.y, g_UW * secend, g_UH, g_UW, g_UH);
+	//	int hp = GetHome()->hp;
+	//	int first = (int)tt / 10;
+	//	int secend = (int)tt % 10;
+	//	DrawSpriteLeftTop(g_TexNo, g_TimePos.x, g_TimePos.y , g_TimeSize.x, g_TimeSize.y, g_UW*first , g_UH, g_UW, g_UH);
+	//	DrawSpriteLeftTop(g_TexNo, g_TimePos.x + g_TimeSize.x , g_TimePos.y, g_TimeSize.x, g_TimeSize.y, g_UW * secend, g_UH, g_UW, g_UH);
 
 
-		DrawSpriteLeftTopColor(g_TexNo, g_HpPos.x - g_HpSize.x*3, g_HpPos.y, g_HpSize.x, g_HpSize.y, g_UW*8 , g_UH*2, g_UW, g_UH, { 0.6,0.6,0.6,1.0 });
-		DrawSpriteLeftTopColor(g_TexNo, g_HpPos.x - g_HpSize.x*2, g_HpPos.y, g_HpSize.x, g_HpSize.y, g_UW*0 , g_UH*3, g_UW, g_UH, { 0.6,0.6,0.6,1.0 });
-		DrawSpriteLeftTopColor(g_TexNo, g_HpPos.x, g_HpPos.y, g_HpSize.x, g_HpSize.y, g_UW * hp, g_UH, g_UW, g_UH, {0.8,0.8,0.8,1.0});
-		DrawSpriteLeftTopColor(g_TexNo, g_HpPos.x + g_HpSize.x, g_HpPos.y, g_HpSize.x, g_HpSize.y, g_UW * hp, g_UH, g_UW, g_UH, { 0.8,0.8,0.8,1.0 });
+	//	DrawSpriteLeftTopColor(g_TexNo, g_HpPos.x - g_HpSize.x*3, g_HpPos.y, g_HpSize.x, g_HpSize.y, g_UW*8 , g_UH*2, g_UW, g_UH, { 0.6,0.6,0.6,1.0 });
+	//	DrawSpriteLeftTopColor(g_TexNo, g_HpPos.x - g_HpSize.x*2, g_HpPos.y, g_HpSize.x, g_HpSize.y, g_UW*0 , g_UH*3, g_UW, g_UH, { 0.6,0.6,0.6,1.0 });
+	//	DrawSpriteLeftTopColor(g_TexNo, g_HpPos.x, g_HpPos.y, g_HpSize.x, g_HpSize.y, g_UW * hp, g_UH, g_UW, g_UH, {0.8,0.8,0.8,1.0});
+	//	DrawSpriteLeftTopColor(g_TexNo, g_HpPos.x + g_HpSize.x, g_HpPos.y, g_HpSize.x, g_HpSize.y, g_UW * hp, g_UH, g_UW, g_UH, { 0.8,0.8,0.8,1.0 });
 
 
 		//for (int i = 0; i < SCORE_DIGIT; i++)
@@ -154,7 +153,7 @@ void DrawScore(void)
 		//	hp /= 10;
 		//}
 
-	}
+	/*}*/
 }
 
 //=============================================================================

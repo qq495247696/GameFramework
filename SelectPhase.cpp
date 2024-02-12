@@ -13,12 +13,12 @@ void SelectPhase::StayState(Player* Entity)
 {
 	if (GetMouseZ() > 0)
 	{
-		GetSelect()->rot.y += D3DX_PI / 30;
+		//GetSelect()->rot.y += D3DX_PI / 30;
 	}
 
 	if (GetMouseZ() < 0)
 	{
-		GetSelect()->rot.y -= D3DX_PI / 30;
+		//GetSelect()->rot.y -= D3DX_PI / 30;
 	}
 
 
@@ -38,12 +38,12 @@ void SelectPhase::StayState(Player* Entity)
 
 	if (IsMouseLeftTriggered())
 	{
-		SetTower(GetSelect()->pos, {0,GetSelect()->rot.y,0}, type);
+		//SetTower(GetSelect()->pos, {0,GetSelect()->rot.y,0}, type);
 		Entity->fsm.ChangeState(PreparationPhase::Instance());
 	}
 }
 
 void SelectPhase::ExitState(Player* Entity)
 {
-	GetSelect()->use = false;
+	//GetSelect()->use = false;
 }

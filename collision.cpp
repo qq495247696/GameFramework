@@ -42,85 +42,85 @@ bool CollisionBS(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, float size1, float size2);
 //=============================================================================
 void UpdateCollision(void)
 {
-	Bullet*bullet = GetBullet();	// 弾のポインターを初期化
-	Enemy  *enemy = GetEnemy();		// エネミーのポインターを初期化
-	Home* home = GetHome();
-	Player* player = GetPlayer();
-
-
-	// 弾と敵の当たり判定(BB,BC)
-	for (int i = 0; i < BULLET_NUM; i++)
-	{
-		//使用されていない弾は何もしない
-		if (bullet[i].use == false)
-			continue;
-
-		for (int n = 0; n < ENEMY_NUM; n++)
-		{
-			//使用されていない敵は何もしない
-			if (enemy[n].use == false)
-				continue;
-
-			if (CollisionBB(bullet[i].pos, enemy[n].pos, bullet[i].size, enemy[n].size))
-//			if (CollisionBS(bullet[i].pos, enemy[n].pos, bullet[i].size.x, enemy[n].size.x))
-			{
-				// 敵キャラクターを消す
-				enemy[n].use = false;
-				ReleaseShadow(enemy[n].shadow);
-
-				// 弾を消す
-				bullet[i].use = false;
-				ReleaseShadow(bullet[i].shadow);
-
-				// 点数を加算する
-				AddScore(39);
-			}
-		}
-	}
-
-
-	for (int i = 0; i < ENEMY_NUM; i++)
-	{
-		if (enemy[i].use == false)
-			continue;
-
-		if (CollisionBB(enemy[i].pos, home->pos, enemy[i].size, home->size))
-		{
-			home->hp--;
-			enemy[i].use = false;
-			PlaySound(home->hitedSound,0);
-		}
-	}
-
-
-	if(CollisionBB(player->pos, home->pos, player->size, home->size))
-	{
-		
-		if (player->pos.x<(home->pos.x + home->size.x) && player->pos.x >(home->pos.x - home->size.x))
-		{
-			if (player->pos.z < 0)
-			{
-				player->pos.z = (home->pos.z - home->size.z) - player->size.z * 0.5f;
-			}
-
-			if (player->pos.z > 0)
-			{
-				player->pos.z = (home->pos.z + home->size.z) + player->size.z * 0.5f;
-			}
-		}else if 
-		(player->pos.z<(home->pos.z + home->size.z) && player->pos.z >(home->pos.z - home->size.z))
-		{
-			if (player->pos.x < 0)
-			{
-				player->pos.x = (home->pos.x - home->size.x) - player->size.x * 0.5f;
-			}
-
-			if (player->pos.x > 0)
-			{
-				player->pos.x = (home->pos.x + home->size.x) + player->size.x * 0.5f;
-			}
-		}
-	}
+//	Bullet*bullet = GetBullet();	// 弾のポインターを初期化
+//	Enemy  *enemy = GetEnemy();		// エネミーのポインターを初期化
+//	Home* home = GetHome();
+//	Player* player = GetPlayer();
+//
+//
+//	// 弾と敵の当たり判定(BB,BC)
+//	for (int i = 0; i < BULLET_NUM; i++)
+//	{
+//		//使用されていない弾は何もしない
+//		if (bullet[i].use == false)
+//			continue;
+//
+//		for (int n = 0; n < ENEMY_NUM; n++)
+//		{
+//			//使用されていない敵は何もしない
+//			if (enemy[n].use == false)
+//				continue;
+//
+//			if (CollisionBB(bullet[i].pos, enemy[n].pos, bullet[i].size, enemy[n].size))
+////			if (CollisionBS(bullet[i].pos, enemy[n].pos, bullet[i].size.x, enemy[n].size.x))
+//			{
+//				// 敵キャラクターを消す
+//				enemy[n].use = false;
+//				ReleaseShadow(enemy[n].shadow);
+//
+//				// 弾を消す
+//				bullet[i].use = false;
+//				ReleaseShadow(bullet[i].shadow);
+//
+//				// 点数を加算する
+//				AddScore(39);
+//			}
+//		}
+//	}
+//
+//
+//	for (int i = 0; i < ENEMY_NUM; i++)
+//	{
+//		if (enemy[i].use == false)
+//			continue;
+//
+//		if (CollisionBB(enemy[i].pos, home->pos, enemy[i].size, home->size))
+//		{
+//			home->hp--;
+//			enemy[i].use = false;
+//			PlaySound(home->hitedSound,0);
+//		}
+//	}
+//
+//
+//	if(CollisionBB(player->pos, home->pos, player->size, home->size))
+//	{
+//		
+//		if (player->pos.x<(home->pos.x + home->size.x) && player->pos.x >(home->pos.x - home->size.x))
+//		{
+//			if (player->pos.z < 0)
+//			{
+//				player->pos.z = (home->pos.z - home->size.z) - player->size.z * 0.5f;
+//			}
+//
+//			if (player->pos.z > 0)
+//			{
+//				player->pos.z = (home->pos.z + home->size.z) + player->size.z * 0.5f;
+//			}
+//		}else if 
+//		(player->pos.z<(home->pos.z + home->size.z) && player->pos.z >(home->pos.z - home->size.z))
+//		{
+//			if (player->pos.x < 0)
+//			{
+//				player->pos.x = (home->pos.x - home->size.x) - player->size.x * 0.5f;
+//			}
+//
+//			if (player->pos.x > 0)
+//			{
+//				player->pos.x = (home->pos.x + home->size.x) + player->size.x * 0.5f;
+//			}
+//		}
+//	}
 }
 
 //=============================================================================

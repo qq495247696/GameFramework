@@ -5,36 +5,43 @@
 //
 //=============================================================================
 #pragma once
-
-
-//*****************************************************************************
-// ƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹
-//*****************************************************************************
 #include <d3dx9.h>
-#include "renderer.h"
-
+#include "render.h"
+#include "object.h"
 //*****************************************************************************
 // ƒ}ƒNƒ’è‹`
 //*****************************************************************************
-struct CAMERA
+class Camera:public  Object
 {
-	D3DXVECTOR3			pos;			// ƒJƒƒ‰‚Ì‹“_(ˆÊ’u)
-	D3DXVECTOR3			at;				// ƒJƒƒ‰‚Ì’‹“_
-	D3DXVECTOR3			up;				// ƒJƒƒ‰‚Ìã•ûŒüƒxƒNƒgƒ‹
-	D3DXVECTOR3			rot;			// ƒJƒƒ‰‚Ì‰ñ“]
-	float				len;			// ƒJƒƒ‰‚Ì‹“_‚Æ’‹“_‚Ì‹——£
+public:
+	Camera(World* world) :Object( "Camera",world)
+	{
+		_position = D3DXVECTOR3(0, 50.0f, -100);
+		_at = D3DXVECTOR3(0.0f, 50.0f, 100.0f);
+		_up = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
-	D3DXMATRIX			mtxView;		// ƒrƒ…[ƒ}ƒgƒŠƒbƒNƒX
-	D3DXMATRIX			mtxInvView;		// ƒrƒ…[ƒ}ƒgƒŠƒbƒNƒX
-	D3DXMATRIX			mtxProjection;	// ƒvƒƒWƒFƒNƒVƒ‡ƒ“ƒ}ƒgƒŠƒbƒNƒX
+		// ‹“_‚Æ’‹“_‚Ì‹——£‚ğŒvZ
+		float vx, vz;
+		vx = _position.x - _at.x;
+		vz = _position.z - _at.z;
+		_len = sqrtf(vx * vx + vz * vz);;
+	}
+	~Camera(){}
+	// Í¨¹ı Object ¼Ì³Ğ
+	void Update(double deltaTime) override;
+	void Draw() override;
+	bool Discard() const override;
+	void SetCamera(DirectXAPI* api);
+	void SetCameraAt(D3DXVECTOR3 position, bool sw);
+	const D3DXMATRIX& GetViewMtx()const { return _mtxView; }
+	const D3DXMATRIX& GetInvViewMtx()const { return _mtxInvView; }
+
+private:
+	D3DXVECTOR3					_at;				// ƒJƒƒ‰‚Ì’‹“_
+	D3DXVECTOR3					_up;				// ƒJƒƒ‰‚Ìã•ûŒüƒxƒNƒgƒ‹
+	float						_len;			// ƒJƒƒ‰‚Ì‹“_‚Æ’‹“_‚Ì‹——£
+	D3DXMATRIX					_mtxView;		// ƒrƒ…[ƒ}ƒgƒŠƒbƒNƒX
+	D3DXMATRIX					_mtxInvView;		// ƒrƒ…[ƒ}ƒgƒŠƒbƒNƒX
+	D3DXMATRIX					_mtxProjection;
 };
-
-//*****************************************************************************
-// ƒvƒƒgƒ^ƒCƒvéŒ¾
-//*****************************************************************************
-void InitCamera(void);
-void UninitCamera(void);
-void UpdateCamera(void);
-void SetCamera(void);
-CAMERA *GetCamera(void);
-void SetCameraAT(D3DXVECTOR3 pos,bool sw = true);

@@ -7,30 +7,29 @@
 #pragma once
 
 #include <d3dx9.h>
-#include "renderer.h"
 #include "StateMachine.h"
-#include "model.h"
+#include "object.h"
 
 //*****************************************************************************
 // ƒ}ƒNƒ’è‹`
 //*****************************************************************************
-class Select
+class Select:public Object
 {
 public:
-	D3DXVECTOR3		pos;		// ˆÊ’u
-	D3DXVECTOR3		rot;		// Œü‚«(‰ñ“])
-	D3DXVECTOR3		scl;		// ‘å‚«‚³(ƒXƒP[ƒ‹)
-	bool			use;		// •\¦ƒtƒ‰ƒO
-	D3DXVECTOR3     size;		// “–‚½‚è”»’è—pƒTƒCƒY
+	Select(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "Select", world)
+	{
+		_position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		_scale = D3DXVECTOR3(5.0f, 5.0f, 5.0f);
+		_use = false;
+		//_model.SubsetArray->Material.Material.Diffuse = { 0.0,1.0,0.0,0.5 };
+	}
+	~Select(){;}
 
-	D3DXMATRIX		mtxWorld;	// ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX
+	D3DXVECTOR3     size;		// “–‚½‚è”»’è—pƒTƒCƒY
+	// Í¨¹ı Object ¼Ì³Ğ
+	void Update(double deltaTime) override;
+	void Draw() override;
+	bool Discard() const override;
+
 };
-//*****************************************************************************
-// ƒvƒƒgƒ^ƒCƒvéŒ¾
-//*****************************************************************************
-HRESULT InitSelect(void);
-void UninitSelect(void);
-void UpdateSelect(void);
-void DrawSelect(void);
-Select *GetSelect(void);
-DX11_MODEL* GetSelectModel(void);

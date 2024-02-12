@@ -7,7 +7,6 @@
 #include "title.h"
 #include "input.h"
 #include "texture.h"
-#include "sprite.h"
 #include "fade.h"
 #include "sound.h"
 
@@ -34,7 +33,7 @@ static int	g_BGMNo = 0;		// BGM識別子
 HRESULT InitTitle(void)
 {
 	//テクスチャ生成
-	g_TextureNo = LoadTexture((char*)"data/TEXTURE/title.jpg");
+	//g_TextureNo = LoadTexture((char*)"data/TEXTURE/title.jpg");
 
 	g_BGMNo = LoadSound((char*)"data/BGM/sample000.wav");
 
@@ -59,7 +58,7 @@ void UpdateTitle(void)
 {
 	if (GetKeyboardTrigger(0x1c)) /*&& GetFadeState() == FADE_NONE)*/
 	{
-		SceneTransition(SCENE_GAME);
+		//SceneTransition(SCENE_GAME);
 	}
 }
 
@@ -69,7 +68,7 @@ void UpdateTitle(void)
 void DrawTitle(void)
 {
 	// １枚のポリゴンの頂点とテクスチャ座標を設定
-	DrawSpriteLeftTop(g_TextureNo, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 0.0f, 1.0f, 1.0f);
+	//DrawSpriteLeftTop(g_TextureNo, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 0.0f, 1.0f, 1.0f);
 
 }
 

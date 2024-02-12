@@ -8,7 +8,8 @@
 #include "input.h"
 #include "texture.h"
 #include "meshfield.h"
-#include "renderer.h"
+#include "render.h"
+#include "DirectXAPI.h"
 
 
 //*****************************************************************************
@@ -43,110 +44,110 @@ static int			g_TexNo;	// テクスチャ番号
 //=============================================================================
 void InitMeshField(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int numBlockX, int numBlockZ, float sizeX, float sizeZ)
 {
-	// 位置・回転・スケールの初期設定
-	g_Field.pos = pos;
-	g_Field.rot = rot;
-	g_Field.scl = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+	//// 位置・回転・スケールの初期設定
+	//g_Field.pos = pos;
+	//g_Field.rot = rot;
+	//g_Field.scl = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 
-	// テクスチャ生成
-	g_TexNo = LoadTexture((char*)"data/TEXTURE/field003.png");
+	//// テクスチャ生成
+	//g_TexNo = LoadTexture((char*)"data/TEXTURE/field003.png");
 
-	int yoko = numBlockX;
-	int tate = numBlockZ;
+	//int yoko = numBlockX;
+	//int tate = numBlockZ;
 
-	//必要な頂点数とインデックス数を計算する
-	g_Field.numVertex = (yoko + 1) * (tate + 1);
-	g_Field.numIndex = (yoko + 1) * 2 * tate + (tate - 1) * 2;
+	////必要な頂点数とインデックス数を計算する
+	//g_Field.numVertex = (yoko + 1) * (tate + 1);
+	//g_Field.numIndex = (yoko + 1) * 2 * tate + (tate - 1) * 2;
 
-	// 頂点バッファ生成
-	D3D11_BUFFER_DESC bd;
-	ZeroMemory(&bd, sizeof(bd));
-	bd.Usage = D3D11_USAGE_DYNAMIC;
-	bd.ByteWidth = sizeof(VERTEX_3D) * g_Field.numVertex;
-	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	//// 頂点バッファ生成
+	//D3D11_BUFFER_DESC bd;
+	//ZeroMemory(&bd, sizeof(bd));
+	//bd.Usage = D3D11_USAGE_DYNAMIC;
+	//bd.ByteWidth = sizeof(VERTEX_3D) * g_Field.numVertex;
+	//bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	//bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 
-	GetDevice()->CreateBuffer(&bd, NULL, &g_Field.vertexBuffer);
-
-
-	// インデックスバッファ生成
-	ZeroMemory(&bd, sizeof(bd));
-	bd.Usage = D3D11_USAGE_DYNAMIC;
-	bd.ByteWidth = sizeof(unsigned short) * g_Field.numIndex;
-	bd.BindFlags = D3D11_BIND_INDEX_BUFFER;
-	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-
-	GetDevice()->CreateBuffer(&bd, NULL, &g_Field.indexBuffer);
+	//GetDevice()->CreateBuffer(&bd, NULL, &g_Field.vertexBuffer);
 
 
-	{//頂点バッファの中身を埋める
+	//// インデックスバッファ生成
+	//ZeroMemory(&bd, sizeof(bd));
+	//bd.Usage = D3D11_USAGE_DYNAMIC;
+	//bd.ByteWidth = sizeof(unsigned short) * g_Field.numIndex;
+	//bd.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	//bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 
-		// 頂点バッファへのポインタを取得
-		D3D11_MAPPED_SUBRESOURCE msr;
-		GetDeviceContext()->Map(g_Field.vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &msr);
+	//GetDevice()->CreateBuffer(&bd, NULL, &g_Field.indexBuffer);
 
-		VERTEX_3D* pVtx = (VERTEX_3D*)msr.pData;
 
-		for (int y = 0; y < (tate + 1); y++)
-		{
-			for (int x = 0; x < (yoko + 1); x++)
-			{
-				//配列のインデックスを計算する
-				int i = y * (yoko + 1) + x;
+	//{//頂点バッファの中身を埋める
 
-				// 頂点座標の設定
-				pVtx[i].Position = D3DXVECTOR3(-(yoko / 2.0f) * sizeX + x * sizeX, 0.0f, (tate / 2.0f) * sizeZ - y * sizeZ);
-				// UV値の設定
-				pVtx[i].TexCoord = D3DXVECTOR2(x * 1.0f, y * 1.0f);
+	//	// 頂点バッファへのポインタを取得
+	//	D3D11_MAPPED_SUBRESOURCE msr;
+	//	GetDeviceContext()->Map(g_Field.vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &msr);
 
-				// 法線の設定
-				pVtx[i].Normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-				// 頂点カラーの設定
-				pVtx[i].Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-			}
-		}
-		GetDeviceContext()->Unmap(g_Field.vertexBuffer, 0);
-	}
+	//	VERTEX_3D* pVtx = (VERTEX_3D*)msr.pData;
 
-	{//インデックスバッファの中身を埋める
+	//	for (int y = 0; y < (tate + 1); y++)
+	//	{
+	//		for (int x = 0; x < (yoko + 1); x++)
+	//		{
+	//			//配列のインデックスを計算する
+	//			int i = y * (yoko + 1) + x;
 
-		// インデックスバッファのポインタを取得
-		D3D11_MAPPED_SUBRESOURCE msr;
-		GetDeviceContext()->Map(g_Field.indexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &msr);
+	//			// 頂点座標の設定
+	//			pVtx[i].Position = D3DXVECTOR3(-(yoko / 2.0f) * sizeX + x * sizeX, 0.0f, (tate / 2.0f) * sizeZ - y * sizeZ);
+	//			// UV値の設定
+	//			pVtx[i].TexCoord = D3DXVECTOR2(x * 1.0f, y * 1.0f);
 
-		unsigned short *pIdx = (unsigned short*)msr.pData;
+	//			// 法線の設定
+	//			pVtx[i].Normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	//			// 頂点カラーの設定
+	//			pVtx[i].Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	//		}
+	//	}
+	//	GetDeviceContext()->Unmap(g_Field.vertexBuffer, 0);
+	//}
 
-		int idx = 0;
+	//{//インデックスバッファの中身を埋める
 
-		for (int y = 0; y < tate; y++)
-		{
-			//y行目のポリゴンのインデックス
-			for (int x = 0; x < (yoko + 1); x++)
-			{
-				pIdx[idx] = (yoko + 1) + x + (yoko + 1) * y;
-				idx++;
-				pIdx[idx] = 0 + x + (yoko + 1) * y;
-				idx++;
-			}
+	//	// インデックスバッファのポインタを取得
+	//	D3D11_MAPPED_SUBRESOURCE msr;
+	//	GetDeviceContext()->Map(g_Field.indexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &msr);
 
-			//縮退ポリゴン分のインデックス
-			if (y < (tate - 1))
-			{
-				pIdx[idx] = yoko + (yoko + 1) * y;
-				idx++;
-				pIdx[idx] = (yoko + 1) * 2 + (yoko + 1) * y;
-				idx++;
-			}
-		}
+	//	unsigned short *pIdx = (unsigned short*)msr.pData;
 
- 		GetDeviceContext()->Unmap(g_Field.indexBuffer, 0);
-	}
+	//	int idx = 0;
 
-	//マテリアルの初期化
-	ZeroMemory(&g_Field.material, sizeof(g_Field.material));
-	g_Field.material.Diffuse = D3DXCOLOR(0.5f, 0.5f, 0.5f, 1.0f);
-	g_Field.material.Ambient = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	g_Field.material.Specular = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	//	for (int y = 0; y < tate; y++)
+	//	{
+	//		//y行目のポリゴンのインデックス
+	//		for (int x = 0; x < (yoko + 1); x++)
+	//		{
+	//			pIdx[idx] = (yoko + 1) + x + (yoko + 1) * y;
+	//			idx++;
+	//			pIdx[idx] = 0 + x + (yoko + 1) * y;
+	//			idx++;
+	//		}
+
+	//		//縮退ポリゴン分のインデックス
+	//		if (y < (tate - 1))
+	//		{
+	//			pIdx[idx] = yoko + (yoko + 1) * y;
+	//			idx++;
+	//			pIdx[idx] = (yoko + 1) * 2 + (yoko + 1) * y;
+	//			idx++;
+	//		}
+	//	}
+
+ //		GetDeviceContext()->Unmap(g_Field.indexBuffer, 0);
+	//}
+
+	////マテリアルの初期化
+	//ZeroMemory(&g_Field.material, sizeof(g_Field.material));
+	//g_Field.material.Diffuse = D3DXCOLOR(0.5f, 0.5f, 0.5f, 1.0f);
+	//g_Field.material.Ambient = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	//g_Field.material.Specular = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 //=============================================================================
@@ -182,48 +183,48 @@ void UpdateMeshField(void)
 //=============================================================================
 void DrawMeshField(void)
 {
-	SetCullingMode(CULL_MODE_BACK);
-	
-	SetLightEnable(true);
-	// 頂点バッファ設定
-	UINT stride = sizeof(VERTEX_3D);
-	UINT offset = 0;
-	GetDeviceContext()->IASetVertexBuffers(0, 1, &g_Field.vertexBuffer, &stride, &offset);
+	//SetCullingMode(CULL_MODE_BACK);
+	//
+	//SetLightEnable(true);
+	//// 頂点バッファ設定
+	//UINT stride = sizeof(VERTEX_3D);
+	//UINT offset = 0;
+	//GetDeviceContext()->IASetVertexBuffers(0, 1, &g_Field.vertexBuffer, &stride, &offset);
 
-	// インデックスバッファ設定
-	GetDeviceContext()->IASetIndexBuffer(g_Field.indexBuffer, DXGI_FORMAT_R16_UINT, 0);
+	//// インデックスバッファ設定
+	//GetDeviceContext()->IASetIndexBuffer(g_Field.indexBuffer, DXGI_FORMAT_R16_UINT, 0);
 
-	// プリミティブトポロジ設定
-	GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+	//// プリミティブトポロジ設定
+	//GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
-	// マテリアル設定
-	SetMaterial(g_Field.material);
+	//// マテリアル設定
+	//SetMaterial(g_Field.material);
 
-	// テクスチャ設定
-	GetDeviceContext()->PSSetShaderResources(0, 1, GetTexture(g_TexNo));
+	//// テクスチャ設定
+	//GetDeviceContext()->PSSetShaderResources(0, 1, GetTexture(g_TexNo));
 
 
-	D3DXMATRIX mtxScl, mtxRot, mtxTranslate;
+	//D3DXMATRIX mtxScl, mtxRot, mtxTranslate;
 
-	// ワールドマトリックスの初期化
-	D3DXMatrixIdentity(&g_Field.mtxWorld);
+	//// ワールドマトリックスの初期化
+	//D3DXMatrixIdentity(&g_Field.mtxWorld);
 
-	// スケールを反映
-	D3DXMatrixScaling(&mtxScl, g_Field.scl.x, g_Field.scl.y, g_Field.scl.z);
-	D3DXMatrixMultiply(&g_Field.mtxWorld, &g_Field.mtxWorld, &mtxScl);
+	//// スケールを反映
+	//D3DXMatrixScaling(&mtxScl, g_Field.scl.x, g_Field.scl.y, g_Field.scl.z);
+	//D3DXMatrixMultiply(&g_Field.mtxWorld, &g_Field.mtxWorld, &mtxScl);
 
-	// 回転を反映
-	D3DXMatrixRotationYawPitchRoll(&mtxRot, g_Field.rot.y, g_Field.rot.x, g_Field.rot.z);
-	D3DXMatrixMultiply(&g_Field.mtxWorld, &g_Field.mtxWorld, &mtxRot);
+	//// 回転を反映
+	//D3DXMatrixRotationYawPitchRoll(&mtxRot, g_Field.rot.y, g_Field.rot.x, g_Field.rot.z);
+	//D3DXMatrixMultiply(&g_Field.mtxWorld, &g_Field.mtxWorld, &mtxRot);
 
-	// 移動を反映
-	D3DXMatrixTranslation(&mtxTranslate, g_Field.pos.x, g_Field.pos.y, g_Field.pos.z);
-	D3DXMatrixMultiply(&g_Field.mtxWorld, &g_Field.mtxWorld, &mtxTranslate);
+	//// 移動を反映
+	//D3DXMatrixTranslation(&mtxTranslate, g_Field.pos.x, g_Field.pos.y, g_Field.pos.z);
+	//D3DXMatrixMultiply(&g_Field.mtxWorld, &g_Field.mtxWorld, &mtxTranslate);
 
-	// ワールドマトリックスの設定
-	SetWorldMatrix(&g_Field.mtxWorld);
+	//// ワールドマトリックスの設定
+	//SetWorldMatrix(&g_Field.mtxWorld);
 
-	// ポリゴンの描画
-	GetDeviceContext()->DrawIndexed(g_Field.numIndex, 0, 0);
+	//// ポリゴンの描画
+	//GetDeviceContext()->DrawIndexed(g_Field.numIndex, 0, 0);
 }
 

@@ -7,7 +7,6 @@
 #include "result.h"
 #include "input.h"
 #include "texture.h"
-#include "sprite.h"
 #include "fade.h"
 
 //*****************************************************************************
@@ -31,7 +30,7 @@ static int	g_TextureNo = 0;	// テクスチャ情報
 //=============================================================================
 HRESULT InitResult(void)
 {
-	g_TextureNo = LoadTexture((char*)"data/TEXTURE/result.png");
+	//g_TextureNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/result.png");
 
 	return S_OK;
 }
@@ -51,7 +50,7 @@ void UpdateResult(void)
 {
 	if (GetKeyboardTrigger(DIK_RETURN) && GetFadeState() == FADE_NONE)
 	{
-		SceneTransition(SCENE_TITLE);
+		//SceneTransition(SCENE_TITLE);
 	}
 }
 
@@ -61,5 +60,5 @@ void UpdateResult(void)
 void DrawResult(void)
 {
 	// １枚のポリゴンの頂点とテクスチャ座標を設定
-	DrawSpriteLeftTop(g_TextureNo, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 0.0f, 1.0f, 1.0f);
+	//DrawSpriteLeftTop(g_TextureNo, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 0.0f, 1.0f, 1.0f);
 }

@@ -7,44 +7,47 @@
 #pragma once
 
 #include <d3dx9.h>
-#include "renderer.h"
+#include "object.h"
 
 //*****************************************************************************
 // ƒ}ƒNƒ’è‹`
 //*****************************************************************************
 #define ENEMY_NUM 20
 
-class Enemy
+class Enemy:public Object
 {
 public:
 
-	Enemy() = default;
-	~Enemy(){}
-	void Update();
-	void Draw();
-	D3DXVECTOR3		pos;		// ˆÊ’u
-	D3DXVECTOR3		rot;		// Œü‚«(‰ñ“])
-	D3DXVECTOR3		scl;		// ‘å‚«‚³(ƒXƒP[ƒ‹)
-	D3DXVECTOR3		vel;		// ˆÚ“®•ûŒü
-	float			spd;		// ˆÚ“®ƒXƒs[ƒh
+	Enemy(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "Enemy",world)
+	{
+		//g_createCount = 0;
+		//g_pauseTime = 1000;
+		//g_pause = false;
+		//g_turn = 0;
+		//g_time = 0;
+		_position = D3DXVECTOR3(0, 0.0f, 0);
+		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		_scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+		_vel = D3DXVECTOR3(0, 0.0f, 0);
+		_speed = 25.0f;
+		_use = false;
+		size = D3DXVECTOR3(35.0f, 50.0f, 35.0f);
+		//•ûŒü‚ğ’PˆÊƒxƒNƒgƒ‹‰»‚·‚é
+		D3DXVec3Normalize(&_vel, &_vel);
+	}
+	~Enemy()override
+	{
+		UnloadModel(_model);
+	}
 	bool			use;		// •\¦ƒtƒ‰ƒO
 	int				shadow;		// ‰e‚Ì¯•Ê”Ô†
 	D3DXVECTOR3     size;		// “–‚½‚è”»’è—pƒTƒCƒY
 
 
-
-	D3DXMATRIX		mtxWorld;	// ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX
-
+	// Í¨¹ı Object ¼Ì³Ğ
+	void Update(double deltaTime) override;
+	void Draw()override;
+	bool Discard() const override;
 
 };
 
-//*****************************************************************************
-// ƒvƒƒgƒ^ƒCƒvéŒ¾
-//*****************************************************************************
-HRESULT InitEnemy(void);
-void UninitEnemy(void);
-void UpdateEnemy(void);
-void DrawEnemy(void);
-void SetEnemy(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 dir, int time);
-
-Enemy *GetEnemy(void);

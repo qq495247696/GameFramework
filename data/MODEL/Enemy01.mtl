@@ -1,0 +1,24 @@
+newmtl initialShadingGroup
+illum 4
+Kd 0.26 0.00 0.00
+Ka 0.10 0.10 0.10
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert2SG
+illum 4
+Kd 0.32 0.10 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert3SG
+illum 4
+Kd 0.64 0.42 0.13
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert4SG
+illum 4
+Kd 0.35 0.03 0.03
+Ka 0.14 0.14 0.14
+Tf 1.00 1.00 1.00
+Ni 1.00

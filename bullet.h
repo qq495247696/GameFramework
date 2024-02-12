@@ -7,7 +7,8 @@
 #pragma once
 
 #include "main.h"
-#include "renderer.h"
+#include "render.h"
+#include "object.h"
 
 //*****************************************************************************
 // マクロ定義
@@ -17,18 +18,22 @@
 
 
 // バレット構造体
-class Bullet
+class Bullet:public Object
 {
 public:
-	D3DXMATRIX				mtxWorld;
-	bool					use;	// true:使っている  false:未使用
-	D3DXVECTOR3				pos;	// バレットの座標
-	D3DXVECTOR3				dir;	// バレットの移動方向
-	float					speed;	// バレットの移動スピード
+	Bullet(DX11_MODEL* model, Render* render,World* world) :Object(model, render, "Bullet",world) 
+	{
+	
+	};
+	~Bullet()override {}
 	float					frame;	// フレーム数
 	int						shadow;	// 影の識別番号
-
 	D3DXVECTOR3     size;		// 当たり判定用サイズ
+
+	void Update(double deltaTime) override;
+	void Draw() override;
+	bool Discard() const override;
+
 };
 
 //*****************************************************************************

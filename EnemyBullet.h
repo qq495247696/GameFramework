@@ -1,28 +1,26 @@
 #pragma once
-#include "renderer.h"
+#include "render.h"
+#include "object.h"
 
-class EnemyBullet
+class EnemyBullet:public Object
 {
 public:
-	D3DXMATRIX				mtxWorld;
-	bool					use;	// true:使っている  false:未使用
-	D3DXVECTOR3				pos;	// バレットの座標
-	D3DXVECTOR3				dir;	
-	D3DXVECTOR3				rot;
-	D3DXVECTOR3				scl;
-	float					speed;	// バレットの移動スピード
+	EnemyBullet(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "EnemyBullet", world)
+	{
+		_position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		_vel = D3DXVECTOR3(0.0f, 0.0f, 100.0f);
+		_scale = D3DXVECTOR3(10.0f, 10.0f, 10.0f);
+		_rotate = { 0,0,0 };
+		_use = true;
+		_speed = 3;
+		frame = 0;
+	/*	size = D3DXVECTOR3(10.0f, 10.0f, 10.0f);*/
+	}
+	~EnemyBullet(){}
+
 	float					frame;	// フレーム数
+	void Update(double deltaTime) override;
+	void Draw() override;
+	bool Discard() const override;
 
-	D3DXVECTOR3     size;		// 当たり判定用サイズ
 };
-
-//*****************************************************************************
-// プロトタイプ宣言
-//*****************************************************************************
-void InitEnemyBullet(void);
-void UninitEnemyBullet(void);
-void UpdateEnemyBullet(void);
-void DrawEnemyBullet(void);
-
-EnemyBullet* GetEnemyBullet(void);
-void SetEnemyBullet(D3DXVECTOR3 pos, D3DXVECTOR3 dir);

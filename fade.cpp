@@ -6,7 +6,6 @@
 //=============================================================================
 #include "fade.h"
 #include "texture.h"
-#include "sprite.h"
 
 //*****************************************************************************
 // マクロ定義
@@ -25,7 +24,7 @@
 static int			g_TextureNo;				// テクスチャ番号
 
 static FADE_STATE	g_FadeState = FADE_NONE;	// フェードの状態
-static SCENE		g_SceneNext;				// 次のシーン
+//static SCENE		g_SceneNext;				// 次のシーン
 static D3DXCOLOR	g_Color;					// フェードのカラー
 
 
@@ -35,11 +34,11 @@ static D3DXCOLOR	g_Color;					// フェードのカラー
 HRESULT InitFade(void)
 {
 	//テクスチャ生成
-	g_TextureNo = LoadTexture((char*)"data/TEXTURE/fade_white.png");
+	//g_TextureNo = LoadTexture((char*)"data/TEXTURE/fade_white.png");
 
 	//初期化
 	g_FadeState  = FADE_NONE;
-	g_SceneNext = SCENE_NONE;
+	//g_SceneNext = SCENE_NONE;
 	g_Color = D3DXCOLOR(1.0, 1.0, 1.0, 1.0);
 
 	return S_OK;
@@ -72,7 +71,7 @@ void UpdateFade(void)
 				g_FadeState = FADE_IN;
 
 				// モードを設定
-				SetScene(g_SceneNext);
+				//SetScene(g_SceneNext);
 			}
 		}
 		else if (g_FadeState == FADE_IN)
@@ -99,26 +98,26 @@ void DrawFade(void)
 		return;	
 
 	// １枚のポリゴンの頂点とテクスチャ座標を設定
-	DrawSpriteColor(g_TextureNo, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 0.0f, 1.0f, 1.0f, g_Color);
+	//DrawSpriteColor(g_TextureNo, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 0.0f, 1.0f, 1.0f, g_Color);
 }
 
 /*------------------------------------------------------------------------------
    フェードアウト・フェードイン処理をしながらシーン遷移する関数
 ------------------------------------------------------------------------------*/
-void SceneTransition(SCENE nextScene)
+void SceneTransition(/*SCENE nextScene*/)
 {
-	g_SceneNext = nextScene;
-	g_FadeState = FADE_OUT;
+	//g_SceneNext = nextScene;
+	//g_FadeState = FADE_OUT;
 }
 
 /*------------------------------------------------------------------------------
    フェードイン処理をしながらシーンを開始する関数
 ------------------------------------------------------------------------------*/
-void SceneFadeIn(SCENE nextScene)
+void SceneFadeIn(/*SCENE nextScene*/)
 {
-	g_Color.a = 1.0f;
+	/*g_Color.a = 1.0f;
 	g_FadeState = FADE_IN;
-	SetScene(nextScene);
+	SetScene(nextScene);*/
 }
 
 /*------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #include "PreparationPhase.h"
 #include "camera.h"
 #include "input.h"
-#include "renderer.h"
+#include "render.h"
 #include "select.h"
 #include "SelectPhase.h"
 
@@ -15,7 +15,7 @@ void PreparationPhase::EnterState(Player* Entity)
 
 void PreparationPhase::StayState(Player* Entity)
 {
-	CAMERA* cam = GetCamera();
+	/*Camera* cam = GetCamera();
 	if (cam->pos.y < 2000)
 	{
 		atPos = Entity->pos;
@@ -83,7 +83,7 @@ void PreparationPhase::StayState(Player* Entity)
 		cam->pos.x = -2400;
 		atPos.x = -2400;
 	}
-	SetCameraAT(atPos, false);
+	SetCameraAT(atPos, false);*/
 }
 
 void PreparationPhase::ExitState(Player* Entity)

@@ -1,20 +1,16 @@
 #pragma once
-
-// 登録シーン一覧
-enum SCENE
+class Game;
+class World;
+class RenderComponentManager;
+class Scene
 {
-	SCENE_NONE,		//シーン処理なし
-	SCENE_TITLE,	//タイトル
-	SCENE_GAME,		//ゲーム
-	SCENE_RESULT,	//リザルト
+public:
+	Scene() = default;
+	virtual ~Scene() {}
 
-	SCENE_MAX		//最後だとわかる奴をいれる
+	virtual void InitScene(Game * game, RenderComponentManager* rManager) = 0;
+	virtual void UpdateScene(double deltaTime,Game* game, RenderComponentManager* component) = 0;
+	virtual void UnInitScene(Game* game) = 0;
+protected:
+	World* _world;
 };
-
-void InitScene(SCENE index);
-void UninitScene(void);
-void UpdateScene(void);
-void DrawScene(void);
-
-void SetScene(SCENE index);
-void CheckScene(void);

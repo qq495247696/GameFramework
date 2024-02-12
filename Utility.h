@@ -1,7 +1,8 @@
 #pragma once
 #include "main.h"
-#include "renderer.h"
+#include "render.h"
 #include <vector>
+#include"RenderInfo.h"
 template<class VertexType = VERTEX_3D, class IndexType = DWORD>
 struct MeshData
 {

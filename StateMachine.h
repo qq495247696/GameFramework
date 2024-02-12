@@ -6,11 +6,12 @@
  *********************************************************************/
 #pragma once
 #include "State.h"
-template<typename GameEntity>
+
+template<class Object>
 class StateMachine
 {
 public:
-	StateMachine(GameEntity* pEntity):_entity(pEntity){}
+	StateMachine(Object* pEntity):_entity(pEntity){}
 	~StateMachine(){}
 
 	void Update()
@@ -26,7 +27,7 @@ public:
 		}
 	}
 
-	bool ChangeState(State<GameEntity>* newState)
+	bool ChangeState(State<Object>* newState)
 	{
 		if (newState !=nullptr)
 		{
@@ -44,16 +45,16 @@ public:
 		return ChangeState(_PreviousState);
 	}
 
-	State<GameEntity>* GetCurrentState()const { return _CurrentState; }
-	State<GameEntity>* GetGlobalState()const { return _GlobalState; }
-	State<GameEntity>* GetPreviousState()const { return _PreviousState; }
-	void SetCurrentState(State<GameEntity>* s) { _CurrentState = s; }
-	void SetGlobalState(State<GameEntity>* s) { _GlobalState = s; }
-	void SetPreviousState(State<GameEntity>* s) { _PreviousState = s; }
+	State<Object>* GetCurrentState()const { return _CurrentState; }
+	State<Object>* GetGlobalState()const { return _GlobalState; }
+	State<Object>* GetPreviousState()const { return _PreviousState; }
+	void SetCurrentState(State<Object>* s) { _CurrentState = s; }
+	void SetGlobalState(State<Object>* s) { _GlobalState = s; }
+	void SetPreviousState(State<Object>* s) { _PreviousState = s; }
 
 private:
-	State<GameEntity>* _CurrentState;
-	State<GameEntity>* _GlobalState;
-	State<GameEntity>* _PreviousState;
-	GameEntity* _entity;
+	State<Object>* _CurrentState;
+	State<Object>* _GlobalState = nullptr;
+	State<Object>* _PreviousState;
+	Object* _entity;
 };

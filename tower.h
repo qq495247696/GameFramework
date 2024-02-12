@@ -7,9 +7,8 @@
 #pragma once
 
 #include <d3dx9.h>
-#include "renderer.h"
 #include "StateMachine.h"
-#include "model.h"
+#include "object.h"
 
 //*****************************************************************************
 // ƒ}ƒNƒ’è‹`
@@ -22,27 +21,26 @@ enum TowerType
 	Light,
 };
 
-class Tower
+class Tower:public Object
 {
 public:
-	D3DXVECTOR3		pos;		// ˆÊ’u
-	D3DXVECTOR3		rot;		// Œü‚«(‰ñ“])
-	D3DXVECTOR3		scl;		// ‘å‚«‚³(ƒXƒP[ƒ‹)
-	float			spd;		// ˆÚ“®ƒXƒs[ƒh
-	bool			use;		// •\¦ƒtƒ‰ƒO
+	Tower(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "NormalTower", world)
+	{
+		_position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		_scale = D3DXVECTOR3(5.0f, 5.0f, 5.0f);
+		time = 0;
+		size = D3DXVECTOR3(100.0f, 100.0f, 100.0f);
+	}
+	~Tower()
+	{
+	}
+	// Í¨¹ı Object ¼Ì³Ğ
+	void Update(double deltaTime) override;
+	void Draw() override;
+	bool Discard() const override;
+private:
 	int				shadow;		// ‰e‚Ì¯•Ê”Ô†
-	int				time;
+	double			time;
 	D3DXVECTOR3     size;		// “–‚½‚è”»’è—pƒTƒCƒY
-	DX11_MODEL*     model;
-
-	D3DXMATRIX		mtxWorld;	// ƒ[ƒ‹ƒhƒ}ƒgƒŠƒbƒNƒX
 };
-//*****************************************************************************
-// ƒvƒƒgƒ^ƒCƒvéŒ¾
-//*****************************************************************************
-HRESULT InitTower(void);
-void UninitTower(void);
-void UpdateTower(void);
-void DrawTower(void);
-Tower *GetTower(void);
-void SetTower(D3DXVECTOR3 pos, D3DXVECTOR3 rot, TowerType type);

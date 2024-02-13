@@ -34,6 +34,9 @@ public:
 	bool Discard() const override;
 	void SetCamera(DirectXAPI* api);
 	void SetCameraAt(D3DXVECTOR3 position, bool sw);
+	const D3DXMATRIX& GetViewMtx()const { return _mtxView; }
+	const D3DXMATRIX& GetInvViewMtx()const { return _mtxInvView; }
+
 private:
 	D3DXVECTOR3					_at;				// カメラの注視点
 	D3DXVECTOR3					_up;				// カメラの上方向ベクトル

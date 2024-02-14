@@ -7,6 +7,7 @@
 #include "Wall.h"
 #include "bullet.h"
 #include "meshfield.h"
+#include "meshsky.h"
 
 void TitleScene::InitScene(Game* game, RenderComponentManager* rManager)
 {
@@ -20,8 +21,8 @@ void TitleScene::InitScene(Game* game, RenderComponentManager* rManager)
 	_world->AddObject(player);
 	FieldMesh* field = new FieldMesh(AssetManager::Get()->_feild, rManager->GetGraphicApi(), D3DXVECTOR3(0.0f, 0.0f, 3000.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f), 100, 100, { 180.0f, 180.0f }, _world);
 	_world->AddObject(field);
-
-	
+	SkyBox* skyBox = new SkyBox(AssetManager::Get()->_skyBox,rManager->GetGraphicApi(), D3DXVECTOR3(0.0f, 0.0f, 3000.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f), 10000.0f, 16, 8,_world);
+	_world->AddObject(skyBox);
 }
 
 void TitleScene::UpdateScene(double deltaTime,Game* game, RenderComponentManager* rManager)

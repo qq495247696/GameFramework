@@ -47,7 +47,7 @@ public:
 		}
 	}
 
-	//切换场景，利用了状态机的概念
+	//切换场景，利用了状态机的概膩E
 	void ChangeScene(Scene* nextScene)
 	{
 		if (_currentScene != nullptr)

@@ -17,7 +17,7 @@ public:
 
 	virtual void Update(double deltaTime) = 0;
 	virtual void Draw()= 0;
-	//检测是否要销毁自己，返回值是true的话从world的List中移除自己
+	//紒E馐欠褚僮约海祷刂凳莟rue的话从world的List中移除自己
 	virtual bool Discard()const = 0;
 
 	void SetPosition(const Vec3& pos) {}

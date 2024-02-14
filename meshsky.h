@@ -5,58 +5,67 @@
 //
 //=============================================================================
 #pragma once
+#include "RenderInfo.h"
+#include "object.h"
+class DirectXAPI;
+class World;
+struct SkyMesh
+{
+	D3DXVECTOR3					_pos;
+	D3DXVECTOR3					_rot;
+	MATERIAL					_material;
+	ID3D11Buffer*				_vertexBuffer;	// 頂点バッファ
+	ID3D11Buffer*				_indexBuffer;	// インデックスバッファ
+	int							_numVertex;		//頂点数
+	int							_numIndex;		//インデックス
+	D3DXMATRIX					_mtxWorld;
+};
 
-#include "main.h"
 
-class SkyBox
+class SkyBox:public Object
 {
 public:
-	SkyBox();
+	SkyBox(int texNo,DirectXAPI* api,D3DXVECTOR3 pos, D3DXVECTOR3 rot,
+		float radius, int numBlockX, int numBlockZ,World* world,bool reverse = false);
 	~SkyBox()
 	{
 		// 周回部分メッシュの解放
-		if (_sky_IndexBuffer != NULL)
+		if (_sky._indexBuffer != NULL)
 		{
-			_sky_IndexBuffer->Release();
-			_sky_IndexBuffer = NULL;
+			_sky._indexBuffer->Release();
+			_sky._indexBuffer = NULL;
 		}
 
-		if (_sky_VertexBuffer != NULL)
+		if (_sky._vertexBuffer != NULL)
 		{
-			_sky_VertexBuffer->Release();
-			_sky_VertexBuffer = NULL;
+			_sky._vertexBuffer->Release();
+			_sky._vertexBuffer = NULL;
 		}
 
 		// 天頂部分メッシュの解放
-		if (_skyTop_IndexBuffer != NULL)
+		if (_skyTop._indexBuffer != NULL)
 		{
-			_skyTop_IndexBuffer->Release();
-			_skyTop_IndexBuffer = NULL;
+			_skyTop._indexBuffer->Release();
+			_skyTop._indexBuffer = NULL;
 		}
 
-		if (_skyTop_VertexBuffer != NULL)
+		if (_skyTop._vertexBuffer != NULL)
 		{
-			_skyTop_VertexBuffer->Release();
-			_skyTop_VertexBuffer = NULL;
+			_skyTop._vertexBuffer->Release();
+			_skyTop._vertexBuffer = NULL;
 		}
 	}
 
 private:
-	ID3D11Buffer*			_sky_VertexBuffer;	// 頂点バッファ
-	ID3D11Buffer*			_sky_IndexBuffer;	// インデックスバッファ
-	ID3D11Buffer*			_skyTop_VertexBuffer;
-	ID3D11Buffer*			_skyTop_IndexBuffer;	
-	int						_numVertex;		//頂点数
-	int						_numIndex;		//インデックス数
-	MATERIAL				_material;
+	SkyMesh							_sky;
+	SkyMesh							_skyTop;
+	DirectXAPI*						_api;
+	bool							_transParent;
+	bool							_reverse;
+
+	// Object を介して継承されました
+	void Update(double deltaTime) override;
+	void Draw() override;
+	bool Discard() const override;
 };
 
-
-//*****************************************************************************
-// プロトタイプ宣言
-//*****************************************************************************
-void InitMeshSky(D3DXVECTOR3 pos, D3DXVECTOR3 rot,
-	float radius, int numBlockX, int numBlockZ, bool reverse = false);
-void UninitMeshSky(void);
-void UpdateMeshSky(void);
-void DrawMeshSky(void);

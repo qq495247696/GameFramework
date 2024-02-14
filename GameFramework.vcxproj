@@ -177,7 +177,6 @@
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Time.h" />
-    <ClInclude Include="Timer.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="TitleScnne.h" />
     <ClInclude Include="tower.h" />
@@ -217,6 +216,7 @@
     <ClCompile Include="SelectPhase.cpp" />
     <ClCompile Include="shadow.cpp" />
     <ClCompile Include="sound.cpp" />
+    <ClCompile Include="EnemySpawner.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="title.cpp" />
     <ClCompile Include="TitleScnne.cpp" />

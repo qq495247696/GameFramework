@@ -17,13 +17,13 @@ public:
 		return &time;
 	}
 
-	//更新计算deltaTime
+	//竵E录扑鉪eltaTime
 	void Update() {
 		auto currentTime = std::chrono::high_resolution_clock::now();
 		_deltaTime = std::chrono::duration<double, std::chrono::seconds::period>(currentTime - _lastTime).count();
 		_lastTime = currentTime;
 	}
-	//每帧时间
+	//每帧时紒E
 	const double DeltaTime() const 
 	{
 		return _deltaTime; 
@@ -33,11 +33,17 @@ public:
 	{
 		return _fixdeltaTime * _timeScale;
 	}
-	//获得启动后到现在的总时间
+	//获得启动后到现在的总时紒E
 	const double TotalTime() const
 	{
 		duration<double> elapsed_seconds = high_resolution_clock::now() - _startTime;
 		return elapsed_seconds.count();
+	}
+
+	const double NowTime()const
+	{
+		auto nowTime = high_resolution_clock::now();
+		return nowTime.time_since_epoch().count();
 	}
 
 	void SetTimeScale(double scale)

@@ -7,12 +7,12 @@
 #pragma once
 
 #include <d3dx9.h>
-#include "render.h"
 #include "StateMachine.h"
 #include "State.h"
 #include "BattlePhase.h"
 #include "object.h"
-
+#include "Render.h"
+#include "model.h"
 //*****************************************************************************
 // 儅僋儘掕媊
 //*****************************************************************************

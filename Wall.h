@@ -1,7 +1,7 @@
 #pragma once
 #include <d3dx9.h>
-#include "render.h"
 #include "object.h"
+#include "model.h"
 class Wall :public Object
 {
 public:	

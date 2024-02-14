@@ -21,7 +21,9 @@ public:
 		LoadModel((char*)"data/MODEL/Tower2.obj", &_fireTower, api);
 		LoadModel((char*)"data/MODEL/Tower3.obj", &_thunderTower, api);
 		LoadModel((char*)"data/MODEL/wall.obj", &_wall, api);
-
+		_bulletTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/bullet000.png",api);
+		_feild= TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/field003.png", api);
+		_skyBox = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/sky001.jpg", api);
 	}
 	void UnInit()
 	{
@@ -31,6 +33,7 @@ public:
 		UnloadModel(&_fireTower);
 		UnloadModel(&_thunderTower);
 		UnloadModel(&_enemy);
+		TextureTool::Get()->UninitTexture();
 	}
 
 
@@ -40,5 +43,7 @@ public:
 	DX11_MODEL				_fireTower;
 	DX11_MODEL				_thunderTower;
 	DX11_MODEL				_enemy;
-
+	int						_bulletTexNo;
+	int						_feild;
+	int						_skyBox;
 };

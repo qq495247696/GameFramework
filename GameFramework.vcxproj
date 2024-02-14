@@ -161,7 +161,6 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="meshfield.h" />
-    <ClInclude Include="meshmountain.h" />
     <ClInclude Include="meshsky.h" />
     <ClInclude Include="model.h" />
     <ClInclude Include="object.h" />
@@ -200,7 +199,6 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="meshfield.cpp" />
-    <ClCompile Include="meshmountain.cpp" />
     <ClCompile Include="meshsky.cpp" />
     <ClCompile Include="model.cpp" />
     <ClCompile Include="player.cpp" />
@@ -210,6 +208,7 @@
     <ClCompile Include="Render2D.cpp" />
     <ClCompile Include="Render2D.h" />
     <ClCompile Include="Render3D.cpp" />
+    <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="RenderInfo.h" />
     <ClCompile Include="result.cpp" />
     <ClCompile Include="ResultScene.cpp" />

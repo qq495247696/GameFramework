@@ -1,14 +1,16 @@
 #pragma once
-#include "model.h"
 #include <string>
-#include"Render.h"
+#include "main.h"
 #define	Vec3			D3DXVECTOR3
+class DX11_MODEL;
 class World;
+class Render;
 class Object
 {
 public:
 	Object(Render* render,const std::string& tag, World* world) :_renderComponent(render),_tag(tag), _world(world) { ; }
 	Object(const std::string& tag, World* world) :_tag(tag), _world(world) { ; }
+	Object(const int texNo,const std::string& tag, World* world) :_texNo(texNo),_tag(tag), _world(world) { ; }
 	Object(DX11_MODEL* model, Render* render,const std::string& tag,World* world ) :_model(model), _renderComponent(render), _tag(tag),_world(world){ }
 	virtual ~Object() {};
 	void Attach(World* world) { _world = world; }

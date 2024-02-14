@@ -9,6 +9,7 @@
 #include "texture.h"
 #include "shadow.h"
 #include "World.h"
+#include "main.h"
 
 
 //=============================================================================
@@ -31,7 +32,7 @@ void Bullet::Update(double deltaTime)
 		//消滅処理
 		if (frame > 100.0f)
 		{
-			_use = false;
+			//_use = false;
 
 			//影を消す
 			//ReleaseShadow(_shadow);
@@ -51,20 +52,20 @@ void Bullet::Update(double deltaTime)
 void Bullet::Draw()
 {
 	// αテストを有効に
-	_renderComponent->GetApi()->SetAlphaTestEnable(true);
+	_api->SetAlphaTestEnable(true);
 
 	// ライティングを無効
-	_renderComponent->GetApi()->SetLightEnable(false);
+	_api->SetLightEnable(false);
 
 	D3DXMATRIX mtxView, mtxScale, mtxTranslate;
 
 	// 頂点バッファ設定
 	UINT stride = sizeof(VERTEX_3D);
 	UINT offset = 0;
-	_renderComponent->GetApi()->GetDeviceContext()->IASetVertexBuffers(0, 1, &_vertexBuffer, &stride, &offset);
+	_api->GetDeviceContext()->IASetVertexBuffers(0, 1, &_vertexBuffer, &stride, &offset);
 
 	// プリミティブトポロジ設定
-	_renderComponent->GetApi()->GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+	_api->GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 	if (_use)
 	{
@@ -100,16 +101,16 @@ void Bullet::Draw()
 		D3DXMatrixMultiply(&_worldMtx, &_worldMtx, &mtxTranslate);
 
 		// ワールドマトリックスの設定
-		_renderComponent->GetApi()->SetWorldMatrix(&_worldMtx);
+		_api->SetWorldMatrix(&_worldMtx);
 
 		// マテリアル設定
-		_renderComponent->GetApi()->SetMaterial(_material);
+		_api->SetMaterial(_material);
 
 		// テクスチャ設定
-		_renderComponent->GetApi()->GetDeviceContext()->PSSetShaderResources(0, 1, TextureTool::Get()->GetTexture(g_texNo));
+		_api->GetDeviceContext()->PSSetShaderResources(0, 1, TextureTool::Get()->GetTexture(_texNo));
 
 		// ポリゴンの描画
-		_renderComponent->GetApi()->GetDeviceContext()->Draw(4, 0);
+		_api->GetDeviceContext()->Draw(4, 0);
 	}
 }
 

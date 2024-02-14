@@ -1,6 +1,8 @@
 #include "Render3D.h"
 #include "RenderInfo.h"
 #include "object.h"
+#include "model.h"
+#include "DirectXAPI.h"
 
 void Render3D::Draw(Object* object)
 {

@@ -1,7 +1,5 @@
 #pragma once
-#include "render.h"
 #include "object.h"
-
 class EnemyBullet:public Object
 {
 public:

@@ -3,7 +3,6 @@
 
 #include "render.h"
 #include "DirectXAPI.h"
-
 class TextureTool
 {
 public:

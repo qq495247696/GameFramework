@@ -1,6 +1,6 @@
 #include "EnemyBullet.h"
 #include "model.h"
-
+#include "Render.h"
 
 void EnemyBullet::Update(double deltaTime)
 {

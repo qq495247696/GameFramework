@@ -51,7 +51,7 @@ int TextureTool::LoadTexture(char* fileName, DirectXAPI* api)
 	_textureIndex++;
 
 	/*return retIndex;*/
-	return 0;
+	return retIndex;
 }
 
 void TextureTool::UninitTexture(void)

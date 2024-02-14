@@ -1,5 +1,6 @@
 #pragma once
 #include "main.h"
+#include"ConstantBuffer.h"
 #define LIGHT_MAX		(10)
 struct MATERIAL_CBUFFER
 {

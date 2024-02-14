@@ -37,7 +37,7 @@ public:
 	}
 	~Enemy()override
 	{
-		UnloadModel(_model);
+		
 	}
 	bool			use;		// •\¦ƒtƒ‰ƒO
 	int				shadow;		// ‰e‚Ì¯•Ê”Ô†

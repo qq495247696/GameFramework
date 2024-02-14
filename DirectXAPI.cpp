@@ -1,6 +1,6 @@
 #include "DirectXAPI.h"
-
-
+#include "Texture.h"
+#include "ConstantBuffer.h"
 HRESULT DirectXAPI::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 {
 	HRESULT hr = S_OK;

@@ -3,9 +3,8 @@
 #include<string>
 #include<wrl.h>
 #include<DirectXMath.h>
-#include"ConstantBuffer.h"
 #include "RenderInfo.h"
-#include "Texture.h"
+#include "ConstantBuffer.h"
 
 using namespace Microsoft::WRL;
 class DirectXAPI

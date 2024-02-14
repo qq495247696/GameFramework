@@ -1,5 +1,5 @@
 #pragma once
-#include "main.h"
+#include"main.h"
 enum LIGHT_TYPE
 {
 	LIGHT_TYPE_NONE,		//ƒ‰ƒCƒg–³‚µ

@@ -17,19 +17,7 @@
 #define	SKY_HEIGHT_RATE			(2.0f)		// 空ドームの高さ係数
 #define	TEX_COUNT_LOOP			(1)			// テクスチャの繰り返し回数
 
-struct SKY_MESH
-{
-	ID3D11Buffer	*vertexBuffer;	// 頂点バッファ
-	ID3D11Buffer	*indexBuffer;	// インデックスバッファ
-	int				numVertex;		//頂点数
-	int				numIndex;		//インデックス数
 
-	D3DXMATRIX		mtxWorld;
-	D3DXVECTOR3		pos;
-	D3DXVECTOR3		rot;
-
-	MATERIAL		material;
-};
 
 //*****************************************************************************
 // グローバル変数
@@ -291,31 +279,7 @@ void InitMeshSky(D3DXVECTOR3 pos, D3DXVECTOR3 rot, float radius,
 //=============================================================================
 void UninitMeshSky(void)
 {
-	//// 周回部分メッシュの解放
-	//if (g_Sky.indexBuffer != NULL)
-	//{
-	//	g_Sky.indexBuffer->Release();
-	//	g_Sky.indexBuffer = NULL;
-	//}
 
-	//if (g_Sky.vertexBuffer != NULL)
-	//{
-	//	g_Sky.vertexBuffer->Release();
-	//	g_Sky.vertexBuffer = NULL;
-	//}
-
-	//// 天頂部分メッシュの解放
-	//if (g_SkyTop.indexBuffer != NULL)
-	//{
-	//	g_SkyTop.indexBuffer->Release();
-	//	g_SkyTop.indexBuffer = NULL;
-	//}
-
-	//if (g_SkyTop.vertexBuffer != NULL)
-	//{
-	//	g_SkyTop.vertexBuffer->Release();
-	//	g_SkyTop.vertexBuffer = NULL;
-	//}
 }
 
 //=============================================================================

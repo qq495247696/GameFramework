@@ -1,5 +1,25 @@
 #include "Render2D.h"
+#include "Texture.h"
+#include "DirectXAPI.h"
+#include "object.h"
+Render2D::Render2D(DirectXAPI* api, Anchor anchor) :Render(api), _pos(0, 0), _anchor(_anchor), _color({ 1.0f,1.0f,1.0f,1.0f }), _UV({ 0.0f,0.0f }),
+_UW(1.0f), _VH(1.0f), _rotate(0.0f), _width(1920), _height(1080)
+{
+	ID3D11Device* pDevice = _dApi->GetDevice().Get();
 
+	// 頂点バッファ生成
+	D3D11_BUFFER_DESC bd;
+	ZeroMemory(&bd, sizeof(bd));
+	bd.Usage = D3D11_USAGE_DYNAMIC;
+	bd.ByteWidth = sizeof(VERTEX_3D) * 4;
+	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	pDevice->CreateBuffer(&bd, NULL, &_vertexBuffer);
+
+	//マテリアルの初期化
+	ZeroMemory(&_material, sizeof(_material));
+	_material.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+}
 void Render2D::DrawCenter(Object* object)
 {
 	D3D11_MAPPED_SUBRESOURCE msr;

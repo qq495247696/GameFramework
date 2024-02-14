@@ -16,7 +16,7 @@
 #include "Time.h"
 #include "World.h"
 #include "Render.h"
-
+#include "Debug.h"
 
 //*****************************************************************************
 // マクロ定義
@@ -27,6 +27,7 @@
 //*****************************************************************************
 // プロトタイプ宣言
 //*****************************************************************************
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow);
 void Uninit(void);
@@ -148,6 +149,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 //=============================================================================
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam))
+		return true;
 	switch (message)
 	{
 	case WM_DESTROY:
@@ -219,29 +222,6 @@ void Uninit(void)
 	//入力の終了処理
 	UninitInput();
 
-}
-
-//=============================================================================
-// 更新処理
-//=============================================================================
-void Update(double)
-{
-	// 入力の更新処理
-	UpdateInput();
-
-	//UpdateScene();
-}
-
-//=============================================================================
-// 描画処理
-//=============================================================================
-void Draw(void)
-{
-
-	// シーンの描画処理
-	//DrawScene();
-
-	// バックバッファ、フロントバッファ入れ替え
 }
 
 #ifdef _DEBUG

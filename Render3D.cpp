@@ -15,7 +15,7 @@ void Render3D::Draw(Object* object)
 	D3DXMatrixMultiply(object->GetWorldMatrix(), object->GetWorldMatrix(), &mtxScl);
 
 	// ‰ñ“]‚ð”½‰f
-	D3DXMatrixRotationYawPitchRoll(&mtxRot, object->GetRotarion().y, object->GetRotarion().x, object->GetRotarion().z);
+	D3DXMatrixRotationYawPitchRoll(&mtxRot, object->GetRotation().y, object->GetRotation().x, object->GetRotation().z);
 	D3DXMatrixMultiply(object->GetWorldMatrix(), object->GetWorldMatrix(), &mtxRot);
 
 	// ˆÚ“®‚ð”½‰f

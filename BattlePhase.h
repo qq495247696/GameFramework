@@ -10,9 +10,9 @@ public:
 		return &p;
 	}
 
-	void EnterState(Player* Entity) override;
-	void StayState(Player* Entity) override;
-	void ExitState(Player* Entity) override;
+	void EnterState(Player* Entity, DirectXAPI* api) override;
+	void StayState(Player* Entity, float deltaTime, DirectXAPI* api) override;
+	void ExitState(Player* Entity, DirectXAPI* api) override;
 private:
 	BattlePhase() {}
 	~BattlePhase() {}

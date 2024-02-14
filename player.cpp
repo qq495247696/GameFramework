@@ -266,7 +266,7 @@ void Player::DrawAnim(float* frame, D3DXVECTOR3& rot, D3DXVECTOR3& pos)
 void Player::Update(double deltaTime)
 {
 	//SetPositionShadow(g_Player.shadow, D3DXVECTOR3(g_Player.pos.x, 0.0f, g_Player.pos.z));
-	fsm.Update();
+	fsm->Update(deltaTime);
 }
 
 void Player::Draw()

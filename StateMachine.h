@@ -11,19 +11,19 @@ template<class Object>
 class StateMachine
 {
 public:
-	StateMachine(Object* pEntity):_entity(pEntity){}
+	StateMachine(Object* pEntity,DirectXAPI* api):_entity(pEntity),_api(api){}
 	~StateMachine(){}
 
-	void Update()
+	void Update(float deltaTime)
 	{
 		if (_GlobalState != nullptr)
 		{
-			_GlobalState->StayState(_entity);
+			_GlobalState->StayState(_entity, deltaTime, _api);
 		}
 
 		if (_CurrentState != nullptr)
 		{
-			_CurrentState->StayState(_entity);
+			_CurrentState->StayState(_entity,deltaTime, _api);
 		}
 	}
 
@@ -32,9 +32,9 @@ public:
 		if (newState !=nullptr)
 		{
 			_PreviousState = _CurrentState;
-			_CurrentState->ExitState(_entity);
+			_CurrentState->ExitState(_entity, _api);
 			_CurrentState = newState;
-			_CurrentState->EnterState(_entity);
+			_CurrentState->EnterState(_entity,_api);
 			return true;
 		}
 		return false;
@@ -51,10 +51,10 @@ public:
 	void SetCurrentState(State<Object>* s) { _CurrentState = s; }
 	void SetGlobalState(State<Object>* s) { _GlobalState = s; }
 	void SetPreviousState(State<Object>* s) { _PreviousState = s; }
-
 private:
-	State<Object>* _CurrentState;
-	State<Object>* _GlobalState = nullptr;
-	State<Object>* _PreviousState;
-	Object* _entity;
+	State<Object>*		_CurrentState;
+	State<Object>*		_GlobalState = nullptr;
+	State<Object>*		_PreviousState;
+	Object*				_entity;
+	DirectXAPI*			 _api;
 };

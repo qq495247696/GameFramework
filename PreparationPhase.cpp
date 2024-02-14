@@ -8,12 +8,12 @@
 
 static D3DXVECTOR3 atPos;
 static D3DXVECTOR3 oldPos;
-void PreparationPhase::EnterState(Player* Entity)
+void PreparationPhase::EnterState(Player* Entity, DirectXAPI* api)
 {
 	
 }
 
-void PreparationPhase::StayState(Player* Entity)
+void PreparationPhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 {
 	/*Camera* cam = GetCamera();
 	if (cam->pos.y < 2000)
@@ -86,6 +86,6 @@ void PreparationPhase::StayState(Player* Entity)
 	SetCameraAT(atPos, false);*/
 }
 
-void PreparationPhase::ExitState(Player* Entity)
+void PreparationPhase::ExitState(Player* Entity, DirectXAPI* api)
 {
 }

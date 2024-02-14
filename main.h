@@ -15,8 +15,11 @@
 
 #include <d3d11.h>
 #include <d3dx11.h>
+#include <d2d1.h>
+#include <dwrite.h>
 #include <d3dcompiler.h>
 #include <d3dx9.h>
+
 
 #define DIRECTINPUT_VERSION 0x0800		// åxçêëŒèà
 #include "dinput.h"
@@ -36,6 +39,8 @@
 #pragma comment (lib, "dxerr.lib")
 #pragma comment (lib, "dxguid.lib")
 #pragma comment (lib, "dinput8.lib")
+
+
 
 
 //*****************************************************************************

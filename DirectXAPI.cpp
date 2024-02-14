@@ -259,8 +259,6 @@ HRESULT DirectXAPI::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	_d3dDevice->CreatePixelShader(pPSBlob->GetBufferPointer(), pPSBlob->GetBufferSize(), NULL, _pixelShader.GetAddressOf());
 
 	pPSBlob->Release();
-
-
 	// 定数バッファ生成
 	D3D11_BUFFER_DESC hBufferDesc;
 	hBufferDesc.ByteWidth = sizeof(D3DXMATRIX);
@@ -660,7 +658,7 @@ void DirectXAPI::DebugTextOut(char* text, int x, int y)
 		pBackSurface->Release();
 
 		//レンダリングターゲットがリセットされるのでセットしなおす
-		_immediateContext->OMSetRenderTargets(1, &_renderTargetView, _depthStencilView);
+		_immediateContext->OMSetRenderTargets(1, &_renderTargetView, _depthStencilView.Get());
 	}
 #endif
 }

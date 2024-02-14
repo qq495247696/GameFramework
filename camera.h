@@ -16,8 +16,8 @@ class Camera:public  Object
 public:
 	Camera(World* world) :Object( "Camera",world)
 	{
-		_position = D3DXVECTOR3(0, 50.0f, -100);
-		_at = D3DXVECTOR3(0.0f, 50.0f, 100.0f);
+		_position = D3DXVECTOR3(0, 150.0f, -400);
+		_at = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		_up = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
 		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 

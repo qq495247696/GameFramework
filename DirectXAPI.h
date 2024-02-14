@@ -76,6 +76,11 @@ private:
 	ComPtr<ID3D11RasterizerState>				_rasterStateCullOff;
 	ComPtr<ID3D11RasterizerState>				_rasterStateCullCW;
 	ComPtr<ID3D11RasterizerState>				_rasterStateCullCCW;
+	ComPtr<IDWriteFactory>						_DWriteFactory;
+	ComPtr<IDWriteTextFormat>					_TextFormat;
+	ComPtr<IDWriteTextLayout>					_TextLayout;
+
+
 	D3DXCOLOR									_borderColor;
 	MATERIAL_CBUFFER							_materialCBuffer;
 	LIGHT_CBUFFER								_lightCBuffer;

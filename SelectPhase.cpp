@@ -4,12 +4,12 @@
 #include "tower.h"
 #include "PreparationPhase.h"
 static TowerType type = TowerType::Normal;
-void SelectPhase::EnterState(Player* Entity)
+void SelectPhase::EnterState(Player* Entity, DirectXAPI* api)
 {
 
 }
 
-void SelectPhase::StayState(Player* Entity)
+void SelectPhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 {
 	if (GetMouseZ() > 0)
 	{
@@ -39,11 +39,11 @@ void SelectPhase::StayState(Player* Entity)
 	if (IsMouseLeftTriggered())
 	{
 		//SetTower(GetSelect()->pos, {0,GetSelect()->rot.y,0}, type);
-		Entity->fsm.ChangeState(PreparationPhase::Instance());
+		Entity->fsm->ChangeState(PreparationPhase::Instance());
 	}
 }
 
-void SelectPhase::ExitState(Player* Entity)
+void SelectPhase::ExitState(Player* Entity, DirectXAPI* api)
 {
 	//GetSelect()->use = false;
 }

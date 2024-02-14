@@ -168,6 +168,9 @@
     <ClInclude Include="EnemySpwaner.h">
       <Filter>GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fade.cpp">

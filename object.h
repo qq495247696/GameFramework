@@ -20,16 +20,24 @@ public:
 	//紒E馐欠褚僮约海祷刂凳莟rue的话从world的List中移除自己
 	virtual bool Discard()const = 0;
 
-	void SetPosition(const Vec3& pos) {}
+	void SetPosition(const Vec3& pos) { _position = pos; }
+	void SetPositionX(const float x) { _position.x = x; }
+	void SetPositionZ(const float z) { _position.z = z; }
+	void SetRotation(const Vec3& rot) { _rotate = rot; }
 	void SetTexNo(const int texno) { _texNo = texno; }
+	void SetVel(const Vec3& vel) { _vel = vel; }
+	void SetSpeed(const float speed) { _speed = speed; }
+	void SetRotate(const Vec3 rot) { _rotate = rot; }
 	const std::string& GetTag()const { return _tag; }
+	const float GetSpeed()const { return _speed; }
 	const Vec3& GetPosition()const { return _position; }
-	const Vec3& GetRotarion()const { return _rotate; }
+	const Vec3& GetRotation()const { return _rotate; }
 	const Vec3& GetScale()const { return _scale; }
 	const Vec3& GetVel()const { return _vel;}
 	const int	GetTexNo()const { return _texNo; }
 	D3DXMATRIX* GetWorldMatrix(){ return &_worldMtx; }
 	DX11_MODEL* GetModel()const { return  _model; }
+	World* GetWorld()const { return _world; }
 protected:
 	Vec3					_position;
 	Vec3					_rotate;
@@ -40,7 +48,6 @@ protected:
 	DX11_MODEL*				_model;
 	int						_texNo;
 	D3DXMATRIX				_worldMtx;
-	World* GetWorld()const { return _world; }
 	Render*					_renderComponent;
 private:
 	std::string				_tag;

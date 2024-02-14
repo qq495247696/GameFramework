@@ -7,6 +7,7 @@
 #include "AssetManager.h"
 #include "input.h"
 #include "sound.h"
+#include "Debug.h"
 
 class Game
 {
@@ -19,6 +20,7 @@ public:
 		_dApi.Init(hInstance, hWnd, bWindow);
 		AssetManager::Get()->Init(&_dApi);
 		_renderComponent = new RenderComponentManager(&_dApi);
+		Debug::Get()->Init(hWnd, &_dApi);
 		InitInput(hInstance, hWnd);
 		InitSound(hWnd);
 	}
@@ -38,7 +40,7 @@ public:
 		if (_currentScene != nullptr)
 		{
 			UpdateInput();
-			_currentScene->UpdateScene(deltaTime,this, _renderComponent);
+			_currentScene->UpdateScene(deltaTime,this, _renderComponent); 
 		}
 		else
 		{

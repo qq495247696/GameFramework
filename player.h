@@ -117,6 +117,7 @@ public:
 	Player() = default;
 	Player(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "Player", world)
 	{
+		fsm = new StateMachine<Player>(this,_renderComponent->GetApi());
 		// 位置・回転・スケールの初期設定
 		g_Body.pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		g_Body.rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -155,16 +156,14 @@ public:
 		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		_scale = D3DXVECTOR3(2.0f, 2.0f, 2.0f);
 		_use = true;
-
+		_speed = 5;
 		//摉偨傝敾掕梡僒僀僘偺弶婜愝掕
 		size = D3DXVECTOR3(100.0f, 100.0f, 100.0f);
 		frame = 0;
 
 		//_se = LoadSound((char*)"data/SE/shot001.wav");
-		fsm.SetCurrentState(BattlePhase::Instance());
-		fsm.ChangeState(BattlePhase::Instance());
-		//暲峴岝尮偺愝掕乮悽奅傪徠傜偡岝乯
-
+		fsm->SetCurrentState(BattlePhase::Instance());
+		fsm->ChangeState(BattlePhase::Instance());
 		// 塭偺僙僢僩乮塭偼崅偝傪0偵偟偰昞帵偝偣傞乯
 		//_shadow = SetShadow(D3DXVECTOR3(_pos.x, 0.0f, _pos.z), 200.0f);
 
@@ -172,27 +171,23 @@ public:
 
 	~Player()
 	{
-		/*UnloadModel(&g_Model_Body);
-		UnloadModel(&g_Model_RArm);
-		UnloadModel(&g_Model_LArm);
-		UnloadModel(&g_Model_RLeg);
-		UnloadModel(&g_Model_LLeg);*/
+		delete fsm;
 	}
 
-	float			spd;		// 堏摦僗僺乕僪
-	bool			use;		// 昞帵僼儔僌
+
 	int				shadow;		// 塭偺幆暿斣崋
 	D3DXVECTOR3     size;		// 摉偨傝敾掕梡僒僀僘
 	int				currency;
 	int				se;
-	float 		frame;
+	float 			frame;
 
 	DX11_MODEL	g_Model_Body;
 	DX11_MODEL	g_Model_RArm;
 	DX11_MODEL	g_Model_LArm;
 	DX11_MODEL	g_Model_RLeg;
 	DX11_MODEL	g_Model_LLeg;
-	StateMachine<Player> fsm{ this };
+
+	StateMachine<Player> *fsm;
 	void DrawAnim(float* frame, D3DXVECTOR3& rot, D3DXVECTOR3& pos);
 	void Update(double deltaTime) override;
 	void Draw() override;

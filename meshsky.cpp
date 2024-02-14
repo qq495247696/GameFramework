@@ -200,7 +200,7 @@ SkyBox::SkyBox(int texNo, DirectXAPI* api, D3DXVECTOR3 pos, D3DXVECTOR3 rot, flo
 		ZeroMemory(&sd, sizeof(sd));
 		sd.pSysMem = pVertexWk;
 
-		/*GetDevice()->CreateBuffer(&bd, &sd, &_sky.vertexBuffer);*/
+		_api->GetDevice()->CreateBuffer(&bd, &sd, &_sky._vertexBuffer);
 
 		// インデックスバッファ生成
 		ZeroMemory(&bd, sizeof(bd));

@@ -144,9 +144,6 @@
     <ClInclude Include="enemy.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="PreparationPhase.h">
-      <Filter>Fsm</Filter>
-    </ClInclude>
     <ClInclude Include="SelectPhase.h">
       <Filter>Fsm</Filter>
     </ClInclude>
@@ -263,9 +260,6 @@
     <ClCompile Include="BattlePhase.cpp">
       <Filter>Fsm</Filter>
     </ClCompile>
-    <ClCompile Include="PreparationPhase.cpp">
-      <Filter>Fsm</Filter>
-    </ClCompile>
     <ClCompile Include="SelectPhase.cpp">
       <Filter>Fsm</Filter>
     </ClCompile>
@@ -283,9 +277,6 @@
     </ClCompile>
     <ClCompile Include="collision.cpp">
       <Filter>System</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemySpawner.cpp">
-      <Filter>GameObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

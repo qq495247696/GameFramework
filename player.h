@@ -13,6 +13,7 @@
 #include "object.h"
 #include "Render.h"
 #include "model.h"
+#include "collision.h"
 //*****************************************************************************
 // 儅僋儘掕媊
 //*****************************************************************************
@@ -118,6 +119,8 @@ public:
 	Player(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "Player", world)
 	{
 		fsm = new StateMachine<Player>(this,_renderComponent->GetApi());
+		_hitBox._pos=this->_position;
+		_hitBox._size = { 80,100,40 };
 		// 位置・回転・スケールの初期設定
 		g_Body.pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		g_Body.rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -155,12 +158,13 @@ public:
 		_position = D3DXVECTOR3(0.0f, 0.0f, 200.0f);
 		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		_scale = D3DXVECTOR3(2.0f, 2.0f, 2.0f);
+		_vel = { 0,0,0 };
 		_use = true;
-		_speed = 5;
+		_speed = 1350;
 		//摉偨傝敾掕梡僒僀僘偺弶婜愝掕
 		size = D3DXVECTOR3(100.0f, 100.0f, 100.0f);
 		frame = 0;
-
+		lerpT = 0;
 		//_se = LoadSound((char*)"data/SE/shot001.wav");
 		fsm->SetCurrentState(BattlePhase::Instance());
 		fsm->ChangeState(BattlePhase::Instance());
@@ -179,7 +183,14 @@ public:
 	D3DXVECTOR3     size;		// 摉偨傝敾掕梡僒僀僘
 	int				currency;
 	int				se;
+	float			lerpT;
 	float 			frame;
+	Vec3			topDownPosition;
+	Vec3			topDownRotation;
+	Vec3			thirdPersonPosition;
+	Vec3			thirdPersonRotation;
+	HitBox			_hitBox;
+
 
 	DX11_MODEL	g_Model_Body;
 	DX11_MODEL	g_Model_RArm;

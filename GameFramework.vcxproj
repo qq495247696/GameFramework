@@ -118,7 +118,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <GenerateDebugInformation>DebugFastLink</GenerateDebugInformation>
       <AdditionalDependencies>ImGui.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -138,7 +138,7 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <GenerateDebugInformation>DebugFastLink</GenerateDebugInformation>
       <AdditionalDependencies>ImGui.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -171,7 +171,6 @@
     <ClInclude Include="object.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="polyline.h" />
-    <ClInclude Include="PreparationPhase.h" />
     <ClInclude Include="result.h" />
     <ClInclude Include="score.h" />
     <ClInclude Include="select.h" />
@@ -207,7 +206,6 @@
     <ClCompile Include="model.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="polyline.cpp" />
-    <ClCompile Include="PreparationPhase.cpp" />
     <ClCompile Include="DirectXAPI.cpp" />
     <ClCompile Include="Render2D.cpp" />
     <ClCompile Include="Render2D.h" />
@@ -221,7 +219,6 @@
     <ClCompile Include="SelectPhase.cpp" />
     <ClCompile Include="shadow.cpp" />
     <ClCompile Include="sound.cpp" />
-    <ClCompile Include="EnemySpawner.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="title.cpp" />
     <ClCompile Include="TitleScnne.cpp" />

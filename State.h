@@ -7,7 +7,7 @@
 #pragma once
 #ifndef STATE_H_
 #define STATE_H_
-#define	VALUE_MOVE		(350.0f)						// ˆÚ“®—Ê
+#define	VALUE_MOVE		(1350.0f)						// ˆÚ“®—Ê
 #define	VALUE_ROTATE	(D3DX_PI * 0.03f)			// ‰ñ“]—Ê
 
 class DirectXAPI;

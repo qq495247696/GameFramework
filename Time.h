@@ -43,7 +43,8 @@ public:
 	const double NowTime()const
 	{
 		auto nowTime = high_resolution_clock::now();
-		return nowTime.time_since_epoch().count();
+		auto durationInSeconds = std::chrono::duration_cast<std::chrono::seconds>(nowTime.time_since_epoch()).count();
+		return durationInSeconds;
 	}
 
 	void SetTimeScale(double scale)

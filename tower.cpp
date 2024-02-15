@@ -14,7 +14,7 @@
 #include "polyline.h"
 #include "sound.h"
 #include "BattlePhase.h"
-#include "PreparationPhase.h"
+
 
 HRESULT InitTower(void)
 {

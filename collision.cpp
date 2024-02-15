@@ -13,16 +13,9 @@
 #include "player.h"
 #include "Home.h"
 #include "sound.h"
-
-
-//*****************************************************************************
-// マクロ定義
-//*****************************************************************************
-
-
-//*****************************************************************************
-// 構造体定義
-//*****************************************************************************
+#include "World.h"
+#include "Wall.h"
+#include "DirectXCollision.h"
 
 
 //*****************************************************************************
@@ -30,99 +23,113 @@
 //*****************************************************************************
 bool CollisionBB(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, D3DXVECTOR3 size1, D3DXVECTOR3 size2);
 bool CollisionBS(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, float size1, float size2);
+float ClacCollisionDepth(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, D3DXVECTOR3 size1, D3DXVECTOR3 size2);
+D3DXVECTOR3& ClacCollisionNormal(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, D3DXVECTOR3 size1, D3DXVECTOR3 size2);
+void PlayerCollisionHandling(Player* player, const D3DXVECTOR3& pos2, const D3DXVECTOR3& size1, const D3DXVECTOR3& size2);
 
-
-//*****************************************************************************
-// グローバル変数
-//*****************************************************************************
 
 
 //=============================================================================
 // 当たり判定処理
 //=============================================================================
-void UpdateCollision(void)
+void UpdateCollision(World* world)
 {
-//	Bullet*bullet = GetBullet();	// 弾のポインターを初期化
-//	Enemy  *enemy = GetEnemy();		// エネミーのポインターを初期化
-//	Home* home = GetHome();
-//	Player* player = GetPlayer();
-//
-//
-//	// 弾と敵の当たり判定(BB,BC)
-//	for (int i = 0; i < BULLET_NUM; i++)
-//	{
-//		//使用されていない弾は何もしない
-//		if (bullet[i].use == false)
-//			continue;
-//
-//		for (int n = 0; n < ENEMY_NUM; n++)
-//		{
-//			//使用されていない敵は何もしない
-//			if (enemy[n].use == false)
-//				continue;
-//
-//			if (CollisionBB(bullet[i].pos, enemy[n].pos, bullet[i].size, enemy[n].size))
-////			if (CollisionBS(bullet[i].pos, enemy[n].pos, bullet[i].size.x, enemy[n].size.x))
-//			{
-//				// 敵キャラクターを消す
-//				enemy[n].use = false;
-//				ReleaseShadow(enemy[n].shadow);
-//
-//				// 弾を消す
-//				bullet[i].use = false;
-//				ReleaseShadow(bullet[i].shadow);
-//
-//				// 点数を加算する
-//				AddScore(39);
-//			}
-//		}
-//	}
-//
-//
-//	for (int i = 0; i < ENEMY_NUM; i++)
-//	{
-//		if (enemy[i].use == false)
-//			continue;
-//
-//		if (CollisionBB(enemy[i].pos, home->pos, enemy[i].size, home->size))
-//		{
-//			home->hp--;
-//			enemy[i].use = false;
-//			PlaySound(home->hitedSound,0);
-//		}
-//	}
-//
-//
-//	if(CollisionBB(player->pos, home->pos, player->size, home->size))
-//	{
-//		
-//		if (player->pos.x<(home->pos.x + home->size.x) && player->pos.x >(home->pos.x - home->size.x))
-//		{
-//			if (player->pos.z < 0)
-//			{
-//				player->pos.z = (home->pos.z - home->size.z) - player->size.z * 0.5f;
-//			}
-//
-//			if (player->pos.z > 0)
-//			{
-//				player->pos.z = (home->pos.z + home->size.z) + player->size.z * 0.5f;
-//			}
-//		}else if 
-//		(player->pos.z<(home->pos.z + home->size.z) && player->pos.z >(home->pos.z - home->size.z))
-//		{
-//			if (player->pos.x < 0)
-//			{
-//				player->pos.x = (home->pos.x - home->size.x) - player->size.x * 0.5f;
-//			}
-//
-//			if (player->pos.x > 0)
-//			{
-//				player->pos.x = (home->pos.x + home->size.x) + player->size.x * 0.5f;
-//			}
-//		}
-//	}
+	auto wall = world->GetObjectWithTag<Wall>("Wall");
+	auto player= world->GetObjectWithTag<Player>("Player");
+
+	if(CollisionBB(player->GetPosition(), wall->GetBox1()._pos, player->_hitBox._size, wall->GetBox1()._size))
+	{
+		
+		PlayerCollisionHandling(player, wall->GetBox1()._pos, player->_hitBox._size, wall->GetBox1()._size);
+	}
+
+	if (CollisionBB(player->GetPosition(), wall->GetBox2()._pos, player->_hitBox._size, wall->GetBox2()._size))
+	{
+
+		PlayerCollisionHandling(player, wall->GetBox2()._pos, player->_hitBox._size, wall->GetBox2()._size);
+	}
+
+	if (CollisionBB(player->GetPosition(), wall->GetBox3()._pos, player->_hitBox._size, wall->GetBox3()._size))
+	{
+
+		PlayerCollisionHandling(player, wall->GetBox3()._pos, player->_hitBox._size, wall->GetBox3()._size);
+	}
+
+	if (CollisionBB(player->GetPosition(), wall->GetBox4()._pos, player->_hitBox._size, wall->GetBox4()._size))
+	{
+
+		PlayerCollisionHandling(player, wall->GetBox4()._pos, player->_hitBox._size, wall->GetBox4()._size);
+	}
+
 }
 
+
+
+
+void PlayerCollisionHandling(Player* player, const D3DXVECTOR3& pos2, const D3DXVECTOR3& size1, const D3DXVECTOR3& size2)
+{
+	float penetrationDepth = ClacCollisionDepth(player->GetPosition(), pos2,size1, size2);
+	D3DXVECTOR3 normal = ClacCollisionNormal(player->GetPosition(), pos2,size1, size2);
+	player->SetPosition(player->GetPosition() + (normal * penetrationDepth));
+}
+
+
+float ClacCollisionDepth(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, D3DXVECTOR3 size1, D3DXVECTOR3 size2)
+{
+	float Axmax = pos1.x + (size1.x / 2);
+	float Axmin = pos1.x - (size1.x / 2);
+	float Aymax = pos1.y + (size1.y / 2);
+	float Aymin = pos1.y - (size1.y / 2);
+	float Azmax = pos1.z + (size1.z / 2);
+	float Azmin = pos1.z - (size1.z / 2);
+
+	float Bxmax = pos2.x + (size2.x / 2);
+	float Bxmin = pos2.x - (size2.x / 2);
+	float Bymax = pos2.y + (size2.y / 2);
+	float Bymin = pos2.y - (size2.y / 2);
+	float Bzmax = pos2.z + (size2.z / 2);
+	float Bzmin = pos2.z - (size2.z / 2);
+
+	float overlapX = min(Axmax - Bxmin, Bxmax - Axmin);
+	float overlapY = min(Aymax - Bymin, Bymax - Aymin);
+	float overlapZ = min(Azmax - Bzmin, Bzmax - Azmin);
+	float penetrationDepth = min(overlapX, min(overlapY, overlapZ));
+	return penetrationDepth;
+}
+
+D3DXVECTOR3& ClacCollisionNormal(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, D3DXVECTOR3 size1, D3DXVECTOR3 size2)
+{
+	float Axmax = pos1.x + (size1.x / 2);
+	float Axmin = pos1.x - (size1.x / 2);
+	float Aymax = pos1.y + (size1.y / 2);
+	float Aymin = pos1.y - (size1.y / 2);
+	float Azmax = pos1.z + (size1.z / 2);
+	float Azmin = pos1.z - (size1.z / 2);
+
+	float Bxmax = pos2.x + (size2.x / 2);
+	float Bxmin = pos2.x - (size2.x / 2);
+	float Bymax = pos2.y + (size2.y / 2);
+	float Bymin = pos2.y - (size2.y / 2);
+	float Bzmax = pos2.z + (size2.z / 2);
+	float Bzmin = pos2.z - (size2.z / 2);
+
+	float overlapX = min(Axmax - Bxmin, Bxmax - Axmin);
+	float overlapY = min(Aymax - Bymin, Bymax - Aymin);
+	float overlapZ = min(Azmax - Bzmin, Bzmax - Azmin);
+	float penetrationDepth = min(overlapX, min(overlapY, overlapZ));
+	D3DXVECTOR3 normal;
+	if (penetrationDepth == overlapX) {
+		normal = (Axmax < Bxmax) ? Vec3(-1, 0, 0) : Vec3(1, 0, 0);
+	}
+	else if (penetrationDepth == overlapY) {
+		normal = (Aymax < Bymax) ? Vec3(0, -1, 0) : Vec3(0, 1, 0);
+	}
+	else {
+		normal = (Azmax < Bzmax) ? Vec3(0, 0, -1) : Vec3(0, 0, 1);
+	}
+
+	return normal;
+}
 //=============================================================================
 // 境界箱(BB)による当たり判定処理
 // 回転は考慮しない
@@ -154,8 +161,8 @@ bool CollisionBB(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, D3DXVECTOR3 size1, D3DXVECT
 			}
 		}
 	}
-
 	return false;
+
 }
 
 //=============================================================================

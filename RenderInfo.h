@@ -78,3 +78,9 @@ struct VERTEX_3D
 	D3DXCOLOR  Diffuse;//頂点カラー
 	D3DXVECTOR2 TexCoord;//UV値
 };
+
+enum class Anchor
+{
+	LeftTop,
+	Center
+};

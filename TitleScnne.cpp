@@ -13,6 +13,8 @@
 #include "Debug.h"
 #include "AssetManager.h"
 #include "collision.h"
+#include "Render2D.h"
+#include "Render3D.h"
 
 void TitleScene::InitScene(Game* game, RenderComponentManager* rManager)
 {

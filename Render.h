@@ -1,4 +1,5 @@
 #pragma once
+#include "RenderInfo.h"
 class DirectXAPI;
 class Object;
 class Render

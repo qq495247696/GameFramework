@@ -21,11 +21,11 @@ public:
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO();
-		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // ÔÊĞí¼üÅÌ¿ØÖÆ
-		io.ConfigWindowsMoveFromTitleBarOnly = true;              // ½öÔÊĞí±êÌâÍÏ¶¯
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // ÔÊĞúØEÌ¿ØÖÆ
+		io.ConfigWindowsMoveFromTitleBarOnly = true;              // ½öÔÊĞúÍEâÍÏ¶¯
 		io.FontGlobalScale = 2.5f;
 
-		// ÉèÖÃDear ImGui·ç¸ñ
+		// ÉèÖÃDear ImGui·ç¸E
 		ImGui::StyleColorsDark();
 
 		// ÉèÖÃÆ½Ì¨/äÖÈ¾Æ÷ºó¶Ë

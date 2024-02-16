@@ -171,6 +171,12 @@
     <ClInclude Include="EmptyObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="FireTower.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ThunderTower.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fade.cpp">
@@ -195,9 +201,6 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="DirectXAPI.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="Render2D.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Render3D.cpp">
@@ -280,6 +283,15 @@
     </ClCompile>
     <ClCompile Include="EmptyObject.cpp">
       <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="FireTower.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ThunderTower.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Render2D.cpp">
+      <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

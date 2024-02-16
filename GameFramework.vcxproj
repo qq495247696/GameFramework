@@ -155,6 +155,7 @@
     <ClInclude Include="EnemyBullet.h" />
     <ClInclude Include="EnemySpwaner.h" />
     <ClInclude Include="fade.h" />
+    <ClInclude Include="FireTower.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="DirectXAPI.h" />
@@ -181,6 +182,7 @@
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="ThunderTower.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="TitleScnne.h" />
@@ -199,6 +201,7 @@
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="EnemyBullet.cpp" />
     <ClCompile Include="fade.cpp" />
+    <ClCompile Include="FireTower.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="input.cpp" />
@@ -221,6 +224,7 @@
     <ClCompile Include="shadow.cpp" />
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="ThunderTower.cpp" />
     <ClCompile Include="title.cpp" />
     <ClCompile Include="TitleScnne.cpp" />
     <ClCompile Include="NormalTower.cpp" />

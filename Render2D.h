@@ -2,13 +2,8 @@
 #ifndef Render2D_H
 #define Render2D_H
 #include "Render.h"
-#include "main.h"
-#include "RenderInfo.h"
-enum class Anchor
-{
-	LeftTop,
-	Center
-};
+#include"main.h"
+
 //渲染插件用于渲染2D平脕E
 class Render2D:public Render
 {

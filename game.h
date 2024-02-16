@@ -24,19 +24,18 @@ public:
 	void InitSystem(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	{
 		_dApi.Init(hInstance, hWnd, bWindow);
-		AssetManager::Get()->Init(&_dApi);
 		_renderComponent = new RenderComponentManager(&_dApi);
-		Debug::Get()->Init(hWnd, &_dApi);
 		InitInput(hInstance, hWnd);
 		InitSound(hWnd);
+		Debug::Get()->Init(hWnd, &_dApi);
+		AssetManager::Get()->Init(&_dApi);
 	}
 	void UnitSystem()
 	{
-		//_dApi.UnInit();
+		AssetManager::Get()->UnInit();
 		UninitSound();
 		UninitInput();
 		delete _renderComponent;
-		AssetManager::Get()->UnInit();
 		delete _currentScene;
 	}
 

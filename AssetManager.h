@@ -9,6 +9,7 @@
 #include "model.h"
 #include <string>
 #include "Texture.h"
+#include "sound.h"
 class  AssetManager
 {
 public:
@@ -33,8 +34,9 @@ public:
 		_bulletTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/bullet000.png",api);
 		_feild= TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/field003.png", api);
 		_skyBox = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/sky001.jpg", api);
+		_titleTexNo= TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/title.jpg", api);
 
-
+		_titleSe = LoadSound((char*)"data/BGM/sample000.wav");
 
 	}
 	void UnInit()
@@ -62,4 +64,7 @@ public:
 	int						_bulletTexNo;
 	int						_feild;
 	int						_skyBox;
+	int						_titleTexNo;
+
+	int						_titleSe;
 };

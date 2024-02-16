@@ -8,7 +8,7 @@
 #include "Texture.h"
 #include "DirectXAPI.h"
 #include "object.h"
-Render2D::Render2D(DirectXAPI* api, Anchor anchor) :Render(api), _pos(0, 0), _anchor(_anchor), _color({ 1.0f,1.0f,1.0f,1.0f }), _UV({ 0.0f,0.0f }),
+Render2D::Render2D(DirectXAPI* api, Anchor anchor) :Render(api), _pos(0, 0), _anchor(anchor), _color({ 1.0f,1.0f,1.0f,1.0f }), _UV({ 0.0f,0.0f }),
 _UW(1.0f), _VH(1.0f), _rotate(0.0f), _width(1920), _height(1080)
 {
 	ID3D11Device* pDevice = _dApi->GetDevice().Get();

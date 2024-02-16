@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   GameScene.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #include "GameScene.h"
 #include "game.h"
 #include "RenderComponent.h"

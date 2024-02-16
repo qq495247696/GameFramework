@@ -1,8 +1,14 @@
+/*********************************************************************
+ * \file   Render2D.h
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #pragma once
 #ifndef Render2D_H
 #define Render2D_H
 #include "Render.h"
-#include"main.h"
+#include "RenderInfo.h"
 
 //渲染插件用于渲染2D平脕E
 class Render2D:public Render

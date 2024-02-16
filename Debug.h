@@ -1,5 +1,10 @@
+/*********************************************************************
+ * \file   Debug.h
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #pragma once
-#include "main.h"
 #include <imgui.h>
 #include "input.h"
 #include <imgui_impl_dx11.h>
@@ -21,8 +26,8 @@ public:
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO();
-		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // ﾔﾊﾐ晴・ﾌｿﾘﾖﾆ
-		io.ConfigWindowsMoveFromTitleBarOnly = true;              // ｽﾊﾐ敎・簣ﾏｶｯ
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // ﾔﾊﾐ晴・ﾌｿﾘﾖ?
+		io.ConfigWindowsMoveFromTitleBarOnly = true;              // ｽﾊﾐ敎・簣ﾏｶ?
 		io.FontGlobalScale = 2.5f;
 
 		// ﾉ靹ﾃDear ImGuiｷ邵・

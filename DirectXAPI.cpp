@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   DirectXAPI.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #include "DirectXAPI.h"
 #include "Texture.h"
 #include "ConstantBuffer.h"

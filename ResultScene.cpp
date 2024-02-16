@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   ResultScene.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #include "ResultScene.h"
 #include "game.h"
 #include "RenderComponent.h"

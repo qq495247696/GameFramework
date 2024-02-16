@@ -71,12 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;C:\Users\qq495\source\repos\qq495247696\GameFramework\data;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;C:\Users\qq495\source\repos\qq495247696\GameFramework\data;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;C:\Users\qq495\source\repos\qq495247696\GameFramework\data;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;C:\Users\qq495\source\repos\qq495247696\GameFramework\data;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -120,6 +120,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>DebugFastLink</GenerateDebugInformation>
       <AdditionalDependencies>ImGui.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\qq495\source\repos\qq495247696\GameFramework\data;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,6 +141,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>DebugFastLink</GenerateDebugInformation>
       <AdditionalDependencies>ImGui.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\qq495\source\repos\qq495247696\GameFramework\data;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -159,8 +161,8 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="DirectXAPI.h" />
-    <ClInclude Include="Grid.h" />
     <ClInclude Include="Render.h" />
+    <ClInclude Include="Render2D.h" />
     <ClInclude Include="Render3D.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="ResultScene.h" />
@@ -213,7 +215,6 @@
     <ClCompile Include="polyline.cpp" />
     <ClCompile Include="DirectXAPI.cpp" />
     <ClCompile Include="Render2D.cpp" />
-    <ClCompile Include="Render2D.h" />
     <ClCompile Include="Render3D.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="RenderInfo.h" />

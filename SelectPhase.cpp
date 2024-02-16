@@ -5,6 +5,7 @@
 #include "World.h"
 #include "camera.h"
 #include "EmptyObject.h"
+#include "Player.h"
 #include "AssetManager.h"
 
 static EmptyObject* selectmode;

@@ -1,5 +1,4 @@
 #include "Home.h"
-#include "main.h"
 #include "camera.h"
 #include "model.h"
 #include "shadow.h"

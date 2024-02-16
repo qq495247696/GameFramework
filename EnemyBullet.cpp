@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   EnemyBullet.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #include "EnemyBullet.h"
 #include "model.h"
 #include "Render.h"

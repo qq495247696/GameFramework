@@ -1,9 +1,15 @@
+/*********************************************************************
+ * \file   RenderComponent.h
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #pragma once
 #ifndef RenderComponentManager_H
 #define	RenderComponentManager_H
-class Render3D;
+#include "Render2D.h"
+#include "Render3D.h"
 class DirectXAPI;
-class Render2D;
 class RenderComponentManager
 {
 public:

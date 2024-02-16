@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   Render3D.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #include "Render3D.h"
 #include "RenderInfo.h"
 #include "object.h"

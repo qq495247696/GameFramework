@@ -1,21 +1,12 @@
-//=============================================================================
-//
-// ÉÅÉCÉìèàóù [main.cpp]
-// Author : 
-//
-//=============================================================================
+/*********************************************************************
+ * \file   main.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #include "main.h"
-#include "render.h"
-#include "input.h"
-#include "sound.h"
-#include "camera.h"
-#include "texture.h"
-#include "scene.h"
 #include "fade.h"
-#include <time.h>
 #include "Time.h"
-#include "World.h"
-#include "Render.h"
 #include "Debug.h"
 
 //*****************************************************************************

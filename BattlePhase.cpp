@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   BattlePhase.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #include "BattlePhase.h"
 #include "input.h"
 #include "shadow.h"

@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   Render2D.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #include "Render2D.h"
 #include "Texture.h"
 #include "DirectXAPI.h"

@@ -1,5 +1,10 @@
+/*********************************************************************
+ * \file   Wall.h
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #pragma once
-#include <d3dx9.h>
 #include "object.h"
 #include "model.h"
 #include "collision.h"

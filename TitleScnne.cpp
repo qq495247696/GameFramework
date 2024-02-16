@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   TitleScnne.cpp
+ * \brief
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #include "TitleScnne.h"
 #include "RenderComponent.h"
 #include "player.h"
@@ -6,7 +12,6 @@
 #include "Wall.h"
 #include "bullet.h"
 #include "meshfield.h"
-#include "meshsky.h"
 #include "Home.h"
 #include "enemy.h"
 #include "EnemySpwaner.h"
@@ -15,6 +20,7 @@
 #include "collision.h"
 #include "Render2D.h"
 #include "Render3D.h"
+#include "meshsky.h"
 
 void TitleScene::InitScene(Game* game, RenderComponentManager* rManager)
 {

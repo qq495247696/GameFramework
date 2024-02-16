@@ -1,6 +1,10 @@
-#include "Render2D.h"
+/*********************************************************************
+ * \file   RenderComponent.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #include "RenderComponent.h"
-#include "Render3D.h"
 #include "DirectXAPI.h"
 RenderComponentManager::RenderComponentManager(DirectXAPI* _api) : _api(_api)
 {

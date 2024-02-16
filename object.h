@@ -1,6 +1,6 @@
 #pragma once
+#include "RenderInfo.h"
 #include <string>
-#include "main.h"
 #define	Vec3			D3DXVECTOR3
 class DX11_MODEL;
 class World;

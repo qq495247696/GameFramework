@@ -165,9 +165,6 @@
     <ClInclude Include="Debug.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Grid.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="EmptyObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
@@ -176,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="ThunderTower.h">
       <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Render2D.h">
+      <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -204,9 +204,6 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Render3D.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="Render2D.h">
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">

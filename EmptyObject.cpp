@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   EmptyObject.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #include "EmptyObject.h"
 #include "DirectXAPI.h"
 #include "model.h"

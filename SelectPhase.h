@@ -1,8 +1,13 @@
+/*********************************************************************
+ * \file   SelectPhase.h
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #pragma once
-#include "player.h"
 #include "State.h"
 
-
+class Player;
 class SelectPhase:public State<Player>
 {
 public:

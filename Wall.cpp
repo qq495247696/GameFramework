@@ -1,10 +1,13 @@
+/*********************************************************************
+ * \file   Wall.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #include "Wall.h"
 #include "Utility.h"
 #include "Texture.h"
-#include "main.h"
-#include "model.h"
 #include "DirectXAPI.h"
-
 
 void Wall::Update(double deltaTime)
 {

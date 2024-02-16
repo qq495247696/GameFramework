@@ -4,7 +4,6 @@
 // Author : 
 //
 //=============================================================================
-#include "main.h"
 #include "input.h"
 #include "camera.h"
 #include "DirectXAPI.h"

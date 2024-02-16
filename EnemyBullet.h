@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   EnemyBullet.h
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #pragma once
 #include "object.h"
 class EnemyBullet:public Object

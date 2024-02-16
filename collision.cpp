@@ -9,7 +9,7 @@
 #include "bullet.h"
 #include "enemy.h"
 #include "shadow.h"
-#include "score.h"
+#include "Health.h"
 #include "player.h"
 #include "Home.h"
 #include "sound.h"

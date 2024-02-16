@@ -4,7 +4,7 @@
  * \author MA HANGLONG
  * \date   2024 \ 02 \ 16
  *********************************************************************/
-#include "TitleScnne.h"
+#include "TitleScene.h"
 #include "GameScene.h"
 #include "RenderComponent.h"
 #include "game.h"

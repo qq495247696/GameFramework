@@ -37,6 +37,8 @@ public:
 		_skyBoxTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/sky001.jpg", api);
 		_titleTexNo= TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/title.jpg", api);
 		_resultTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/result.png", api);
+		_backGroundTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/Ui.png", api);
+
 
 		_titleSe = LoadSound((char*)"data/BGM/sample000.wav");
 
@@ -68,6 +70,7 @@ public:
 	int						_skyBoxTexNo;
 	int						_titleTexNo;
 	int						_resultTexNo;
+	int						_backGroundTexNo;
 
 	int						_titleSe;
 };

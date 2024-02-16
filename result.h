@@ -1,27 +1,19 @@
-//=============================================================================
-//
-// リザルト画面処理 [result.h]
-// Author : 
-//
-//=============================================================================
+/*********************************************************************
+ * \file   result.h
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 16
+ *********************************************************************/
 #pragma once
 
-#include "main.h"
-#include "render.h"
-
-//*****************************************************************************
-// マクロ定義
-//*****************************************************************************
-
-
-
-
-//*****************************************************************************
-// プロトタイプ宣言
-//*****************************************************************************
-HRESULT InitResult(void);
-void UninitResult(void);
-void UpdateResult(void);
-void DrawResult(void);
-
+#include "object.h"
+class Result :public Object
+{
+public:
+	Result(int texNo, Render* render, World* world) :Object(texNo, render, "Result", world) {};
+	~Result() {};
+	void Update(double deltaTime) override;
+	void Draw() override;
+	bool Discard() const override;
+};
 

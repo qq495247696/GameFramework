@@ -21,6 +21,7 @@
 #include "Render2D.h"
 #include "Render3D.h"
 #include "meshsky.h"
+#include "BackgroundUI.h"
 void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 {
 	Camera* cam = new Camera(_world);
@@ -40,6 +41,9 @@ void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 	_world->AddObject(home);
 	EnemySpwaner<Enemy>* enemyS = new EnemySpwaner<Enemy>({ 0,0,10050 }, rManager->_render3D, 80.0f, _world);
 	_world->AddObject(enemyS);
+
+	BackgroundUi* bg = new BackgroundUi(AssetManager::Get()->_backGroundTexNo, rManager->_render2D,_world,nullptr);
+	_world->AddObject(bg);
 }
 
 void GameScene::UpdateScene(double deltaTime,Game* game, RenderComponentManager* rManager)

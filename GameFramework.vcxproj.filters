@@ -31,6 +31,9 @@
     <Filter Include="Main">
       <UniqueIdentifier>{ee35ef5a-c9eb-4570-9ba3-249fe5841795}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{a809cb0f-1a7c-4d9b-9530-ff7ef3d621ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fade.h">
@@ -39,16 +42,7 @@
     <ClInclude Include="polyline.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="result.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="score.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="shadow.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Ui.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Render.h">
@@ -63,7 +57,7 @@
     <ClInclude Include="RenderComponent.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="TitleScnne.h">
+    <ClInclude Include="TitleScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
@@ -177,6 +171,30 @@
     <ClInclude Include="title.h">
       <Filter>GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="result.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="UiInfoSubject.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Ui.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UiInfoObsever.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Gold.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Turn.h">
+      <Filter>UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fade.cpp">
@@ -185,16 +203,7 @@
     <ClCompile Include="polyline.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="result.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="score.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="shadow.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Ui.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="DirectXAPI.cpp">
@@ -209,7 +218,7 @@
     <ClCompile Include="ResultScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="TitleScnne.cpp">
+    <ClCompile Include="TitleScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="RenderInfo.h">
@@ -289,6 +298,15 @@
     </ClCompile>
     <ClCompile Include="title.cpp">
       <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="result.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundUI.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

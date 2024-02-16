@@ -4,10 +4,12 @@
 // Author : 
 //
 //=============================================================================
-#include "score.h"
+#include "Health.h"
 #include "texture.h"
 #include "Home.h"
 #include "scene.h"
+#include "Render.h"
+#include "Render2D.h"
 
 
 //*****************************************************************************
@@ -87,9 +89,9 @@ void DrawScore(void)
 	//	// 桁数分処理する
 	//	int number = g_Score;
 
-	//	int hp = GetHome()->hp;
-	//	int first = (int)tt / 10;
-	//	int secend = (int)tt % 10;
+
+	//int first = (int)tt / 10;
+	//int secend = (int)tt % 10;
 	//	DrawSpriteLeftTop(g_TexNo, g_TimePos.x, g_TimePos.y , g_TimeSize.x, g_TimeSize.y, g_UW*first , g_UH, g_UW, g_UH);
 	//	DrawSpriteLeftTop(g_TexNo, g_TimePos.x + g_TimeSize.x , g_TimePos.y, g_TimeSize.x, g_TimeSize.y, g_UW * secend, g_UH, g_UW, g_UH);
 
@@ -156,17 +158,34 @@ void DrawScore(void)
 	/*}*/
 }
 
-//=============================================================================
-// スコアを加算する
-// 引数:add :追加する点数。マイナスも可能
-//=============================================================================
-void AddScore(int add)
-{
-	g_Score += add;
 
-	if (g_Score > SCORE_MAX)
+void Health::Update(double deltaTime)
+{
+
+
+
+}
+
+void Health::Draw()
+{
+	int hp = 10;
+
+
+	auto render = dynamic_cast<Render2D*>(_renderComponent);
+	render->_anchor = Anchor::LeftTop();
+	render->_pos = { 500,500 };
+	render->_UV = { 0,0 };
+	render->_UW = render->_VH = 1.0f;
+	render->_width = 1920;
+	render->_height = 1080;
+	render->Draw(this);
+	if (_uiPartner)
 	{
-		g_Score = SCORE_MAX;
+		_uiPartner->Draw();
 	}
 }
 
+bool Health::Discard() const
+{
+	return false;
+}

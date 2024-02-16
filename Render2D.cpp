@@ -8,6 +8,8 @@
 #include "Texture.h"
 #include "DirectXAPI.h"
 #include "object.h"
+#include "World.h"
+#include "camera.h"
 Render2D::Render2D(DirectXAPI* api, Anchor anchor) :Render(api), _pos(0, 0), _anchor(anchor), _color({ 1.0f,1.0f,1.0f,1.0f }), _UV({ 0.0f,0.0f }),
 _UW(1.0f), _VH(1.0f), _rotate(0.0f), _width(1920), _height(1080)
 {
@@ -98,6 +100,7 @@ void Render2D::DrawCenter(Object* object)
 
 void Render2D::DrawLeftTop(Object* object)
 {
+	
 	D3D11_MAPPED_SUBRESOURCE msr;
 	_dApi->GetDeviceContext()->Map(_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &msr);
 	
@@ -147,10 +150,13 @@ void Render2D::DrawLeftTop(Object* object)
 	
 	// ƒ|ƒŠƒSƒ“•`‰æ
 	_dApi->GetDeviceContext()->Draw(4, 0);
+
+	_dApi->SetDepthEnable(true);
 }
 
 void Render2D::Draw(Object* object)
 {
+	auto cam = object->GetWorld()->GetObjectWithTag<Camera>("Camera");
 	switch (_anchor)
 	{
 	case Anchor::LeftTop:
@@ -159,5 +165,9 @@ void Render2D::Draw(Object* object)
 	case Anchor::Center:
 		DrawCenter(object);
 		break;
+	}
+	if (cam != nullptr)
+	{
+		cam->SetCamera(_dApi);
 	}
 }

@@ -15,7 +15,6 @@ class Render2D:public Render
 {
 public:
 	Render2D(DirectXAPI* api, Anchor anchor);
-	
 	~Render2D()override
 	{
 		if (_vertexBuffer)

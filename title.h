@@ -12,31 +12,9 @@ class Title :public Object
 public:
 	Title(int texNo, Render* render, World* world):Object(texNo, render,"Title",world) {};
 	~Title() {};
-
-private:
-
-
-	// Í¨¹ı Object ¼Ì³Ğ
 	void Update(double deltaTime) override;
-
 	void Draw() override;
-
 	bool Discard() const override;
-
 };
-
-
-
-
-
-
-
-//*****************************************************************************
-// ƒvƒƒgƒ^ƒCƒvéŒ¾
-//*****************************************************************************
-HRESULT InitTitle(void);
-void UninitTitle(void);
-void UpdateTitle(void);
-void DrawTitle(void);
 
 

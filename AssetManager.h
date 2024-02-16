@@ -31,10 +31,12 @@ public:
 		LoadModel((char*)"data/MODEL/Tower2.obj", &_selectFireTower, api);
 		LoadModel((char*)"data/MODEL/Tower3.obj", &_selectThunderTower, api);
 		LoadModel((char*)"data/MODEL/wall.obj", &_wall, api);
+
 		_bulletTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/bullet000.png",api);
-		_feild= TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/field003.png", api);
-		_skyBox = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/sky001.jpg", api);
+		_feildTexNo= TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/field003.png", api);
+		_skyBoxTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/sky001.jpg", api);
 		_titleTexNo= TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/title.jpg", api);
+		_resultTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/result.png", api);
 
 		_titleSe = LoadSound((char*)"data/BGM/sample000.wav");
 
@@ -62,9 +64,10 @@ public:
 	DX11_MODEL				_selectThunderTower;
 
 	int						_bulletTexNo;
-	int						_feild;
-	int						_skyBox;
+	int						_feildTexNo;
+	int						_skyBoxTexNo;
 	int						_titleTexNo;
+	int						_resultTexNo;
 
 	int						_titleSe;
 };

@@ -48,9 +48,6 @@
     <ClInclude Include="shadow.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="title.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Ui.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -177,6 +174,9 @@
     <ClInclude Include="Render2D.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="title.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fade.cpp">
@@ -192,9 +192,6 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="shadow.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="title.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Ui.cpp">
@@ -289,6 +286,9 @@
     </ClCompile>
     <ClCompile Include="Render2D.cpp">
       <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="title.cpp">
+      <Filter>GameObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -32,9 +32,9 @@ void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 	cam->SetCameraAt({ 0,50,100 }, true);
 	Player* player = new Player(nullptr, rManager->_render3D, rManager->GetGraphicApi(), _world);
 	_world->AddObject(player);
-	FieldMesh* field = new FieldMesh(AssetManager::Get()->_feild, rManager->GetGraphicApi(), D3DXVECTOR3(0.0f, 0.0f, 3000.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f), 100, 100, { 180.0f, 180.0f }, _world);
+	FieldMesh* field = new FieldMesh(AssetManager::Get()->_feildTexNo, rManager->GetGraphicApi(), D3DXVECTOR3(0.0f, 0.0f, 3000.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f), 100, 100, { 180.0f, 180.0f }, _world);
 	_world->AddObject(field);
-	SkyBox* skyBox = new SkyBox(AssetManager::Get()->_skyBox, rManager->GetGraphicApi(), D3DXVECTOR3(0.0f, 0.0f, 3000.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f), 10000.0f, 16, 8, _world);
+	SkyBox* skyBox = new SkyBox(AssetManager::Get()->_skyBoxTexNo, rManager->GetGraphicApi(), D3DXVECTOR3(0.0f, 0.0f, 3000.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f), 10000.0f, 16, 8, _world);
 	_world->AddObject(skyBox);
 	Home* home = new Home(&AssetManager::Get()->_home, rManager->_render3D, _world);
 	_world->AddObject(home);

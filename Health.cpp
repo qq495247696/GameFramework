@@ -173,12 +173,32 @@ void Health::Draw()
 
 	auto render = dynamic_cast<Render2D*>(_renderComponent);
 	render->_anchor = Anchor::LeftTop();
-	render->_pos = { 500,500 };
-	render->_UV = { 0,0 };
-	render->_UW = render->_VH = 1.0f;
-	render->_width = 1920;
-	render->_height = 1080;
+	render->_pos = { 600.0f-40*2, 990.0f };
+	render->_UW = 1.0f / 16.0f;
+	render->_VH = 1.0f / 6.0f;
+	render->_UV = { render->_UW*8,render->_VH*2 };
+	render->_width = 40;
+	render->_height = 100;
 	render->Draw(this);
+
+	render->_anchor = Anchor::LeftTop();
+	render->_pos = { 600.0f-40, 990.0f };
+	render->_UW = 1.0f / 16.0f;
+	render->_VH = 1.0f / 6.0f;
+	render->_UV = { render->_UW * 0,render->_VH * 3 };
+	render->_width = 40;
+	render->_height = 100;
+	render->Draw(this);
+
+	render->_anchor = Anchor::LeftTop();
+	render->_pos = { 600.0f, 990.0f };
+	render->_UW = 1.0f / 16.0f;
+	render->_VH = 1.0f / 6.0f;
+	render->_UV = { render->_UW * hp,render->_VH };
+	render->_width = 40;
+	render->_height = 100;
+	render->Draw(this);
+
 	if (_uiPartner)
 	{
 		_uiPartner->Draw();

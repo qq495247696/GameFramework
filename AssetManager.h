@@ -38,7 +38,7 @@ public:
 		_titleTexNo= TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/title.jpg", api);
 		_resultTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/result.png", api);
 		_backGroundTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/Ui.png", api);
-
+		_front = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/font.png", api);
 
 		_titleSe = LoadSound((char*)"data/BGM/sample000.wav");
 
@@ -71,6 +71,7 @@ public:
 	int						_titleTexNo;
 	int						_resultTexNo;
 	int						_backGroundTexNo;
+	int						_front;
 
 	int						_titleSe;
 };

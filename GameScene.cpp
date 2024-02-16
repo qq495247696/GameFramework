@@ -22,6 +22,7 @@
 #include "Render3D.h"
 #include "meshsky.h"
 #include "BackgroundUI.h"
+#include "Health.h"
 void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 {
 	Camera* cam = new Camera(_world);
@@ -42,7 +43,8 @@ void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 	EnemySpwaner<Enemy>* enemyS = new EnemySpwaner<Enemy>({ 0,0,10050 }, rManager->_render3D, 80.0f, _world);
 	_world->AddObject(enemyS);
 
-	BackgroundUi* bg = new BackgroundUi(AssetManager::Get()->_backGroundTexNo, rManager->_render2D,_world,nullptr);
+	Health* hp = new Health(AssetManager::Get()->_front, rManager->_render2D, _world, nullptr);
+	BackgroundUi* bg = new BackgroundUi(AssetManager::Get()->_backGroundTexNo, rManager->_render2D,_world, hp);
 	_world->AddObject(bg);
 }
 

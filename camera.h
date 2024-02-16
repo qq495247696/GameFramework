@@ -36,7 +36,7 @@ public:
 	void SetCameraAt(D3DXVECTOR3 position, bool sw);
 	const D3DXMATRIX& GetViewMtx()const { return _mtxView; }
 	const D3DXMATRIX& GetInvViewMtx()const { return _mtxInvView; }
-
+	Vec3& ScreenToWorldPos(const D3DXVECTOR2& viewPos);
 private:
 	D3DXVECTOR3					_at;				// カメラの注視点
 	D3DXVECTOR3					_up;				// カメラの上方向ベクトル

@@ -1,13 +1,13 @@
 //=============================================================================
 //
-// ƒ|ƒŠƒSƒ“•\Ž¦ˆ— [Tower.cpp]
+// ƒ|ƒŠƒSƒ“•\Ž¦ˆ— [NormalTower.cpp]
 // Author : 
 //
 //=============================================================================
 #include "main.h"
 #include "input.h"
 #include "camera.h"
-#include "Tower.h"
+#include "NormalTower.h"
 #include "texture.h"
 #include "Enemybullet.h"
 #include "shadow.h"
@@ -25,7 +25,7 @@ HRESULT InitTower(void)
 
 
 
-void Tower::Update(double deltaTime)
+void NormalTower::Update(double deltaTime)
 {
 	D3DXVECTOR3 x = { 0.0,0.0,1.0 };
 	time+=deltaTime;
@@ -41,12 +41,12 @@ void Tower::Update(double deltaTime)
 	}
 }
 
-void Tower::Draw()
+void NormalTower::Draw()
 {
 	_renderComponent->Draw(this);
 }
 
-bool Tower::Discard() const
+bool NormalTower::Discard() const
 {
 	return false;
 }

@@ -37,28 +37,15 @@ void UpdateCollision(World* world)
 	auto wall = world->GetObjectWithTag<Wall>("Wall");
 	auto player= world->GetObjectWithTag<Player>("Player");
 
-	if(CollisionBB(player->GetPosition(), wall->GetBox1()._pos, player->_hitBox._size, wall->GetBox1()._size))
+
+
+	for (int i = 0; i < 10; i++)
 	{
-		
-		PlayerCollisionHandling(player, wall->GetBox1()._pos, player->_hitBox._size, wall->GetBox1()._size);
-	}
+		if (CollisionBB(player->GetPosition(), wall->GetBox()[i]._pos, player->_hitBox._size, wall->GetBox()[i]._size))
+		{
 
-	if (CollisionBB(player->GetPosition(), wall->GetBox2()._pos, player->_hitBox._size, wall->GetBox2()._size))
-	{
-
-		PlayerCollisionHandling(player, wall->GetBox2()._pos, player->_hitBox._size, wall->GetBox2()._size);
-	}
-
-	if (CollisionBB(player->GetPosition(), wall->GetBox3()._pos, player->_hitBox._size, wall->GetBox3()._size))
-	{
-
-		PlayerCollisionHandling(player, wall->GetBox3()._pos, player->_hitBox._size, wall->GetBox3()._size);
-	}
-
-	if (CollisionBB(player->GetPosition(), wall->GetBox4()._pos, player->_hitBox._size, wall->GetBox4()._size))
-	{
-
-		PlayerCollisionHandling(player, wall->GetBox4()._pos, player->_hitBox._size, wall->GetBox4()._size);
+			PlayerCollisionHandling(player, wall->GetBox()[i]._pos, player->_hitBox._size, wall->GetBox()[i]._size);
+		}
 	}
 
 }

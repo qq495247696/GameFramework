@@ -1,6 +1,6 @@
 //=============================================================================
 //
-// ínñ èàóù [Tower.h]
+// ínñ èàóù [NormalTower.h]
 // Author : 
 //
 //=============================================================================
@@ -21,10 +21,10 @@ enum TowerType
 	Light,
 };
 
-class Tower:public Object
+class NormalTower:public Object
 {
 public:
-	Tower(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "NormalTower", world)
+	NormalTower(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "NormalTower", world)
 	{
 		_position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -32,7 +32,7 @@ public:
 		time = 0;
 		size = D3DXVECTOR3(100.0f, 100.0f, 100.0f);
 	}
-	~Tower()
+	~NormalTower()
 	{
 	}
 	// Õ®π˝ Object ºÃ≥–

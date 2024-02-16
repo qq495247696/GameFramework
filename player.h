@@ -116,9 +116,9 @@ class Player :public Object
 {
 public:
 	Player() = default;
-	Player(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "Player", world)
+	Player(DX11_MODEL* model, Render* render,DirectXAPI* api, World* world) :Object(model, render, "Player", world),_api(api)
 	{
-		fsm = new StateMachine<Player>(this,_renderComponent->GetApi());
+		fsm = new StateMachine<Player>(this, _api);
 		_hitBox._pos=this->_position;
 		_hitBox._size = { 80,100,40 };
 		// 位置・回転・スケールの初期設定
@@ -147,11 +147,11 @@ public:
 
 
 		//objモデルの読み込み
-		LoadModel((char*)"data/MODEL/playerBody.obj", &g_Model_Body,_renderComponent->GetApi());
-		LoadModel((char*)"data/MODEL/playerhandR.obj", &g_Model_RArm, _renderComponent->GetApi());
-		LoadModel((char*)"data/MODEL/playerhandL.obj", &g_Model_LArm, _renderComponent->GetApi());
-		LoadModel((char*)"data/MODEL/playerlegR.obj", &g_Model_RLeg, _renderComponent->GetApi());
-		LoadModel((char*)"data/MODEL/playerlegL.obj", &g_Model_LLeg, _renderComponent->GetApi());
+		LoadModel((char*)"data/MODEL/playerBody.obj", &g_Model_Body, _api);
+		LoadModel((char*)"data/MODEL/playerhandR.obj", &g_Model_RArm, _api);
+		LoadModel((char*)"data/MODEL/playerhandL.obj", &g_Model_LArm, _api);
+		LoadModel((char*)"data/MODEL/playerlegR.obj", &g_Model_RLeg, _api);
+		LoadModel((char*)"data/MODEL/playerlegL.obj", &g_Model_LLeg, _api);
 
 
 		// 埵抲丒夞揮丒僗働乕儖偺弶婜愝掕
@@ -190,6 +190,7 @@ public:
 	Vec3			thirdPersonPosition;
 	Vec3			thirdPersonRotation;
 	HitBox			_hitBox;
+	DirectXAPI*		_api;
 
 
 	DX11_MODEL	g_Model_Body;
@@ -199,6 +200,7 @@ public:
 	DX11_MODEL	g_Model_LLeg;
 
 	StateMachine<Player> *fsm;
+	Render* GetComponent() const { return _renderComponent; }
 	void DrawAnim(float* frame, D3DXVECTOR3& rot, D3DXVECTOR3& pos);
 	void Update(double deltaTime) override;
 	void Draw() override;

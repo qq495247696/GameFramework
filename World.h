@@ -70,12 +70,16 @@ public:
 
 	void CleanUp()
 	{
-		for (auto x : _objectList)
+		for (auto it = _objectList.begin(); it != _objectList.end(); )
 		{
-			if (x->Discard())
+			if ((*it)->Discard())
 			{
-				delete x;
-				_objectList.remove(x);
+				delete* it;
+				it = _objectList.erase(it);
+			}
+			else
+			{
+				++it;
 			}
 		}
 	}

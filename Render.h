@@ -7,7 +7,6 @@ public:
 	Render(DirectXAPI* api):_dApi(api) { ; }
 	virtual ~Render() { ; }
 	virtual	void Draw(Object* object) = 0;
-	DirectXAPI* GetApi() { return _dApi; }
 protected:
-	DirectXAPI*				_dApi;//ÏÖÔÚÖ»ÓĞdirectX£¬ÒªÊÇÓĞÆäËûäÖÈ¾½Ó¿ÚµÄ»°Ò²¿ÉÒÔ³éÏó³öÀ´£¬´Ó¹¹Ôìº¯Êı´«²Î
+	DirectXAPI*				_dApi;//ÏÖÔÚÖ»ÓĞdirectX£¬ÒªÊÇÓĞÆäËûäÖÈ¾½Ó¿ÚµÄ»°Ò²¿ÉÒÔ³éÏó³öÀ´£¬´Ó¹¹ÔE¯Êı´«²Î
 };

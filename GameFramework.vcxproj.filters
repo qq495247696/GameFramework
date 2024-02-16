@@ -123,13 +123,10 @@
     <ClInclude Include="Home.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="tower.h">
+    <ClInclude Include="NormalTower.h">
       <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="player.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="select.h">
       <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
@@ -166,6 +163,12 @@
       <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptyObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
   </ItemGroup>
@@ -239,13 +242,10 @@
     <ClCompile Include="Home.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="tower.cpp">
+    <ClCompile Include="NormalTower.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="player.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="select.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="EnemyBullet.cpp">
@@ -277,6 +277,9 @@
     </ClCompile>
     <ClCompile Include="collision.cpp">
       <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="EmptyObject.cpp">
+      <Filter>GameObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

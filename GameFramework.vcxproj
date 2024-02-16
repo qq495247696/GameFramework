@@ -150,6 +150,7 @@
     <ClInclude Include="collision.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="EnemyBullet.h" />
     <ClInclude Include="EnemySpwaner.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="DirectXAPI.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Render3D.h" />
     <ClInclude Include="RenderComponent.h" />
@@ -173,7 +175,6 @@
     <ClInclude Include="polyline.h" />
     <ClInclude Include="result.h" />
     <ClInclude Include="score.h" />
-    <ClInclude Include="select.h" />
     <ClInclude Include="SelectPhase.h" />
     <ClInclude Include="shadow.h" />
     <ClInclude Include="sound.h" />
@@ -183,7 +184,7 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="TitleScnne.h" />
-    <ClInclude Include="tower.h" />
+    <ClInclude Include="NormalTower.h" />
     <ClInclude Include="Ui.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Wall.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="collision.cpp" />
+    <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="EnemyBullet.cpp" />
     <ClCompile Include="fade.cpp" />
@@ -215,14 +217,13 @@
     <ClCompile Include="result.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="score.cpp" />
-    <ClCompile Include="select.cpp" />
     <ClCompile Include="SelectPhase.cpp" />
     <ClCompile Include="shadow.cpp" />
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="title.cpp" />
     <ClCompile Include="TitleScnne.cpp" />
-    <ClCompile Include="tower.cpp" />
+    <ClCompile Include="NormalTower.cpp" />
     <ClCompile Include="Ui.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Wall.cpp" />

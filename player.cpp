@@ -122,10 +122,10 @@ void Player::DrawAnim(float* frame, D3DXVECTOR3& rot, D3DXVECTOR3& pos)
 		g_Body.mtxWorld *= mtxWorldRoot;
 
 		// ワールドマトリックスの設定
-		_renderComponent->GetApi()->SetWorldMatrix(&g_Body.mtxWorld);
+		_api->SetWorldMatrix(&g_Body.mtxWorld);
 
 		//objモデルの描画
-		DrawModel(&g_Model_Body,_renderComponent->GetApi());
+		DrawModel(&g_Model_Body,_api);
 
 
 		//他のパーツのための親マトリクスをつくる
@@ -158,10 +158,10 @@ void Player::DrawAnim(float* frame, D3DXVECTOR3& rot, D3DXVECTOR3& pos)
 		g_RArm.mtxWorld *= mtxParent;
 
 		// ワールドマトリックスの設定
-		_renderComponent->GetApi()->SetWorldMatrix(&g_RArm.mtxWorld);
+		_api->SetWorldMatrix(&g_RArm.mtxWorld);
 
 		//右腕モデルの描画
-		DrawModel(&g_Model_RArm,_renderComponent->GetApi());
+		DrawModel(&g_Model_RArm,_api);
 	}
 
 	//--------------------------------------------------------------------------------------------
@@ -190,10 +190,10 @@ void Player::DrawAnim(float* frame, D3DXVECTOR3& rot, D3DXVECTOR3& pos)
 		g_LArm.mtxWorld *= mtxParent;
 
 		// ワールドマトリックスの設定
-		_renderComponent->GetApi()->SetWorldMatrix(&g_LArm.mtxWorld);
+		_api->SetWorldMatrix(&g_LArm.mtxWorld);
 
 		//左腕モデルの描画
-		DrawModel(&g_Model_LArm, _renderComponent->GetApi());
+		DrawModel(&g_Model_LArm, _api);
 	}
 
 	//--------------------------------------------------------------------------------------------
@@ -222,10 +222,10 @@ void Player::DrawAnim(float* frame, D3DXVECTOR3& rot, D3DXVECTOR3& pos)
 		g_RLeg.mtxWorld *= mtxParent;
 
 		// ワールドマトリックスの設定
-		_renderComponent->GetApi()->SetWorldMatrix(&g_RLeg.mtxWorld);
+		_api->SetWorldMatrix(&g_RLeg.mtxWorld);
 
 		//右脚モデルの描画
-		DrawModel(&g_Model_RLeg, _renderComponent->GetApi());
+		DrawModel(&g_Model_RLeg, _api);
 	}
 
 	//--------------------------------------------------------------------------------------------
@@ -255,10 +255,10 @@ void Player::DrawAnim(float* frame, D3DXVECTOR3& rot, D3DXVECTOR3& pos)
 		g_LLeg.mtxWorld *= mtxParent;
 
 		// ワールドマトリックスの設定
-		_renderComponent->GetApi()->SetWorldMatrix(&g_LLeg.mtxWorld);
+		_api->SetWorldMatrix(&g_LLeg.mtxWorld);
 
 		//右脚モデルの描画
-		DrawModel(&g_Model_LLeg, _renderComponent->GetApi());
+		DrawModel(&g_Model_LLeg, _api);
 	}
 }
 

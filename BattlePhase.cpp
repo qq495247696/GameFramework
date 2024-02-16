@@ -4,7 +4,6 @@
 #include "camera.h"
 #include "bullet.h"
 #include "sound.h"
-#include "select.h"
 #include "player.h"
 #include "World.h"
 #include "DirectXAPI.h"

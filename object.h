@@ -28,6 +28,7 @@ public:
 	void SetVel(const Vec3& vel) { _vel = vel; }
 	void SetSpeed(const float speed) { _speed = speed; }
 	void SetRotate(const Vec3 rot) { _rotate = rot; }
+	void SetUse(const bool use) { _use = use; }
 	const std::string& GetTag()const { return _tag; }
 	const float GetSpeed()const { return _speed; }
 	const Vec3& GetPosition()const { return _position; }

@@ -154,3 +154,24 @@ void Camera::SetCameraAt(D3DXVECTOR3 position, bool sw)
 		_position.z = _at.z - cosf(_rotate.y) * _len;
 	}
 }
+
+Vec3& Camera::ScreenToWorldPos(const D3DXVECTOR2& viewPos)
+{
+	float x = (2.0f * viewPos.x) / 1920 - 1.0f;
+	float y = 1.0f - (2.0 * viewPos.y) / 1080;
+	D3DXVECTOR4 ndc = D3DXVECTOR4(x,y,1.0f,1.0f);
+
+	D3DXMATRIX	invProjMtx;
+	D3DXMatrixInverse(&invProjMtx, NULL, &_mtxProjection);
+	D3DXVECTOR4 viewSpace;
+	D3DXVec4Transform(&viewSpace, &ndc, &invProjMtx);
+
+	D3DXMATRIX invVeiwMatrix;
+	D3DXMatrixInverse(&invVeiwMatrix, NULL, &_mtxView);
+	D3DXVECTOR4 worldSpace;
+	D3DXVec4Transform(&worldSpace, &viewSpace, &invVeiwMatrix);
+
+
+	Vec3 worldPos = { worldSpace.x,worldSpace.y,worldSpace.z };
+	return worldPos;
+}

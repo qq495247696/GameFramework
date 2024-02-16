@@ -24,7 +24,7 @@
 #define	VALUE_ROTATE	(D3DX_PI * 0.02f)			// 夞揮検
 void Enemy::Update(double deltaTime)
 {
-	//移動の部分
+	//移丒の部分
 	motor(deltaTime);
 	
 

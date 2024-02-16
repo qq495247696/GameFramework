@@ -23,7 +23,7 @@ void TitleScene::InitScene(Game* game, RenderComponentManager* rManager)
 	Wall* wall = new Wall(&AssetManager::Get()->_wall, rManager->_render3D, _world);
 	_world->AddObject(wall);
 	cam->SetCameraAt({ 0,50,100 }, true);
-	Player* player = new Player(nullptr, rManager->_render3D, _world);
+	Player* player = new Player(nullptr, rManager->_render3D, rManager->GetGraphicApi(), _world);
 	_world->AddObject(player);
 	FieldMesh* field = new FieldMesh(AssetManager::Get()->_feild, rManager->GetGraphicApi(), D3DXVECTOR3(0.0f, 0.0f, 3000.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f), 100, 100, { 180.0f, 180.0f }, _world);
 	_world->AddObject(field);
@@ -52,6 +52,8 @@ void TitleScene::UpdateScene(double deltaTime,Game* game, RenderComponentManager
 	_world->Draw();
 	Debug::Get()->Draw();
 	rManager->GetGraphicApi()->Present();
+
+	_world->CleanUp();
 }
 
 void TitleScene::UnInitScene(Game* game)

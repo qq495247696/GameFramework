@@ -9,7 +9,7 @@ enum class Anchor
 	LeftTop,
 	Center
 };
-//渲染插件用于渲染2D平面
+//渲染插件用于渲染2D平脕E
 class Render2D:public Render
 {
 public:

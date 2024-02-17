@@ -2,6 +2,7 @@
 #pragma once
 #include "Scene.h"
 #include "World.h"
+#include "gameloop.h"
 class RenderComponentManager;
 class GameScene : public Scene
 {
@@ -14,6 +15,7 @@ public:
 	void InitScene(Game* game, RenderComponentManager* rManager) override;
 	void UpdateScene(double deltaTime,Game* game, RenderComponentManager* rManager) override;
 	void UnInitScene(Game* game) override;
-
+private:
+	GameLoop*		_turn;
 };
 

@@ -31,6 +31,7 @@ public:
 		LoadModel((char*)"data/MODEL/Tower2.obj", &_selectFireTower, api);
 		LoadModel((char*)"data/MODEL/Tower3.obj", &_selectThunderTower, api);
 		LoadModel((char*)"data/MODEL/wall.obj", &_wall, api);
+		LoadModel((char*)"data/MODEL/place.obj", &_place, api);
 
 		_bulletTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/bullet000.png",api);
 		_feildTexNo= TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/field003.png", api);
@@ -64,6 +65,7 @@ public:
 	DX11_MODEL				_selectNormalTower;
 	DX11_MODEL				_selectFireTower;
 	DX11_MODEL				_selectThunderTower;
+	DX11_MODEL				_place;
 
 	int						_bulletTexNo;
 	int						_feildTexNo;

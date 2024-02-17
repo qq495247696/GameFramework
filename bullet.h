@@ -12,7 +12,7 @@ class World;
 class Bullet:public Object
 {
 public:
-	Bullet(const int texNo,DirectXAPI* api ,World* world) :Object(texNo,"Bullet",world),_api(api)
+	Bullet(const int texNo, DirectXAPI* api, World* world, Vec3 pos, Vec3 vel;) :Object(texNo, "Bullet", world), _api(api)
 	{
 		// 頂点バッファ生成
 		D3D11_BUFFER_DESC bd;
@@ -62,8 +62,8 @@ public:
 		_material.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 
 		// 初期化
-		_position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-		_vel = D3DXVECTOR3(0.0f, 0.0f, 30.0f);
+		_position = pos;
+		_vel = vel;
 		size = D3DXVECTOR3(50.0f, 50.0f, 50.0f);
 		_speed = 3;
 		_use = false;
@@ -77,7 +77,6 @@ public:
 		}
 	}
 	float					frame;	// フレーム数
-	int						shadow;	// 影の識別番号
 	D3DXVECTOR3				size;		// 当たり判定用サイズ
 
 

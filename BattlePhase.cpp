@@ -14,6 +14,7 @@
 #include "World.h"
 #include "DirectXAPI.h"
 #include "SelectPhase.h"
+#include "AssetManager.h"
 
 static float g_Rot;
 void BattlePhase::EnterState(Player* Entity, DirectXAPI* api)
@@ -87,16 +88,16 @@ void BattlePhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 	}
 	
 
-	/*if (GetKeyboardTrigger(DIK_SPACE))
-	{
-		D3DXVECTOR3 dir;
-		dir.x = cosf(Entity->rot.y - (D3DX_PI / 2));
-		dir.y = 0.0f;
-		dir.z = sinf(Entity->rot.y + (D3DX_PI / 2));
-		SetBullet(Entity->pos, dir);
-		PlaySound(Entity->se, 0);
+	//(GetKeyboardTrigger(DIK_SPACE))
+	//{
+	//	D3DXVECTOR3 dir;
+	//	dir.x = cosf(Entity->rot.y - (D3DX_PI / 2));
+	//	dir.y = 0.0f;
+	//	dir.z = sinf(Entity->rot.y + (D3DX_PI / 2));
+	//	Bullet *bullet=new Bullet(AssetManager::Get()->_bulletTexNo,api,Entity->GetWorld(),Entity->GetPosition(),dir);
+	//	PlaySound(Entity->se, 0);
 
-	}*/
+	//}
 	
 }
 

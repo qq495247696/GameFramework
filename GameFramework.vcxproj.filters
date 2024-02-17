@@ -195,6 +195,18 @@
     <ClInclude Include="Turn.h">
       <Filter>UI</Filter>
     </ClInclude>
+    <ClInclude Include="BattleLoop.h">
+      <Filter>Fsm</Filter>
+    </ClInclude>
+    <ClInclude Include="PreparationLoop.h">
+      <Filter>Fsm</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLoop.h">
+      <Filter>Fsm</Filter>
+    </ClInclude>
+    <ClInclude Include="Place.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fade.cpp">
@@ -307,6 +319,18 @@
     </ClCompile>
     <ClCompile Include="BackgroundUI.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleLoop.cpp">
+      <Filter>Fsm</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLoop.cpp">
+      <Filter>Fsm</Filter>
+    </ClCompile>
+    <ClCompile Include="PreparationLoop.cpp">
+      <Filter>Fsm</Filter>
+    </ClCompile>
+    <ClCompile Include="Place.cpp">
+      <Filter>GameObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

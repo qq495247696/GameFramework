@@ -59,10 +59,15 @@ void Enemy::motor(double deltaTime)
 	}
 	else
 	{
-		Vec3 velVec = GetWorld()->GetObjectWithTag<Home>("Home")->GetPosition() - _position;
+		Vec3 velVec = Vec3(GetWorld()->GetObjectWithTag<Home>("Home")->GetPosition().x,0,GetWorld()->GetObjectWithTag<Home>("Home")->GetPosition().z+650) - _position;
+		float len = D3DXVec3Length(&velVec);
 		D3DXVec3Normalize(&velVec, &velVec);
-		_position += velVec * _speed * deltaTime;
+		if(len>10)
+		{
+			_position += velVec * _speed * deltaTime;
+		}
 	}
+
 }
 
 void Enemy::Draw()

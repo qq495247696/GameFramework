@@ -166,6 +166,7 @@ public:
 		//_se = LoadSound((char*)"data/SE/shot001.wav");
 		fsm->SetCurrentState(BattlePhase::Instance());
 		fsm->ChangeState(BattlePhase::Instance());
+		_canBuild = false;
 		// 塭偺僙僢僩乮塭偼崅偝傪0偵偟偰昞帵偝偣傞乯
 		//_shadow = SetShadow(D3DXVECTOR3(_pos.x, 0.0f, _pos.z), 200.0f);
 
@@ -176,7 +177,7 @@ public:
 		delete fsm;
 	}
 
-
+	bool			_canBuild;
 	int				shadow;		// 塭偺幆暿斣崋
 	D3DXVECTOR3     size;		// 摉偨傝敾掕梡僒僀僘
 	int				currency;

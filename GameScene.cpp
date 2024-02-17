@@ -14,7 +14,6 @@
 #include "meshfield.h"
 #include "Home.h"
 #include "enemy.h"
-#include "EnemySpwaner.h"
 #include "Debug.h"
 #include "AssetManager.h"
 #include "collision.h"
@@ -23,6 +22,8 @@
 #include "meshsky.h"
 #include "BackgroundUI.h"
 #include "Health.h"
+#include "Place.h"
+
 void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 {
 	Camera* cam = new Camera(_world);
@@ -31,6 +32,9 @@ void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 	cam->SetCamera(rManager->GetGraphicApi());
 	Wall* wall = new Wall(&AssetManager::Get()->_wall, rManager->_render3D, _world);
 	_world->AddObject(wall);
+	Place* place = new Place(&AssetManager::Get()->_place, rManager->_render3D, _world);
+	_world->AddObject(place);
+
 	cam->SetCameraAt({ 0,50,100 }, true);
 	Player* player = new Player(nullptr, rManager->_render3D, rManager->GetGraphicApi(), _world);
 	_world->AddObject(player);
@@ -40,18 +44,20 @@ void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 	_world->AddObject(skyBox);
 	Home* home = new Home(&AssetManager::Get()->_home, rManager->_render3D, _world);
 	_world->AddObject(home);
-	EnemySpwaner<Enemy>* enemyS = new EnemySpwaner<Enemy>({ 0,0,10050 }, rManager->_render3D, 80.0f, _world);
-	_world->AddObject(enemyS);
 
+
+	
 	Health* hp = new Health(AssetManager::Get()->_front, rManager->_render2D, _world, nullptr);
 	BackgroundUi* bg = new BackgroundUi(AssetManager::Get()->_backGroundTexNo, rManager->_render2D,_world, hp);
 	_world->AddObject(bg);
+	_turn = new GameLoop(_world, rManager->_render3D);
 }
 
 void GameScene::UpdateScene(double deltaTime,Game* game, RenderComponentManager* rManager)
 {
 	auto cam = _world->GetObjectWithTag<Camera>("Camera");
 	Debug::Get()->NewFrame();
+	_turn->Update(deltaTime);
 	_world->Update(deltaTime);
 	Debug::Get()->Update();
 	UpdateCollision(_world);

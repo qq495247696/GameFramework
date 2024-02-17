@@ -7,6 +7,7 @@
 #include "EmptyObject.h"
 #include "Player.h"
 #include "AssetManager.h"
+#include "collision.h"
 
 static EmptyObject* selectmode;
 static TowerType type = TowerType::Normal;
@@ -48,19 +49,19 @@ void SelectPhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 		
 		if (GetKeyboardPress(DIK_W))
 		{
-			cam->SetPositionZ(cam->GetPosition().z + 30);
+			cam->SetPositionZ(cam->GetPosition().z + 15);
 		}
 		if (GetKeyboardPress(DIK_S))
 		{
-			cam->SetPositionZ(cam->GetPosition().z -30);
+			cam->SetPositionZ(cam->GetPosition().z -15);
 		}
 		if (GetKeyboardPress(DIK_A))
 		{
-			cam->SetPositionX(cam->GetPosition().x - 30);
+			cam->SetPositionX(cam->GetPosition().x - 15);
 		}
 		if (GetKeyboardPress(DIK_D))
 		{
-			cam->SetPositionX(cam->GetPosition().x + 30);
+			cam->SetPositionX(cam->GetPosition().x + 15);
 		}
 
 		selectmode->SetPosition({ cam->GetPosition().x,0, cam->GetPosition().z + 1 });
@@ -85,29 +86,61 @@ void SelectPhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 		{
 		case Normal:
 			selectmode->SetModel(&AssetManager::Get()->_selectNormalTower);
-			for (int i = 0; i < selectmode->GetModel()->SubsetNum; i++)
+			if (Entity->_canBuild)
 			{
-				selectmode->GetModel()->SubsetArray[i].Material.Material.Diffuse = { 1,0,0,0.5f };
+				for (int i = 0; i < selectmode->GetModel()->SubsetNum; i++)
+				{
+					selectmode->GetModel()->SubsetArray[i].Material.Material.Diffuse = { 0,1,0,0.5f };
+				}
+			}
+			else
+			{
+				for (int i = 0; i < selectmode->GetModel()->SubsetNum; i++)
+				{
+					selectmode->GetModel()->SubsetArray[i].Material.Material.Diffuse = { 1,0,0,0.5f };
+				}
 			}
 			break;
 		case Fire:
 			selectmode->SetModel(&AssetManager::Get()->_selectFireTower);
-			for (int i = 0; i < selectmode->GetModel()->SubsetNum; i++)
+			if (Entity->_canBuild)
 			{
-				selectmode->GetModel()->SubsetArray[i].Material.Material.Diffuse = { 1,0,0,0.5f };
+				for (int i = 0; i < selectmode->GetModel()->SubsetNum; i++)
+				{
+					selectmode->GetModel()->SubsetArray[i].Material.Material.Diffuse = { 0,1,0,0.5f };
+				}
+			}
+			else
+			{
+				for (int i = 0; i < selectmode->GetModel()->SubsetNum; i++)
+				{
+					selectmode->GetModel()->SubsetArray[i].Material.Material.Diffuse = { 1,0,0,0.5f };
+				}
 			}
 			break;
 		case Light:
 			selectmode->SetModel(&AssetManager::Get()->_selectThunderTower);
-			for (int i = 0; i < selectmode->GetModel()->SubsetNum; i++)
+			if (Entity->_canBuild)
 			{
-				selectmode->GetModel()->SubsetArray[i].Material.Material.Diffuse = { 1,0,0,0.5f };
+				for (int i = 0; i < selectmode->GetModel()->SubsetNum; i++)
+				{
+					selectmode->GetModel()->SubsetArray[i].Material.Material.Diffuse = { 0,1,0,0.5f };
+				}
+			}
+			else
+			{
+				for (int i = 0; i < selectmode->GetModel()->SubsetNum; i++)
+				{
+					selectmode->GetModel()->SubsetArray[i].Material.Material.Diffuse = { 1,0,0,0.5f };
+				}
 			}
 			break;
 		}
 
+
+
 		//ó‘Ô‚ð•ÏX‚·‚é
-		if (IsMouseLeftTriggered())
+		if (IsMouseLeftTriggered()&&Entity->_canBuild)
 		{
 			switch (type)
 			{

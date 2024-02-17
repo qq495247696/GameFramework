@@ -16,6 +16,8 @@
 #include "World.h"
 #include "Wall.h"
 #include "DirectXCollision.h"
+#include "EmptyObject.h"
+#include "place.h"
 
 
 //*****************************************************************************
@@ -36,7 +38,8 @@ void UpdateCollision(World* world)
 {
 	auto wall = world->GetObjectWithTag<Wall>("Wall");
 	auto player= world->GetObjectWithTag<Player>("Player");
-
+	auto select= world->GetObjectWithTag<EmptyObject>("EmptyObject");
+	auto place = world->GetObjectWithTag<Place>("Place");
 
 
 	for (int i = 0; i < 10; i++)
@@ -48,6 +51,23 @@ void UpdateCollision(World* world)
 		}
 	}
 
+	if (select != nullptr)
+	{
+		if (CollisionBB(select->GetPosition(), place->GetBox()[0]._pos, { 10,10,10 }, place->GetBox()[0]._size)|| CollisionBB(select->GetPosition(), place->GetBox()[1]._pos, { 10,10,10 }, place->GetBox()[1]._size))
+		{
+			player->_canBuild = true;
+		}
+		else
+		{
+			player->_canBuild = false;
+		}
+	}
+
+	//if (CollisionBB(player->GetPosition(), wall->GetBox()[i]._pos, player->_hitBox._size, wall->GetBox()[i]._size))
+	//{
+
+	//	PlayerCollisionHandling(player, wall->GetBox()[i]._pos, player->_hitBox._size, wall->GetBox()[i]._size);
+	//}
 }
 
 

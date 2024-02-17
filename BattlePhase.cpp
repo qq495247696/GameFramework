@@ -88,16 +88,16 @@ void BattlePhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 	}
 	
 
-	//(GetKeyboardTrigger(DIK_SPACE))
-	//{
-	//	D3DXVECTOR3 dir;
-	//	dir.x = cosf(Entity->rot.y - (D3DX_PI / 2));
-	//	dir.y = 0.0f;
-	//	dir.z = sinf(Entity->rot.y + (D3DX_PI / 2));
-	//	Bullet *bullet=new Bullet(AssetManager::Get()->_bulletTexNo,api,Entity->GetWorld(),Entity->GetPosition(),dir);
-	//	PlaySound(Entity->se, 0);
-
-	//}
+	if(GetKeyboardTrigger(DIK_SPACE))
+	{
+		D3DXVECTOR3 dir;
+		dir.x = cosf(Entity->GetRotation().y - (D3DX_PI / 2));
+		dir.y = 0.0f;
+		dir.z = sinf(Entity->GetRotation().y + (D3DX_PI / 2));
+		Bullet* bullet = new Bullet(AssetManager::Get()->_bulletTexNo, api, Entity->GetWorld(), { Entity->GetPosition().x,50,Entity->GetPosition().z }, dir);
+		Entity->GetWorld()->AddObject(bullet);
+		//PlaySound(Entity->se, 0);
+	}
 	
 }
 

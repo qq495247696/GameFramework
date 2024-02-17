@@ -42,7 +42,9 @@ public:
 		_front = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/font.png", api);
 
 		_titleSe = LoadSound((char*)"data/BGM/sample000.wav");
-
+		_fireShotSe = LoadSound((char*)"data/SE/shot001.wav");
+		_normalShootSe= LoadSound((char*)"data/SE/normalShoot.wav");
+		_battleBgm = LoadSound((char*)"data/BGM/Battle.wav");
 	}
 	void UnInit()
 	{
@@ -55,7 +57,7 @@ public:
 		TextureTool::Get()->UninitTexture();
 	}
 
-
+	//model
 	DX11_MODEL				_wall;
 	DX11_MODEL				_home;
 	DX11_MODEL				_normalTower;
@@ -66,7 +68,7 @@ public:
 	DX11_MODEL				_selectFireTower;
 	DX11_MODEL				_selectThunderTower;
 	DX11_MODEL				_place;
-
+	//texture
 	int						_bulletTexNo;
 	int						_feildTexNo;
 	int						_skyBoxTexNo;
@@ -74,6 +76,9 @@ public:
 	int						_resultTexNo;
 	int						_backGroundTexNo;
 	int						_front;
-
+	//sound
 	int						_titleSe;
+	int						_fireShotSe;
+	int						_normalShootSe;
+	int						_battleBgm;
 };

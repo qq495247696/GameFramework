@@ -12,7 +12,7 @@ class World;
 class Bullet:public Object
 {
 public:
-	Bullet(const int texNo, DirectXAPI* api, World* world, Vec3 pos, Vec3 vel;) :Object(texNo, "Bullet", world), _api(api)
+	Bullet(const int texNo, DirectXAPI* api, World* world, Vec3 pos, Vec3 vel) :Object(texNo, "Bullet", world), _api(api)
 	{
 		// 頂点バッファ生成
 		D3D11_BUFFER_DESC bd;
@@ -32,8 +32,8 @@ public:
 
 			VERTEX_3D* vertex = (VERTEX_3D*)msr.pData;
 
-			float width = 500.0f;
-			float height = 500.0f;
+			float width = 50.0f;
+			float height = 50.0f;
 
 			// 頂点座標の設定
 			vertex[0].Position = D3DXVECTOR3(-width / 2.0f, 0.0f, 0.0f);
@@ -64,9 +64,10 @@ public:
 		// 初期化
 		_position = pos;
 		_vel = vel;
-		size = D3DXVECTOR3(50.0f, 50.0f, 50.0f);
-		_speed = 3;
+		size = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+		_speed = 750;
 		_use = false;
+		frame = 0;
 	};
 	~Bullet()override 
 	{

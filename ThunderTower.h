@@ -9,12 +9,15 @@
 class ThunderTower :public Object
 {
 public:
-	ThunderTower(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "ThunderTower", world)
+	ThunderTower(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "ThunderTower", world), _finded(false)
+		, _attackSpeed(3.5), _attack(150.0f), _attackDistance(650.0f)
 	{
 		_position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		_scale = D3DXVECTOR3(5.0f, 5.0f, 5.0f);
-		time = 0;
+		_time = 0;
+		_timeValue = 0.5f;
+		_attackTime = 0.0f;
 		size = D3DXVECTOR3(100.0f, 100.0f, 100.0f);
 	}
 	~ThunderTower()
@@ -26,6 +29,12 @@ public:
 	bool Discard() const override;
 private:
 	int				shadow;		// 影の識別番号
-	double			time;
+	double			_time;
+	double			_attackTime;
+	float			_timeValue ;
+	bool			_finded;
+	float			_attackSpeed;
+	float			_attack;
+	float			_attackDistance;
 	D3DXVECTOR3     size;		// 当たり判定用サイズ
 };

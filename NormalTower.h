@@ -16,13 +16,14 @@ enum TowerType
 {
 	Normal,
 	Fire,
-	Light,
+	Thunder,
 };
 
 class NormalTower:public Object
 {
 public:
 	NormalTower(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "NormalTower", world)
+		, _finded(false), _attackSpeed(1.5), _attack(100.0f), _attackDistance(850.0f)
 	{
 		_position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -38,7 +39,14 @@ public:
 	void Draw() override;
 	bool Discard() const override;
 private:
+	void Attack(double deltaTime);
+	void NoFoundedEnemy();
+	void FoundedEnemy(float deltaTime);
 	int				shadow;		// 影の識別番号
+	bool			_finded;
 	double			time;
+	float			_attackSpeed;
+	float			_attack;
+	float			_attackDistance;
 	D3DXVECTOR3     size;		// 当たり判定用サイズ
 };

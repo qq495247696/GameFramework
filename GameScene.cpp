@@ -26,6 +26,8 @@
 
 void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 {
+	PlaySound(AssetManager::Get()->_battleBgm, -1);
+	SetVolume(AssetManager::Get()->_battleBgm, 0.3f);
 	Camera* cam = new Camera(_world);
 	Debug::Get()->SetWorld(_world);
 	_world->AddObject(cam);
@@ -46,7 +48,7 @@ void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 	_world->AddObject(home);
 
 
-	
+	//ui
 	Health* hp = new Health(AssetManager::Get()->_front, rManager->_render2D, _world, nullptr);
 	BackgroundUi* bg = new BackgroundUi(AssetManager::Get()->_backGroundTexNo, rManager->_render2D,_world, hp);
 	_world->AddObject(bg);

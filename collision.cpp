@@ -55,10 +55,19 @@ void UpdateCollision(World* world)
 	{
 		if (CollisionBB(select->GetPosition(), place->GetBox()[0]._pos, { 10,10,10 }, place->GetBox()[0]._size)|| CollisionBB(select->GetPosition(), place->GetBox()[1]._pos, { 10,10,10 }, place->GetBox()[1]._size))
 		{
+			if (select->GetPosition().x < 0)
+			{
+				select->SetRotation({ 0, D3DX_PI/2, 0 });
+			}
+			if (select->GetPosition().x > 0)
+			{
+				select->SetRotation({ 0, -D3DX_PI / 2, 0 });
+			}
 			player->_canBuild = true;
 		}
 		else
 		{
+			select->SetRotation({ 0, 0, 0 });
 			player->_canBuild = false;
 		}
 	}

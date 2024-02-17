@@ -44,7 +44,7 @@ public:
 	}
 
 	template<typename T>
-	std::vector<T> GetObjectsWithTag(const std::string& tag)
+	std::vector<T*> GetObjectsWithTag(const std::string& tag)
 	{
 		std::vector<T*> return_entity;
 

@@ -10,6 +10,7 @@ class FireTower :public Object
 {
 public:
 	FireTower(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "FireTower", world)
+		, _finded(false), _attackSpeed(7.5), _attack(550.0f), _attackDistance(1550.0f)
 	{
 		_position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -20,12 +21,20 @@ public:
 	~FireTower()
 	{
 	}
-	// Í¨¹ı Object ¼Ì³Ğ
+	
+
 	void Update(double deltaTime) override;
 	void Draw() override;
 	bool Discard() const override;
 private:
+	void Attack(double deltaTime);
+	void NoFoundedEnemy();
+	void FoundedEnemy(double deltaTime);
 	int				shadow;		// ‰e‚Ì¯•Ê”Ô†
 	double			time;
+	bool			_finded;
+	float			_attackSpeed;
+	float			_attack;
+	float			_attackDistance;
 	D3DXVECTOR3     size;		// “–‚½‚è”»’è—pƒTƒCƒY
 };

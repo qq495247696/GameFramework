@@ -29,8 +29,15 @@
 //SetLight(0, &g_DirectionalLight);
 void Player::DrawAnim(float* frame, D3DXVECTOR3& rot, D3DXVECTOR3& pos)
 {
-	MOTIONSET* pMotion = &g_WaitMotion;
-
+	MOTIONSET* pMotion;
+	if( abs(_speed) < 25.0f)
+	{
+		pMotion = &g_WaitMotion;
+	}
+	else
+	{
+		pMotion = &g_RunMotion;
+	}
 
 	////経過フレームから現在補間中のインデックスを求める
 	int MotionIndex = -1;

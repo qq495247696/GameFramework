@@ -80,30 +80,30 @@ static MOTIONSET g_WaitMotion =
 {
 		{//RArmMotion
 			{	  0.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f)},
-			{	 30.0f, D3DXVECTOR3(D3DX_PI / 15, 0.0f, 0.0f)},
+			{	 30.0f, D3DXVECTOR3(D3DX_PI / 50, 0.0f, 0.0f)},
 			{	 60.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f)},
-			{	 90.0f, D3DXVECTOR3(-D3DX_PI / 15, 0.0f, 0.0f)},
+			{	 90.0f, D3DXVECTOR3(-D3DX_PI / 50, 0.0f, 0.0f)},
 			{	120.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f)},
 		},
 		{//LArmMotion
 			{  0.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f)},
-			{ 30.0f, D3DXVECTOR3(-D3DX_PI / 15, 0.0f, 0.0f)},
+			{ 30.0f, D3DXVECTOR3(-D3DX_PI / 50, 0.0f, 0.0f)},
 			{ 60.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f)},
-			{ 90.0f, D3DXVECTOR3(D3DX_PI / 15, 0.0f, 0.0f)},
+			{ 90.0f, D3DXVECTOR3(D3DX_PI / 50, 0.0f, 0.0f)},
 			{120.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f)},
 		},
 		{//RLegMotion
 			{  0.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f)},
-			{ 30.0f, D3DXVECTOR3(-D3DX_PI / 15, 0.0f, 0.0f)},
+			{ 30.0f, D3DXVECTOR3(-D3DX_PI / 45, 0.0f, 0.0f)},
 			{ 60.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f)},
-			{ 90.0f, D3DXVECTOR3(D3DX_PI / 15, 0.0f, 0.0f)},
+			{ 90.0f, D3DXVECTOR3(D3DX_PI / 45, 0.0f, 0.0f)},
 			{120.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f)},
 		},
 		{//LLegMotion
 			{  0.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f)},
-			{ 30.0f, D3DXVECTOR3(D3DX_PI / 15, 0.0f, 0.0f)},
+			{ 30.0f, D3DXVECTOR3(D3DX_PI / 45, 0.0f, 0.0f)},
 			{ 60.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f)},
-			{ 90.0f, D3DXVECTOR3(-D3DX_PI / 15, 0.0f, 0.0f)},
+			{ 90.0f, D3DXVECTOR3(-D3DX_PI / 45, 0.0f, 0.0f)},
 			{120.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f)},
 		},
 };

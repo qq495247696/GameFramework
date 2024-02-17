@@ -2,8 +2,11 @@
 #include "enemy.h"
 #include "EnemySpwaner.h"
 #include "GameLoop.h"
+#include "AssetManager.h"
+#include "sound.h"
 void BattleLoop::EnterState(GameLoop* Entity, DirectXAPI* api)
 {
+	SetVolume(AssetManager::Get()->_battleBgm, 0.7f);
 	Entity->_turnTime = 70.0f;
 	EnemySpwaner<Enemy>* enemyS = new EnemySpwaner<Enemy>({ 0,0,10050 }, Entity->_render, 60.0f, Entity ->_world);
 	Entity->_world->AddObject(enemyS);

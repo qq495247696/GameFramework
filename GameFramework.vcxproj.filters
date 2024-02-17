@@ -317,9 +317,6 @@
     <ClCompile Include="Health.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="BackgroundUI.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="BattleLoop.cpp">
       <Filter>Fsm</Filter>
     </ClCompile>
@@ -331,6 +328,9 @@
     </ClCompile>
     <ClCompile Include="Place.cpp">
       <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundUI.cpp">
+      <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

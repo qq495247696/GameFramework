@@ -45,7 +45,7 @@ void Bullet::Draw()
 	_api->GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 
-
+	{
 	// ワールドマトリックスの初期化
 	D3DXMatrixIdentity(&_worldMtx);
 
@@ -88,10 +88,10 @@ void Bullet::Draw()
 
 	// ポリゴンの描画
 	_api->GetDeviceContext()->Draw(4, 0);
-	
+	}
 }
 
 bool Bullet::Discard() const
 {
-	return frame > 150.0f;
+	return frame > 100.0f;
 }

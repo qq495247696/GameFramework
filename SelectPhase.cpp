@@ -7,7 +7,8 @@
 #include "EmptyObject.h"
 #include "Player.h"
 #include "AssetManager.h"
-#include "collision.h"
+#include "FireTower.h"
+#include "ThunderTower.h"
 
 static EmptyObject* selectmode;
 static TowerType type = TowerType::Normal;
@@ -80,7 +81,7 @@ void SelectPhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 		}
 		else if (GetKeyboardPress(DIK_F3))
 		{
-			type = TowerType::Light;
+			type = TowerType::Thunder;
 		}
 		switch (type)
 		{
@@ -118,7 +119,7 @@ void SelectPhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 				}
 			}
 			break;
-		case Light:
+		case Thunder:
 			selectmode->SetModel(&AssetManager::Get()->_selectThunderTower);
 			if (Entity->_canBuild)
 			{
@@ -144,22 +145,27 @@ void SelectPhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 		{
 			switch (type)
 			{
-			case Normal:
-				NormalTower* nTower=new NormalTower(&AssetManager::Get()->_normalTower, Entity->GetComponent(), Entity->GetWorld());
+			case Normal:{
+				NormalTower* nTower = new NormalTower(&AssetManager::Get()->_normalTower, Entity->GetComponent(), Entity->GetWorld());
 				nTower->SetPosition({ cam->GetPosition().x,0, cam->GetPosition().z + 1 });
+				nTower->SetRotation(selectmode->GetRotation());
 				Entity->GetWorld()->AddObject(nTower);
-				break;
-		/*	case Fire:
-				break;
-			case Light:
-				break;*/
-		/*	default:
-				break;*/
+				break; }
+			case Fire: {
+				FireTower* fTower = new FireTower(&AssetManager::Get()->_fireTower, Entity->GetComponent(), Entity->GetWorld());
+				fTower->SetPosition({ cam->GetPosition().x,0, cam->GetPosition().z + 1 });
+				fTower->SetRotation(selectmode->GetRotation());
+				Entity->GetWorld()->AddObject(fTower);
+				break; }
+			case Thunder: {
+				ThunderTower* tTower = new ThunderTower(&AssetManager::Get()->_thunderTower, Entity->GetComponent(), Entity->GetWorld());
+				tTower->SetPosition({ cam->GetPosition().x,0, cam->GetPosition().z + 1 });
+				tTower->SetRotation(selectmode->GetRotation());
+				Entity->GetWorld()->AddObject(tTower);
+				break; }
 			}
-			
 			Entity->fsm->ChangeState(BattlePhase::Instance());
 		}
-
 		cam->SetCamera(api);
 	}
 }

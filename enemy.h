@@ -38,6 +38,7 @@ public:
 	D3DXVECTOR3     _size;		// “–‚½‚è”»’è—pƒTƒCƒY
 	D3DXVECTOR3*	_wayLine;
 	int				_target;
+	int				_hp;
 
 	// Í¨¹ý Object ¼Ì³Ð
 	void Update(double deltaTime) override;

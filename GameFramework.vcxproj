@@ -181,7 +181,6 @@
     <ClInclude Include="model.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="player.h" />
-    <ClInclude Include="polyline.h" />
     <ClInclude Include="result.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="SelectPhase.h" />
@@ -225,7 +224,6 @@
     <ClCompile Include="model.cpp" />
     <ClCompile Include="Place.cpp" />
     <ClCompile Include="player.cpp" />
-    <ClCompile Include="polyline.cpp" />
     <ClCompile Include="DirectXAPI.cpp" />
     <ClCompile Include="PreparationLoop.cpp" />
     <ClCompile Include="Render2D.cpp" />

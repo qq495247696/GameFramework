@@ -11,7 +11,7 @@
 #include "TitleScene.h"
 void ResultScene::InitScene(Game* game, RenderComponentManager* rManager)
 {
-	Result* result = new Result(AssetManager::Get()->_titleTexNo, rManager->_render2D, _world);
+	Result* result = new Result(AssetManager::Get()->_resultTexNo, rManager->_render2D, _world);
 	_world->AddObject(result);
 }
 

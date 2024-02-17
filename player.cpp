@@ -12,7 +12,6 @@
 #include "model.h"
 #include "bullet.h"
 #include "shadow.h"
-#include "polyline.h"
 #include "sound.h"
 
 

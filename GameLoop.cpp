@@ -5,5 +5,9 @@
 
 void GameLoop::Update(float deltaTime)
 {
+	UiEvent	e;
 	_fsm.Update(deltaTime);
+	e._time = _turnTime;
+	e._wave = _wave;
+	_obsever.Notify(e);
 }

@@ -156,6 +156,8 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="enemy.h" />
+    <ClInclude Include="enemy02.h" />
+    <ClInclude Include="enemy03.h" />
     <ClInclude Include="EnemyBullet.h" />
     <ClInclude Include="EnemySpwaner.h" />
     <ClInclude Include="fade.h" />
@@ -191,6 +193,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="ThunderTower.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="TimeUI.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="NormalTower.h" />
@@ -211,6 +214,8 @@
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="EmptyObject.cpp" />
     <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="enemy02.cpp" />
+    <ClCompile Include="enemy03.cpp" />
     <ClCompile Include="EnemyBullet.cpp" />
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="FireTower.cpp" />
@@ -238,9 +243,12 @@
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="ThunderTower.cpp" />
+    <ClCompile Include="TimeUI.cpp" />
     <ClCompile Include="title.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="NormalTower.cpp" />
+    <ClCompile Include="Turn.cpp" />
+    <ClCompile Include="UiInfoSubject.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>

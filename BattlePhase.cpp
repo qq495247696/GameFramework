@@ -32,8 +32,6 @@ void BattlePhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 		Entity->lerpT = 0;
 	}
 
-
-
 	auto cam = Entity->GetWorld()->GetObjectWithTag<Camera>("Camera");
 	//ˆÚ“®‘¬“x‚ÌŒ¸Šˆ—
 	Entity->SetSpeed(Entity->GetSpeed()*0.9);
@@ -48,12 +46,12 @@ void BattlePhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 	if (GetKeyboardPress(DIK_W))
 	{
 		Entity->SetVel({ 0,0,1 });
-		Entity->SetSpeed(1350);
+		Entity->SetSpeed(500);
 	}
 	if (GetKeyboardPress(DIK_S))
 	{
 		Entity->SetVel({ 0,0,-1 });
-		Entity->SetSpeed(1350);
+		Entity->SetSpeed(500);
 	}
 
 	{

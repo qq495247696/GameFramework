@@ -5,6 +5,7 @@
  * \date   2024 \ 02 \ 16
  *********************************************************************/
 #include "GameScene.h"
+#include "ResultScene.h"
 #include "game.h"
 #include "RenderComponent.h"
 #include "EnemyBullet.h"
@@ -23,6 +24,8 @@
 #include "BackgroundUI.h"
 #include "Health.h"
 #include "Place.h"
+#include "Turn.h"
+#include "timeUi.h"
 
 void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 {
@@ -49,17 +52,23 @@ void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 
 
 	//ui
-	Health* hp = new Health(AssetManager::Get()->_front, rManager->_render2D, _world, nullptr);
+	TimeUI* tUi = new TimeUI(AssetManager::Get()->_front, rManager->_render2D, _world, nullptr);
+	Turn* turn = new Turn(AssetManager::Get()->_front, rManager->_render2D, _world, tUi);
+	Health* hp = new Health(AssetManager::Get()->_front, rManager->_render2D, _world, turn);
 	BackgroundUi* bg = new BackgroundUi(AssetManager::Get()->_backGroundTexNo, rManager->_render2D,_world, hp);
 	_world->AddObject(bg);
-	_turn = new GameLoop(_world, rManager->_render3D);
+	home->_obsever.AddSubject(&hp->_subject);
+	_wave = new GameLoop(_world, rManager->_render3D);
+	_wave->_obsever.AddSubject(&turn->_subject);
+	_wave->_obsever.AddSubject(&tUi->_subject);
+
 }
 
 void GameScene::UpdateScene(double deltaTime,Game* game, RenderComponentManager* rManager)
 {
 	auto cam = _world->GetObjectWithTag<Camera>("Camera");
 	Debug::Get()->NewFrame();
-	_turn->Update(deltaTime);
+	_wave->Update(deltaTime);
 	_world->Update(deltaTime);
 	Debug::Get()->Update();
 	UpdateCollision(_world);
@@ -73,8 +82,12 @@ void GameScene::UpdateScene(double deltaTime,Game* game, RenderComponentManager*
 	_world->Draw();
 	Debug::Get()->Draw();
 	rManager->GetGraphicApi()->Present();
-
 	_world->CleanUp();
+	if (_world->GetObjectWithTag<Home>("Home")->GetHp() <= 0)
+	{
+		StopSoundAll();
+		game->ChangeScene(new ResultScene());
+	}
 }
 
 void GameScene::UnInitScene(Game* game)

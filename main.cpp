@@ -164,56 +164,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
-//=============================================================================
-// 初期化処理
-//=============================================================================
-HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
-{
 
-	// 入力処理の初期化
-	InitInput(hInstance, hWnd);
-
-	// サウンド処理の初期化
-	InitSound(hWnd);
-
-	// フェード処理の初期化
-	InitFade();
-
-	// スプライトの初期化
-	//InitSprite();
-
-	//// 背面ポリゴンをカリング
-	//SetCullingMode(CULL_MODE_BACK);
-
-	//シーンの初期化（タイトルからスタート）
-	SetFadeColor(0.0f, 0.0f, 0.0f);
-	//(SCENE_TITLE);
-
-	return S_OK;
-}
-
-//=============================================================================
-// 終了処理
-//=============================================================================
-void Uninit(void)
-{
-	// スプライトの終了処理
-	//UninitSprite();
-
-	// 頂点管理の終了処理
-	UninitFade();
-
-	//テクスチャの解放
-	//UninitTexture();
-
-	// サウンドの終了処理
-	StopSoundAll();
-	UninitSound();
-
-	//入力の終了処理
-	UninitInput();
-
-}
 
 #ifdef _DEBUG
 char* GetDebugStr(void)

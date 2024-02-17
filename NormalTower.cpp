@@ -9,7 +9,6 @@
 #include "NormalTower.h"
 #include "Enemybullet.h"
 #include "shadow.h"
-#include "polyline.h"
 #include "sound.h"
 #include "BattlePhase.h"
 #include "World.h"
@@ -33,7 +32,7 @@ void NormalTower::Attack(double deltaTime)
 {
 	D3DXVECTOR3 x = { 0.0,0.0,1.0 };
 	time += deltaTime;
-	if (time > 1.5)
+	if (time > _attackSpeed)
 	{
 		D3DXVECTOR4 pOut;
 		D3DXMATRIX rot;
@@ -87,7 +86,7 @@ void NormalTower::FoundedEnemy(float deltaTime)
 	{
 
 		Vec3 velVec = x->GetPosition() - _position;
-		if (D3DXVec3Length(&velVec) < 500)
+		if (D3DXVec3Length(&velVec) < 850)
 		{
 			Vec3 forword = { 0,0,1 };
 			Vec3 length = velVec;

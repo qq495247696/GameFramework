@@ -1,6 +1,6 @@
 # This file uses centimeters as units for non-parametric coordinates.
 
-mtllib player.mtl
+mtllib enemy02.mtl
 g default
 v 0.148778 3.369805 -0.048341
 v 0.126558 3.369805 -0.091950

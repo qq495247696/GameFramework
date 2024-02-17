@@ -4,7 +4,7 @@
 #include "AssetManager.h"
 void PreparationLoop::EnterState(GameLoop* Entity, DirectXAPI* api)
 {
-	Entity->_turnTime= 30.0f;
+	Entity->_turnTime= 40.0f;
 	SetVolume(AssetManager::Get()->_battleBgm, 0.3f);
 }
 

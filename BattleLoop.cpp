@@ -7,7 +7,7 @@
 void BattleLoop::EnterState(GameLoop* Entity, DirectXAPI* api)
 {
 	SetVolume(AssetManager::Get()->_battleBgm, 0.7f);
-	Entity->_turnTime = 70.0f;
+	Entity->_turnTime = 70.0;
 	EnemySpwaner<Enemy>* enemyS = new EnemySpwaner<Enemy>({ 0,0,10050 }, Entity->_render, 60.0f, Entity ->_world);
 	Entity->_world->AddObject(enemyS);
 }
@@ -24,5 +24,5 @@ void BattleLoop::StayState(GameLoop* Entity, float deltaTime, DirectXAPI* api)
 
 void BattleLoop::ExitState(GameLoop* Entity, DirectXAPI* api)
 {
-	Entity->_turn += 1;
+	Entity->_wave += 1;
 }

@@ -6,7 +6,7 @@
  *********************************************************************/
 #pragma once
 #include "object.h"
-
+class UiInfoSubject;
 class Ui:public Object
 {
 public:
@@ -16,7 +16,11 @@ public:
 	{
 	}
 
+	friend  UiInfoSubject;
 protected:
-	Ui*					_uiPartner;
-
+	Ui*						_uiPartner;
+	int						_hp;
+	double					_time;
+	int						_wave;
+	int						_moneny;
 };

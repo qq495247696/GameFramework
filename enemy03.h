@@ -12,11 +12,11 @@
 //*****************************************************************************
 #define ENEMY_NUM 20
 
-class Enemy:public Object
+class Enemy03:public Object
 {
 public:
 
-	Enemy(DX11_MODEL* model,const Vec3& Pos ,Render* render, D3DXVECTOR3* wayLine,World* world) :Object(model, render, "Enemy",world),_wayLine(wayLine)
+	Enemy03(DX11_MODEL* model,const Vec3& Pos ,Render* render, D3DXVECTOR3* wayLine,World* world) :Object(model, render, "Enemy03",world),_wayLine(wayLine)
 	{
 		_position = Pos;
 		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -29,7 +29,7 @@ public:
 		//方向を単位ベクトル化する
 		D3DXVec3Normalize(&_vel, &_vel);
 	}
-	~Enemy()override
+	~Enemy03()override
 	{
 		
 	}

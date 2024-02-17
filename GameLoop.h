@@ -3,10 +3,11 @@
 #include "StateMachine.h"
 #include "PreparationLoop.h"
 #include "BattleLoop.h"
+#include "UiInfoObsever.h"
 class GameLoop
 {
 public:
-	GameLoop(World* world,Render *render):_world(world), _turn(1), _turnTime(30.0f),_battle(false),_render(render)
+	GameLoop(World* world,Render *render):_world(world), _wave(1), _turnTime(40.0f),_battle(false),_render(render)
 	{
 		_fsm.SetCurrentState(PreparationLoop::Instance());
 		_fsm.ChangeState(PreparationLoop::Instance());
@@ -19,10 +20,11 @@ public:
 
 	friend PreparationLoop;
 	friend BattleLoop;
+	UiInfoObsever				_obsever;
 private:
-	int							_turn;
+	int							_wave;
 	int							_enemyNum;
-	float						_turnTime;
+	double						_turnTime;
 	World*						_world;
 	Render*						_render;
 	bool						_battle;

@@ -23,7 +23,9 @@ public:
 	{
 		
 		LoadModel((char*)"data/MODEL/home.obj", &_home,api);
-		LoadModel((char*)"data/MODEL/Enemy01.obj", &_enemy, api);
+		LoadModel((char*)"data/MODEL/Enemy01.obj", &_enemy01, api);
+		LoadModel((char*)"data/MODEL/enemy02.obj", &_enemy02, api);
+		LoadModel((char*)"data/MODEL/enemy03.obj", &_enemy03, api);
 		LoadModel((char*)"data/MODEL/Tower.obj", &_normalTower, api);
 		LoadModel((char*)"data/MODEL/Tower2.obj", &_fireTower, api);
 		LoadModel((char*)"data/MODEL/Tower3.obj", &_thunderTower, api);
@@ -32,12 +34,13 @@ public:
 		LoadModel((char*)"data/MODEL/Tower3.obj", &_selectThunderTower, api);
 		LoadModel((char*)"data/MODEL/wall.obj", &_wall, api);
 		LoadModel((char*)"data/MODEL/place.obj", &_place, api);
+		LoadModel((char*)"data/MODEL/EnemyBullet.obj", &_enemyBullet, api);
 
 		_bulletTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/bullet000.png",api);
 		_feildTexNo= TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/field003.png", api);
 		_skyBoxTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/sky001.jpg", api);
 		_titleTexNo= TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/title.jpg", api);
-		_resultTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/result.png", api);
+		_resultTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/result.jpg", api);
 		_backGroundTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/Ui.png", api);
 		_front = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/font.png", api);
 
@@ -45,6 +48,7 @@ public:
 		_fireShotSe = LoadSound((char*)"data/SE/shot001.wav");
 		_normalShootSe= LoadSound((char*)"data/SE/normalShoot.wav");
 		_battleBgm = LoadSound((char*)"data/BGM/Battle.wav");
+		_hitedSe = LoadSound((char*)"data/SE/defend001.wav");
 	}
 	void UnInit()
 	{
@@ -53,7 +57,13 @@ public:
 		UnloadModel(&_normalTower);
 		UnloadModel(&_fireTower);
 		UnloadModel(&_thunderTower);
-		UnloadModel(&_enemy);
+		UnloadModel(&_enemy01);
+		UnloadModel(&_enemy02);
+		UnloadModel(&_enemy03);
+		UnloadModel(&_selectNormalTower);
+		UnloadModel(&_selectFireTower);
+		UnloadModel(&_selectThunderTower);
+		UnloadModel(&_place);
 		TextureTool::Get()->UninitTexture();
 	}
 
@@ -63,11 +73,14 @@ public:
 	DX11_MODEL				_normalTower;
 	DX11_MODEL				_fireTower;
 	DX11_MODEL				_thunderTower;
-	DX11_MODEL				_enemy;
+	DX11_MODEL				_enemy01;
+	DX11_MODEL				_enemy02;
+	DX11_MODEL				_enemy03;
 	DX11_MODEL				_selectNormalTower;
 	DX11_MODEL				_selectFireTower;
 	DX11_MODEL				_selectThunderTower;
 	DX11_MODEL				_place;
+	DX11_MODEL				_enemyBullet;
 	//texture
 	int						_bulletTexNo;
 	int						_feildTexNo;
@@ -81,4 +94,5 @@ public:
 	int						_fireShotSe;
 	int						_normalShootSe;
 	int						_battleBgm;
+	int						_hitedSe;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include"Ui.h"
+#include"UiInfoSubject.h"
 class BackgroundUi:public Ui
 {
 public:
@@ -18,5 +19,4 @@ public:
 	void Update(double deltaTime) override;
 	void Draw() override;
 	bool Discard() const override;
-
 };

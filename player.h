@@ -158,7 +158,7 @@ public:
 		_scale = D3DXVECTOR3(2.0f, 2.0f, 2.0f);
 		_vel = { 0,0,0 };
 		_use = true;
-		_speed = 1350;
+		_speed = 500;
 		//摉偨傝敾掕梡僒僀僘偺弶婜愝掕
 		size = D3DXVECTOR3(100.0f, 100.0f, 100.0f);
 		frame = 0;

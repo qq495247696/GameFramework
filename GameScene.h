@@ -16,6 +16,6 @@ public:
 	void UpdateScene(double deltaTime,Game* game, RenderComponentManager* rManager) override;
 	void UnInitScene(Game* game) override;
 private:
-	GameLoop*		_turn;
+	GameLoop*		_wave;
 };
 

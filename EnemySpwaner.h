@@ -46,7 +46,7 @@ void EnemySpwaner<T>::Update(double deltaTime)
 	_existenceTime -= deltaTime;
 	if (Time::Get()->NowTime() >= _intervalTime)
 	{
-		T* enemy = new T(&AssetManager::Get()->_enemy, _position, _renderComponent, &way._wayLine1[0], GetWorld());
+		T* enemy = new T(&AssetManager::Get()->_enemy02, _position, _renderComponent, &way._wayLine1[0], GetWorld());
 		GetWorld()->AddObject(enemy);
 		_intervalTime = (Time::Get()->NowTime() + 3.0f);
 	}

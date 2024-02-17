@@ -204,6 +204,15 @@
     <ClInclude Include="Place.h">
       <Filter>GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="TimeUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy02.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy03.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fade.cpp">
@@ -325,6 +334,21 @@
     </ClCompile>
     <ClCompile Include="BackgroundUI.cpp">
       <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UiInfoSubject.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Turn.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy03.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy02.cpp">
+      <Filter>GameObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

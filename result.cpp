@@ -6,7 +6,7 @@
  *********************************************************************/
 #include "result.h"
 #include "texture.h"
-#include "fade.h"
+#include "Render2D.h"
 
 void Result::Update(double deltaTime)
 {

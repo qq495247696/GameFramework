@@ -17,4 +17,3 @@ public:
 	bool Discard() const override;
 };
 
-

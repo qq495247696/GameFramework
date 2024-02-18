@@ -7,13 +7,12 @@
 #include "input.h"
 #include "camera.h"
 #include "NormalTower.h"
-#include "Enemybullet.h"
-#include "shadow.h"
 #include "sound.h"
 #include "BattlePhase.h"
 #include "World.h"
 #include "enemy.h"
 #include "AssetManager.h"
+#include "Tbullet.h"
 
 static float rotValue = D3DX_PI / 90;
 void NormalTower::Update(double deltaTime)
@@ -28,18 +27,13 @@ void NormalTower::Update(double deltaTime)
 	
 }
 
-void NormalTower::Attack(double deltaTime)
+void NormalTower::Attack(double deltaTime, Vec3 vel)
 {
-	D3DXVECTOR3 x = { 0.0,0.0,1.0 };
 	time += deltaTime;
 	if (time > _attackSpeed)
 	{
-		D3DXVECTOR4 pOut;
-		D3DXMATRIX rot;
-		D3DXMatrixIdentity(&rot);
-		D3DXMatrixRotationY(&rot, _rotate.y);
-		D3DXVec3Transform(&pOut, &x, &rot);
-		//SetEnemyBullet(_position, { pOut.x,0,pOut.z });
+		TBullet *nBullet = new TBullet(&AssetManager::Get()->_normalTBullet,{_position.x,55.0f,_position.z }, vel, 3500,_attack, _renderComponent, GetWorld());
+		GetWorld()->AddObject(nBullet);
 		PlaySound(AssetManager::Get()->_normalShootSe, 0);
 		time = 0;
 	}
@@ -80,7 +74,7 @@ void NormalTower::NoFoundedEnemy()
 
 void NormalTower::FoundedEnemy(float deltaTime)
 {
-	auto enemy = GetWorld()->GetObjectsWithTag<Enemy>("Enemy");
+	auto enemy = GetWorld()->GetObjectsWithTag<Object>("Enemy");
 
 	for (auto x : enemy)
 	{
@@ -106,8 +100,13 @@ void NormalTower::FoundedEnemy(float deltaTime)
 			}
 			_finded = true;
 
-			Attack(deltaTime);
+			Attack(deltaTime, velVec);
 			break;
+		}
+		else
+		{
+			_finded = false
+;
 		}
 	}
 }

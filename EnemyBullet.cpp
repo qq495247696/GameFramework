@@ -10,20 +10,7 @@
 
 void EnemyBullet::Update(double deltaTime)
 {
-	if (_use)
-	{
-		//消滅処理
-		if (frame > 500.0f)
-		{
-			_use = false;
-			frame = 0;
-		}
-
-		//座標の更新
-		_position += (_vel * _speed)*deltaTime;
-		//時間経過
-		frame += 1.0f;
-	}
+	_position += (_vel * _speed)*deltaTime;
 }
 
 void EnemyBullet::Draw()
@@ -36,5 +23,12 @@ void EnemyBullet::Draw()
 
 bool EnemyBullet::Discard() const
 {
-	return false;
+	if (_use)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }

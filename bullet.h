@@ -12,7 +12,7 @@ class World;
 class Bullet:public Object
 {
 public:
-	Bullet(const int texNo, DirectXAPI* api, World* world, Vec3 pos, Vec3 vel) :Object(texNo, "Bullet", world), _api(api)
+	Bullet(const int texNo, DirectXAPI* api, World* world, Vec3 pos, Vec3 vel) :Object(texNo, "Bullet", world), _api(api), _attack(70)
 	{
 		// 頂点バッファ生成
 		D3D11_BUFFER_DESC bd;
@@ -66,7 +66,7 @@ public:
 		_vel = vel;
 		size = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 		_speed = 750;
-		_use = false;
+		_use = true;
 		frame = 0;
 	};
 	~Bullet()override 
@@ -79,7 +79,7 @@ public:
 	}
 	float					frame;	// フレーム数
 	D3DXVECTOR3				size;		// 当たり判定用サイズ
-
+	int						_attack;
 
 
 	void Update(double deltaTime) override;

@@ -12,6 +12,7 @@
 #include "Render.h"
 #include "model.h"
 #include "collision.h"
+#include "UiInfoObsever.h"
 //*****************************************************************************
 // 儅僋儘掕媊
 //*****************************************************************************
@@ -109,14 +110,14 @@ static MOTIONSET g_WaitMotion =
 };
 
 
-
+class UiInfoObsever;
 class Player :public Object
 {
 public:
 	Player() = default;
-	Player(DX11_MODEL* model, Render* render,DirectXAPI* api, World* world) :Object(model, render, "Player", world),_api(api)
+	Player(DX11_MODEL* model, Render* render,DirectXAPI* api, World* world) :Object(model, render, "Player", world),_api(api), _money(1000)
 	{
-		fsm = new StateMachine<Player>(this, _api);
+		_fsm = new StateMachine<Player>(this, _api);
 		_hitBox._pos=this->_position;
 		_hitBox._size = { 80,100,40 };
 		// 位置・回転・スケールの初期設定
@@ -164,8 +165,8 @@ public:
 		frame = 0;
 		lerpT = 0;
 		//_se = LoadSound((char*)"data/SE/shot001.wav");
-		fsm->SetCurrentState(BattlePhase::Instance());
-		fsm->ChangeState(BattlePhase::Instance());
+		_fsm->SetCurrentState(BattlePhase::Instance());
+		_fsm->ChangeState(BattlePhase::Instance());
 		_canBuild = false;
 		// 塭偺僙僢僩乮塭偼崅偝傪0偵偟偰昞帵偝偣傞乯
 		//_shadow = SetShadow(D3DXVECTOR3(_pos.x, 0.0f, _pos.z), 200.0f);
@@ -174,31 +175,32 @@ public:
 
 	~Player()
 	{
-		delete fsm;
+		delete _fsm;
 	}
 
-	bool			_canBuild;
-	int				shadow;		// 塭偺幆暿斣崋
-	D3DXVECTOR3     size;		// 摉偨傝敾掕梡僒僀僘
-	int				currency;
-	int				se;
-	float			lerpT;
-	float 			frame;
-	Vec3			topDownPosition;
-	Vec3			topDownRotation;
-	Vec3			thirdPersonPosition;
-	Vec3			thirdPersonRotation;
-	HitBox			_hitBox;
-	DirectXAPI*		_api;
+	bool					_canBuild;
+	int						shadow;		// 塭偺幆暿斣崋
+	D3DXVECTOR3				size;		// 摉偨傝敾掕梡僒僀僘
+	int						currency;
+	int						_money;
+	float					lerpT;
+	float 					frame;
+	Vec3					topDownPosition;
+	Vec3					topDownRotation;
+	Vec3					thirdPersonPosition;
+	Vec3					thirdPersonRotation;
+	HitBox					_hitBox;
+	DirectXAPI*				_api;
+	StateMachine<Player>*	_fsm;
+	UiInfoObsever			_obsever;
+
+	DX11_MODEL				g_Model_Body;
+	DX11_MODEL				g_Model_RArm;
+	DX11_MODEL				g_Model_LArm;
+	DX11_MODEL				g_Model_RLeg;
+	DX11_MODEL				g_Model_LLeg;
 
 
-	DX11_MODEL	g_Model_Body;
-	DX11_MODEL	g_Model_RArm;
-	DX11_MODEL	g_Model_LArm;
-	DX11_MODEL	g_Model_RLeg;
-	DX11_MODEL	g_Model_LLeg;
-
-	StateMachine<Player> *fsm;
 	Render* GetComponent() const { return _renderComponent; }
 	void DrawAnim(float* frame, D3DXVECTOR3& rot, D3DXVECTOR3& pos);
 	void Update(double deltaTime) override;

@@ -9,6 +9,7 @@
 #include "model.h"
 #include "World.h"
 #include "enemy.h"
+#include "Tbullet.h"
 
 void ThunderTower::Update(double deltaTime)
 {
@@ -20,15 +21,16 @@ void ThunderTower::Update(double deltaTime)
         Vec3 velVec = x->GetPosition() - _position;
         if (D3DXVec3Length(&velVec) < _attackDistance)
         {
+            D3DXVec3Normalize(&velVec, &velVec);
             _finded=true;
             _model->SubsetArray[24].Material.Material.Diffuse = { 1.0,1.0,0.0,1.0 };
 
             _attackTime += deltaTime;
             if (_attackTime > _attackSpeed)
             {
-               
-                //SetEnemyBullet(_position, { pOut.x,0,pOut.z });
-               // PlaySound(AssetManager::Get()->_fireShotSe, 0);
+                TBullet* nBullet = new TBullet(&AssetManager::Get()->_thunderTBullet, { _position.x,55.0f,_position.z }, velVec, 3500, _attack, _renderComponent, GetWorld());
+                GetWorld()->AddObject(nBullet);
+                PlaySound(AssetManager::Get()->_normalShootSe, 0);
                 _attackTime = 0;
             }
         }

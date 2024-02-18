@@ -19,7 +19,7 @@ template<class T>
 class EnemySpwaner:public Object
 {
 public:
-	EnemySpwaner(Vec3 pos,Render* render ,double time, World* world) :Object(render,"EnemySpawner", world), _existenceTime(time), _intervalTime(0)
+	EnemySpwaner(Vec3 pos,Render* render ,double time, float createTime,World* world, Vec3* wayLine) :Object(render,"EnemySpawner", world), _existenceTime(time), _intervalTime(0), _createSpeed(createTime), _wayLine(wayLine)
 	{
 		_position = pos;
 	}
@@ -36,7 +36,8 @@ private:
 	int				_spawnedNum;
 	double			_existenceTime;
 	double			_intervalTime;
-	
+	float			_createSpeed;
+	Vec3*			_wayLine;
 };
 
 
@@ -46,9 +47,9 @@ void EnemySpwaner<T>::Update(double deltaTime)
 	_existenceTime -= deltaTime;
 	if (Time::Get()->NowTime() >= _intervalTime)
 	{
-		T* enemy = new T(&AssetManager::Get()->_enemy02, _position, _renderComponent, &way._wayLine1[0], GetWorld());
+		T* enemy = new T( _position, _renderComponent, _wayLine, GetWorld());
 		GetWorld()->AddObject(enemy);
-		_intervalTime = (Time::Get()->NowTime() + 3.0f);
+		_intervalTime = (Time::Get()->NowTime() + _createSpeed);
 	}
 }
 template<class T>

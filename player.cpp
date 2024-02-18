@@ -11,21 +11,9 @@
 #include "texture.h"
 #include "model.h"
 #include "bullet.h"
-#include "shadow.h"
 #include "sound.h"
 
 
-
-
-//g_DirectionalLight.Type = LIGHT_TYPE_DIRECTIONAL;				// 暲峴岝尮
-//g_DirectionalLight.Enable = true;								// 偙偺儔僀僩傪ON
-//g_DirectionalLight.Position = D3DXVECTOR4(0.0f, 50.0f, 200.0f, 1.0f);
-//g_DirectionalLight.Direction = D3DXVECTOR4(1.0f, -4.0f, -2.0f, 1.0f);// 岝偺岦偒
-//g_DirectionalLight.Diffuse = D3DXCOLOR(0.5f, 0.5f, 0.5f, 1.0f);	// 岝偺怓
-//g_DirectionalLight.Ambient = D3DXCOLOR(0.2f, 0.2f, 0.2f, 1.0f);
-//g_DirectionalLight.Specular = D3DXCOLOR(0.8f, 0.8f, 0.8f, 1.0f);
-//
-//SetLight(0, &g_DirectionalLight);
 void Player::DrawAnim(float* frame, D3DXVECTOR3& rot, D3DXVECTOR3& pos)
 {
 	MOTIONSET* pMotion;
@@ -270,8 +258,10 @@ void Player::DrawAnim(float* frame, D3DXVECTOR3& rot, D3DXVECTOR3& pos)
 
 void Player::Update(double deltaTime)
 {
-	//SetPositionShadow(g_Player.shadow, D3DXVECTOR3(g_Player.pos.x, 0.0f, g_Player.pos.z));
-	fsm->Update(deltaTime);
+	UiEvent e;
+	e._moneny = _money;
+	_obsever.Notify(e);
+	_fsm->Update(deltaTime);
 }
 
 void Player::Draw()

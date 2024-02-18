@@ -23,7 +23,7 @@ class NormalTower:public Object
 {
 public:
 	NormalTower(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "NormalTower", world)
-		, _finded(false), _attackSpeed(1.5), _attack(100.0f), _attackDistance(850.0f)
+		, _finded(false), _attackSpeed(1.5), _attack(200.0f), _attackDistance(850.0f)
 	{
 		_position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -39,7 +39,7 @@ public:
 	void Draw() override;
 	bool Discard() const override;
 private:
-	void Attack(double deltaTime);
+	void Attack(double deltaTime, Vec3 vel);
 	void NoFoundedEnemy();
 	void FoundedEnemy(float deltaTime);
 	int				shadow;		// âeÇÃéØï î‘çÜ

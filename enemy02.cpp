@@ -9,11 +9,11 @@
 #include "enemy02.h"
 #include "texture.h"
 #include "player.h"
-#include "shadow.h"
 #include <random>
 #include "BattlePhase.h"
 #include "World.h"
 #include "Home.h"
+#include "EnemyBullet.h"
 
 
 //*****************************************************************************
@@ -66,6 +66,20 @@ void Enemy02::motor(double deltaTime)
 		{
 			_position += velVec * _speed * deltaTime;
 		}
+		else
+		{
+			_attackTime += deltaTime;
+			if (_attackTime > 2.5f)
+			{
+				Vec3 velVec = Vec3(GetWorld()->GetObjectWithTag<Home>("Home")->GetPosition().x, 0, GetWorld()->GetObjectWithTag<Home>("Home")->GetPosition().z) - _position;
+				D3DXVec3Normalize(&velVec, &velVec);
+				PlaySound(AssetManager::Get()->_enemyShotSe, 0);
+				SetVolume(AssetManager::Get()->_enemyShotSe, 0.4);
+				EnemyBullet* eBullet = new EnemyBullet({ _position.x,90,_position.z }, velVec, _atk, _renderComponent, GetWorld());
+				GetWorld()->AddObject(eBullet);
+				_attackTime = 0;
+			}
+		}
 	}
 
 }
@@ -80,5 +94,15 @@ void Enemy02::Draw()
 
 bool Enemy02::Discard() const
 {
-	return false;
+
+	if (_hp <= 0)
+	{
+		return true;
+		auto p = GetWorld()->GetObjectWithTag<Player>("Player");
+		p->_money += 60;
+	}
+	else
+	{
+		return false;
+	}
 }

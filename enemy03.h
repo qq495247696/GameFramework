@@ -6,7 +6,7 @@
  *********************************************************************/
 #pragma once
 #include "object.h"
-
+#include "AssetManager.h"
 //*****************************************************************************
 // ƒ}ƒNƒ’è‹`
 //*****************************************************************************
@@ -16,15 +16,16 @@ class Enemy03:public Object
 {
 public:
 
-	Enemy03(DX11_MODEL* model,const Vec3& Pos ,Render* render, D3DXVECTOR3* wayLine,World* world) :Object(model, render, "Enemy03",world),_wayLine(wayLine)
+	Enemy03(const Vec3& Pos ,Render* render, D3DXVECTOR3* wayLine,World* world) :Object(&AssetManager::Get()->_enemy03, render, "Enemy",world),_wayLine(wayLine), _attackTime(0.0), _atk(80)
 	{
 		_position = Pos;
 		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		_scale = D3DXVECTOR3(3.0f, 3.0f, 3.0f);
 		_vel = D3DXVECTOR3(0, 0.0f, 0);
-		_speed = 350.0f;
+		_speed = 400.0f;
 		_use = false;
 		_target = 0;
+		_hp = 3600;
 		_size = D3DXVECTOR3(35.0f, 50.0f, 35.0f);
 		//•ûŒü‚ð’PˆÊƒxƒNƒgƒ‹‰»‚·‚é
 		D3DXVec3Normalize(&_vel, &_vel);
@@ -38,7 +39,8 @@ public:
 	D3DXVECTOR3     _size;		// “–‚½‚è”»’è—pƒTƒCƒY
 	D3DXVECTOR3*	_wayLine;
 	int				_target;
-	int				_hp;
+	double			_attackTime;
+	int				_atk;
 
 	// Í¨¹ý Object ¼Ì³Ð
 	void Update(double deltaTime) override;

@@ -6,7 +6,6 @@
  *********************************************************************/
 #include "title.h"
 #include "texture.h"
-#include "fade.h"
 
 
 void Title::Update(double deltaTime)

@@ -35,6 +35,10 @@ public:
 		LoadModel((char*)"data/MODEL/wall.obj", &_wall, api);
 		LoadModel((char*)"data/MODEL/place.obj", &_place, api);
 		LoadModel((char*)"data/MODEL/EnemyBullet.obj", &_enemyBullet, api);
+		LoadModel((char*)"data/MODEL/NTbullet.obj", &_normalTBullet, api);
+		LoadModel((char*)"data/MODEL/FTbullet.obj", &_fireTBullet, api);
+		LoadModel((char*)"data/MODEL/TTbullet.obj", &_thunderTBullet, api);
+
 
 		_bulletTexNo = TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/bullet000.png",api);
 		_feildTexNo= TextureTool::Get()->LoadTexture((char*)"data/TEXTURE/field003.png", api);
@@ -49,6 +53,8 @@ public:
 		_normalShootSe= LoadSound((char*)"data/SE/normalShoot.wav");
 		_battleBgm = LoadSound((char*)"data/BGM/Battle.wav");
 		_hitedSe = LoadSound((char*)"data/SE/defend001.wav");
+		_enemyShotSe= LoadSound((char*)"data/SE/shot000.wav");
+
 	}
 	void UnInit()
 	{
@@ -64,6 +70,10 @@ public:
 		UnloadModel(&_selectFireTower);
 		UnloadModel(&_selectThunderTower);
 		UnloadModel(&_place);
+		UnloadModel(&_enemyBullet);
+		UnloadModel(&_normalTBullet);
+		UnloadModel(&_fireTBullet);
+		UnloadModel(&_thunderTBullet);
 		TextureTool::Get()->UninitTexture();
 	}
 
@@ -81,6 +91,9 @@ public:
 	DX11_MODEL				_selectThunderTower;
 	DX11_MODEL				_place;
 	DX11_MODEL				_enemyBullet;
+	DX11_MODEL				_normalTBullet;
+	DX11_MODEL				_fireTBullet;
+	DX11_MODEL				_thunderTBullet;
 	//texture
 	int						_bulletTexNo;
 	int						_feildTexNo;
@@ -95,4 +108,5 @@ public:
 	int						_normalShootSe;
 	int						_battleBgm;
 	int						_hitedSe;
+	int						_enemyShotSe;
 };

@@ -26,6 +26,8 @@
 #include "Place.h"
 #include "Turn.h"
 #include "timeUi.h"
+#include "Gold.h"
+
 
 void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 {
@@ -52,7 +54,8 @@ void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 
 
 	//ui
-	TimeUI* tUi = new TimeUI(AssetManager::Get()->_front, rManager->_render2D, _world, nullptr);
+	Gold* gold = new Gold(AssetManager::Get()->_front, rManager->_render2D, _world, nullptr);
+	TimeUI* tUi = new TimeUI(AssetManager::Get()->_front, rManager->_render2D, _world, gold);
 	Turn* turn = new Turn(AssetManager::Get()->_front, rManager->_render2D, _world, tUi);
 	Health* hp = new Health(AssetManager::Get()->_front, rManager->_render2D, _world, turn);
 	BackgroundUi* bg = new BackgroundUi(AssetManager::Get()->_backGroundTexNo, rManager->_render2D,_world, hp);
@@ -61,6 +64,7 @@ void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 	_wave = new GameLoop(_world, rManager->_render3D);
 	_wave->_obsever.AddSubject(&turn->_subject);
 	_wave->_obsever.AddSubject(&tUi->_subject);
+	player->_obsever.AddSubject(&gold->_subject);
 
 }
 
@@ -86,6 +90,10 @@ void GameScene::UpdateScene(double deltaTime,Game* game, RenderComponentManager*
 	if (_world->GetObjectWithTag<Home>("Home")->GetHp() <= 0)
 	{
 		StopSoundAll();
+		game->ChangeScene(new ResultScene());
+	}
+	if (_wave->GetWave() > 3)
+	{
 		game->ChangeScene(new ResultScene());
 	}
 }

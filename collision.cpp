@@ -8,7 +8,6 @@
 #include "collision.h"
 #include "bullet.h"
 #include "enemy.h"
-#include "shadow.h"
 #include "Health.h"
 #include "player.h"
 #include "Home.h"
@@ -18,6 +17,8 @@
 #include "DirectXCollision.h"
 #include "EmptyObject.h"
 #include "place.h"
+#include "EnemyBullet.h"
+#include "Tbullet.h"
 
 
 //*****************************************************************************
@@ -40,7 +41,11 @@ void UpdateCollision(World* world)
 	auto player= world->GetObjectWithTag<Player>("Player");
 	auto select= world->GetObjectWithTag<EmptyObject>("EmptyObject");
 	auto place = world->GetObjectWithTag<Place>("Place");
-
+	auto home = world->GetObjectWithTag<Home>("Home");
+	auto eBullet= world->GetObjectsWithTag<EnemyBullet>("EnemyBullet");
+	auto enemy= world->GetObjectsWithTag<Object>("Enemy");
+	auto tBullet= world->GetObjectsWithTag<TBullet>("TBullet");
+	auto pBullet= world->GetObjectsWithTag<Bullet>("Bullet");
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -49,6 +54,12 @@ void UpdateCollision(World* world)
 
 			PlayerCollisionHandling(player, wall->GetBox()[i]._pos, player->_hitBox._size, wall->GetBox()[i]._size);
 		}
+	}
+
+	if (CollisionBB(player->GetPosition(), home->GetPosition(), player->_hitBox._size, {750,500,750}))
+	{
+
+		PlayerCollisionHandling(player, home->GetPosition(), player->_hitBox._size, { 750,500,750 });
 	}
 
 	if (select != nullptr)
@@ -69,6 +80,41 @@ void UpdateCollision(World* world)
 		{
 			select->SetRotation({ 0, 0, 0 });
 			player->_canBuild = false;
+		}
+	}
+
+
+	for (auto x : eBullet)
+	{
+		Vec3 len = home->GetPosition() - x->GetPosition();
+		if (D3DXVec3Length(&len) < 550)
+		{
+			home->SetHp(home->GetHp()- x->_attack);
+			x->SetUse(false);
+		}
+	}
+
+	for (auto j : enemy)
+	{
+		for (auto i : tBullet)
+		{
+			Vec3 len = j->GetPosition() - i->GetPosition();
+			if (D3DXVec3Length(&len) < 150)
+			{
+				j->SetHp(j->GetHp() - i->_attack);
+				i->SetUse(false);
+			}
+		}
+
+		for (auto k : pBullet)
+		{
+			Vec3 len = j->GetPosition()-k->GetPosition();
+			if (D3DXVec3Length(&len) < 150)
+			{
+
+ 				j->SetHp(j->GetHp() - k->_attack);
+				k->SetUse(false);
+			}
 		}
 	}
 

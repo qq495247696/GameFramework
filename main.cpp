@@ -5,10 +5,9 @@
  * \date   2024 \ 02 \ 16
  *********************************************************************/
 #include "main.h"
-#include "fade.h"
 #include "Time.h"
 #include "Debug.h"
-
+#include"game.h"
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
@@ -20,10 +19,7 @@
 //*****************************************************************************
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow);
-void Uninit(void);
-void Update(double);
-void Draw(void);
+
 
 //*****************************************************************************
 // グローバル変数:

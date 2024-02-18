@@ -35,6 +35,7 @@ public:
 	void Draw() override;
 	bool Discard() const override;
 	const int GetHp()const { return _hp; }
+	void SetHp(const int hp) { _hp = hp; }
 	UiInfoObsever	_obsever;
 private:
 	int				_hp;

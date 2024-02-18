@@ -10,4 +10,5 @@ void GameLoop::Update(float deltaTime)
 	e._time = _turnTime;
 	e._wave = _wave;
 	_obsever.Notify(e);
+
 }

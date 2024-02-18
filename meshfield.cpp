@@ -120,8 +120,6 @@ void FieldMesh::Update(double deltaTime)
 void FieldMesh::Draw()
 {
 	_api->SetCullingMode(CULL_MODE_BACK);
-	
-	_api->SetLightEnable(false);
 	// 頂点バッファ設定
 	UINT stride = sizeof(VERTEX_3D);
 	UINT offset = 0;

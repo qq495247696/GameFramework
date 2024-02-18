@@ -7,7 +7,6 @@
 #include "bullet.h"
 #include "camera.h"
 #include "texture.h"
-#include "shadow.h"
 #include "World.h"
 #include "main.h"
 
@@ -23,17 +22,16 @@ void Bullet::Update(double deltaTime)
 	
 	//時間経過
 	frame += 1.0f;
-	
+	if (frame > 100.0f)
+	{
+		_use = false;
+	}
 }
 
 void Bullet::Draw()
 {
 	// αテストを有効に
 	_api->SetAlphaTestEnable(true);
-
-	// ライティングを無効
-	_api->SetLightEnable(false);
-
 	D3DXMATRIX mtxView, mtxScale, mtxTranslate;
 
 	// 頂点バッファ設定
@@ -93,5 +91,12 @@ void Bullet::Draw()
 
 bool Bullet::Discard() const
 {
-	return frame > 100.0f;
+	if (_use)
+	{
+		return false;
+	}
+	else if(_use==false)
+	{
+		return true;
+	}
 }

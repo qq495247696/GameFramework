@@ -10,7 +10,7 @@ class ThunderTower :public Object
 {
 public:
 	ThunderTower(DX11_MODEL* model, Render* render, World* world) :Object(model, render, "ThunderTower", world), _finded(false)
-		, _attackSpeed(3.5), _attack(150.0f), _attackDistance(650.0f)
+		, _attackSpeed(0.5), _attack(120.0f), _attackDistance(550.0f)
 	{
 		_position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		_rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);

@@ -1,10 +1,9 @@
 #include "Home.h"
 #include "camera.h"
 #include "model.h"
-#include "shadow.h"
 #include "sound.h"
 #include "World.h"
-
+#include "Render.h"
 
 void Home::Update(double deltaTime)
 {

@@ -39,6 +39,8 @@ public:
 	D3DXMATRIX* GetWorldMatrix(){ return &_worldMtx; }
 	DX11_MODEL* GetModel()const { return  _model; }
 	World* GetWorld()const { return _world; }
+	const int GetHp()const { return _hp; }
+	void SetHp(const int hp) { _hp = hp; }
 protected:
 	Vec3					_position;
 	Vec3					_rotate;
@@ -48,6 +50,7 @@ protected:
 	float					_speed;
 	DX11_MODEL*				_model;
 	int						_texNo;
+	int						_hp;
 	D3DXMATRIX				_worldMtx;
 	Render*					_renderComponent;
 private:

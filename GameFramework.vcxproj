@@ -160,7 +160,6 @@
     <ClInclude Include="enemy03.h" />
     <ClInclude Include="EnemyBullet.h" />
     <ClInclude Include="EnemySpwaner.h" />
-    <ClInclude Include="fade.h" />
     <ClInclude Include="FireTower.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameLoop.h" />
@@ -186,10 +185,10 @@
     <ClInclude Include="result.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="SelectPhase.h" />
-    <ClInclude Include="shadow.h" />
     <ClInclude Include="sound.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h" />
+    <ClInclude Include="Tbullet.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="ThunderTower.h" />
     <ClInclude Include="Time.h" />
@@ -217,10 +216,10 @@
     <ClCompile Include="enemy02.cpp" />
     <ClCompile Include="enemy03.cpp" />
     <ClCompile Include="EnemyBullet.cpp" />
-    <ClCompile Include="fade.cpp" />
     <ClCompile Include="FireTower.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="Gold.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
@@ -239,8 +238,8 @@
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="SelectPhase.cpp" />
-    <ClCompile Include="shadow.cpp" />
     <ClCompile Include="sound.cpp" />
+    <ClCompile Include="Tbullet.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="ThunderTower.cpp" />
     <ClCompile Include="TimeUI.cpp" />

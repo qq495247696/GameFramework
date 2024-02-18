@@ -10,6 +10,7 @@
 #include "Render.h"
 #include "sound.h"
 #include "AssetManager.h"
+#include "Tbullet.h"
 
 static float rotValue = D3DX_PI / 90;
 void FireTower::Update(double deltaTime)
@@ -34,18 +35,14 @@ bool FireTower::Discard() const
 	return false;
 }
 
-void FireTower::Attack(double deltaTime)
+void FireTower::Attack(double deltaTime,Vec3 vel)
 {
 	D3DXVECTOR3 x = { 0.0,0.0,1.0 };
 	time += deltaTime;
 	if (time > _attackSpeed)
 	{
-		D3DXVECTOR4 pOut;
-		D3DXMATRIX rot;
-		D3DXMatrixIdentity(&rot);
-		D3DXMatrixRotationY(&rot, _rotate.y);
-		D3DXVec3Transform(&pOut, &x, &rot);
-		//SetEnemyBullet(_position, { pOut.x,0,pOut.z });
+		TBullet* nBullet = new TBullet(&AssetManager::Get()->_fireTBullet, { _position.x,80.0f,_position.z }, vel, 3800, _attack, _renderComponent, GetWorld());
+		GetWorld()->AddObject(nBullet);
 		PlaySound(AssetManager::Get()->_fireShotSe,0);
 		time = 0;
 	}
@@ -86,7 +83,7 @@ void FireTower::NoFoundedEnemy()
 
 void FireTower::FoundedEnemy(double deltaTime)
 {
-	auto enemy = GetWorld()->GetObjectsWithTag<Enemy>("Enemy");
+	auto enemy = GetWorld()->GetObjectsWithTag<Object>("Enemy");
 
 	for (auto x : enemy)
 	{
@@ -111,7 +108,7 @@ void FireTower::FoundedEnemy(double deltaTime)
 				_rotate.y = radian;
 			}
 			_finded = true;
-			Attack(deltaTime);
+			Attack(deltaTime, velVec);
 			break;
 		}
 	}

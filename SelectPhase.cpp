@@ -86,6 +86,10 @@ void SelectPhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 		switch (type)
 		{
 		case Normal:
+			if (Entity->_money < 300)
+			{
+				Entity->_canBuild = false;
+			}
 			selectmode->SetModel(&AssetManager::Get()->_selectNormalTower);
 			if (Entity->_canBuild)
 			{
@@ -103,6 +107,10 @@ void SelectPhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 			}
 			break;
 		case Fire:
+			if (Entity->_money < 600)
+			{
+				Entity->_canBuild = false;
+			}
 			selectmode->SetModel(&AssetManager::Get()->_selectFireTower);
 			if (Entity->_canBuild)
 			{
@@ -120,6 +128,10 @@ void SelectPhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 			}
 			break;
 		case Thunder:
+			if (Entity->_money < 450)
+			{
+				Entity->_canBuild = false;
+			}
 			selectmode->SetModel(&AssetManager::Get()->_selectThunderTower);
 			if (Entity->_canBuild)
 			{
@@ -140,6 +152,8 @@ void SelectPhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 
 
 
+
+
 		//ó‘Ô‚ð•ÏX‚·‚é
 		if (IsMouseLeftTriggered()&&Entity->_canBuild)
 		{
@@ -150,23 +164,30 @@ void SelectPhase::StayState(Player* Entity, float deltaTime, DirectXAPI* api)
 				nTower->SetPosition({ cam->GetPosition().x,0, cam->GetPosition().z + 1 });
 				nTower->SetRotation(selectmode->GetRotation());
 				Entity->GetWorld()->AddObject(nTower);
+				Entity->_money -= 300;
 				break; }
 			case Fire: {
 				FireTower* fTower = new FireTower(&AssetManager::Get()->_fireTower, Entity->GetComponent(), Entity->GetWorld());
 				fTower->SetPosition({ cam->GetPosition().x,0, cam->GetPosition().z + 1 });
 				fTower->SetRotation(selectmode->GetRotation());
 				Entity->GetWorld()->AddObject(fTower);
+				Entity->_money -= 600;
 				break; }
 			case Thunder: {
 				ThunderTower* tTower = new ThunderTower(&AssetManager::Get()->_thunderTower, Entity->GetComponent(), Entity->GetWorld());
 				tTower->SetPosition({ cam->GetPosition().x,0, cam->GetPosition().z + 1 });
 				tTower->SetRotation(selectmode->GetRotation());
 				Entity->GetWorld()->AddObject(tTower);
+				Entity->_money -= 450;
 				break; }
 			}
-			Entity->fsm->ChangeState(BattlePhase::Instance());
 		}
 		cam->SetCamera(api);
+	}
+
+	if (GetKeyboardTrigger(DIK_2))
+	{
+		Entity->_fsm->ChangeState(BattlePhase::Instance());
 	}
 }
 

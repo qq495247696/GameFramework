@@ -21,6 +21,7 @@ public:
 	friend PreparationLoop;
 	friend BattleLoop;
 	UiInfoObsever				_obsever;
+	const int GetWave()const { return _wave; }
 private:
 	int							_wave;
 	int							_enemyNum;

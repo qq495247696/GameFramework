@@ -98,7 +98,7 @@ bool Enemy::Discard() const
 	if (_hp <= 0)
 	{
 		auto p = GetWorld()->GetObjectWithTag<Player>("Player");
-		p->_money += 45;
+		p->_money += 55;
 		return true;	
 	}
 	else

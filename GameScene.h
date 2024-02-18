@@ -14,7 +14,11 @@ class GameScene : public Scene
 	
 public:
 	GameScene() { _world = new World(); };
-	~GameScene() { delete _world; }
+	~GameScene() 
+	{ 
+		delete _world;
+		_world = nullptr;
+	}
 
 
 	void InitScene(Game* game, RenderComponentManager* rManager) override;

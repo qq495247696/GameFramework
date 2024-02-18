@@ -70,6 +70,8 @@ void GameScene::InitScene(Game* game, RenderComponentManager* rManager)
 
 void GameScene::UpdateScene(double deltaTime,Game* game, RenderComponentManager* rManager)
 {
+	int _changeWave = _wave->GetWave();
+	
 	auto cam = _world->GetObjectWithTag<Camera>("Camera");
 	Debug::Get()->NewFrame();
 	_wave->Update(deltaTime);
@@ -87,13 +89,18 @@ void GameScene::UpdateScene(double deltaTime,Game* game, RenderComponentManager*
 	Debug::Get()->Draw();
 	rManager->GetGraphicApi()->Present();
 	_world->CleanUp();
-	if (_world->GetObjectWithTag<Home>("Home")->GetHp() <= 0)
+
+	if (_world!=nullptr)
+	{
+		if (_world->GetObjectWithTag<Home>("Home")->GetHp() <= 0)
+		{
+			StopSoundAll();
+			game->ChangeScene(new ResultScene());
+		}
+	}
+	if (_changeWave > 3)
 	{
 		StopSoundAll();
-		game->ChangeScene(new ResultScene());
-	}
-	if (_wave->GetWave() > 3)
-	{
 		game->ChangeScene(new ResultScene());
 	}
 }

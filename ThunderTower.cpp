@@ -13,7 +13,7 @@
 
 void ThunderTower::Update(double deltaTime)
 {
-    auto enemy = GetWorld()->GetObjectsWithTag<Enemy>("Enemy");
+    auto enemy = GetWorld()->GetObjectsWithTag<Object>("Enemy");
 
     for (auto x : enemy)
     {

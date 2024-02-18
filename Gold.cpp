@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   Gold.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 18
+ *********************************************************************/
 #include "Gold.h"
 #include "Render2D.h"
 void Gold::Update(double deltaTime)

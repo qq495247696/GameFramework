@@ -1,6 +1,10 @@
+/*********************************************************************
+ * \file   Texture.h
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 18
+ *********************************************************************/
 #pragma once
-
-
 #include "render.h"
 #include "DirectXAPI.h"
 class TextureTool

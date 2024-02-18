@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   TimeUI.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 18
+ *********************************************************************/
 #include "TimeUI.h"
 #include "Render2D.h"
 void TimeUI::Update(double deltaTime)

@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   PreparationLoop.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 18
+ *********************************************************************/
 #include "PreparationLoop.h"
 #include "GameLoop.h"
 #include "sound.h"

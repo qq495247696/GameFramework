@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   UiInfoSubject.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 18
+ *********************************************************************/
 #include "UiInfoSubject.h"
 #include "UiInfoObsever.h"
 #include "Ui.h"

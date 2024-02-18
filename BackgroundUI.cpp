@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   BackgroundUI.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 18
+ *********************************************************************/
 #include "BackgroundUI.h"
 #include "Render.h"
 #include "Render2D.h"

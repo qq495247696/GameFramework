@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   BattleLoop.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 18
+ *********************************************************************/
 #include "BattleLoop.h"
 #include "enemy.h"
 #include "enemy02.h"

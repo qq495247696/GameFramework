@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   UiInfoObsever.h
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 18
+ *********************************************************************/
 #pragma once
 #include <list>
 #include "UiInfoSubject.h"

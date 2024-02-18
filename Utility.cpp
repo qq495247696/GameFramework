@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   Utility.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 18
+ *********************************************************************/
 #include "Utility.h"
 
 MeshData<VERTEX_3D> CreateBox(float width, float height, float depth, const D3DXCOLOR& color, D3DXVECTOR3 orignPos)

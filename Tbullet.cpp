@@ -1,3 +1,9 @@
+/*********************************************************************
+ * \file   Tbullet.cpp
+ * \brief   
+ * \author MA HANGLONG
+ * \date   2024 \ 02 \ 18
+ *********************************************************************/
 #include "Tbullet.h"
 
 void TBullet::Update(double deltaTime)
